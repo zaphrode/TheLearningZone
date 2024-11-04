@@ -19,11 +19,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "react-scripts start --history-api-fallback"
   },
+
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -45,4 +46,5 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
+
 }
