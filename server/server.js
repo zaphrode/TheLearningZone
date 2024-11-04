@@ -20,10 +20,13 @@ const app = express();
 // Configure express app
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from the frontend running on port 3000
-  credentials: true,               // Allow cookies to be sent with requests
-}));
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? 'http://www.the-learning-zone.vercel.app'  // Production frontend
+    : 'http://localhost:3000',                   // Development frontend
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 // Serve the uploads folder as static so frontend can access uploaded files
 app.use('/uploads', express.static('uploads'));
