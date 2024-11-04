@@ -1,32 +1,27 @@
+// /middleware/requireAuth.js
 const jwt = require("jsonwebtoken");
-const User = require("../models/user")
+const User = require("../models/user");
 
-async function requireAuth(req, res, next)
-{
-    try{
-        //Read token off cookies
-        const token = req.cookies.Authorization;
+async function requireAuth(req, res, next) {
+  try {
+    console.log("Checking authorization...");
+    const token = req.cookies.Authorization;
+    console.log("Token:", token ? "Present" : "Not present");
 
-        //Decode the token
-        const decoded = jwt.verify(token, process.env.SECRET);
+    const decoded = jwt.verify(token, process.env.SECRET);
+    console.log("Token decoded:", decoded);
 
-        //Check expiration
-        if(Date.now() > decoded.exp) return res.sendStatus(401);
+    if (Date.now() > decoded.exp) return res.sendStatus(401);
 
-        //Find user using decoded sub
-        const user = await User.findById(decoded.sub);//attach user to req
-        if(!user) return res.sendStatus(401);
+    const user = await User.findById(decoded.sub);
+    if (!user) return res.sendStatus(401);
 
-        //Attch user to req
-        req.user = user;
-
-        //continue on
-        next();
-    } 
-    catch(err)
-    {
-        return res.sendStatus(401);
-    }
+    req.user = user;
+    next();
+  } catch (err) {
+    console.error("Authorization error:", err);
+    return res.sendStatus(401);
+  }
 }
 
 module.exports = requireAuth;
