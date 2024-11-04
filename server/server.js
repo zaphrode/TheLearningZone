@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? 'http://the-learning-zone.vercel.app'  // Production frontend
+    ? 'https://the-learning-zone.vercel.app'  // Production frontend
     : 'http://localhost:3000',                   // Development frontend
   credentials: true,
 };
