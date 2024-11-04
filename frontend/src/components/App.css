@@ -1,0 +1,71 @@
+/* Apply flexbox layout to the entire App */
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Align header (logo and title) */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .logo {
+    width: 100px;
+    margin-right: 15px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  /* Center buttons with spacing */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .tutor-button {
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    min-width: 300px;
+    height: 150px;
+  }
+  
+  .apply-tutor {
+    background-color: #00C0FF;
+    color: white;
+  }
+  
+  .find-tutor {
+    background-color: #8CC63F;
+    color: white;
+  }
+  /* Example CSS for a back button */
+.back-button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .back-button:hover {
+    background-color: #ddd;
+  }
+  

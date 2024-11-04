@@ -1,0 +1,46 @@
+.terms-and-conditions-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .collapsible-section {
+    margin-bottom: 15px;
+  }
+  
+  .collapsible-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+  }
+  
+  .collapsible-button:hover {
+    background-color: #555;
+  }
+  
+  .collapsible-content {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  

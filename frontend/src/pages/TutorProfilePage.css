@@ -1,0 +1,82 @@
+/* frontend/src/pages/TutorProfilePage.css */
+
+.tutor-profile-page {
+    max-width: 1000px; /* Increased width for the entire page */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.bio-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.bio-list li {
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-picture-container {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 180px; /* Increased size of profile picture */
+    height: 180px;
+    margin-bottom: 20px;
+    border: 2px solid #00C0FF;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-details {
+    text-align: left;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    line-height: 1.6;
+    width: 100%;
+}
+
+.profile-details p {
+    margin: 8px 0;
+}
+
+.qualifications-section, .testimonials-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Slightly larger gap between images */
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.qualification-img, .testimonial-img {
+    width: 500px; /* Increased width of each image */
+    height: auto;
+    max-height: 700px; /* Increased max height to keep images larger */
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 30px;
+}

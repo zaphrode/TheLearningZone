@@ -1,0 +1,72 @@
+/* frontend/src/pages/WhoAreWePage.css */
+
+.who-are-we-page {
+    position: relative;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+    color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.who-are-we-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7); /* Light fade effect */
+    z-index: 1;
+}
+
+.logo-header {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 120px;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    width: 100%;
+}
+
+.banner-section {
+    background-color: #b0c4de; /* Muted blue */
+    color: #000000;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    font-size: 1.7rem;
+}
+
+.banner-section p {
+    margin: 0;
+}
+
+.price-section {
+    background-color: #d3e5d6; /* Muted green */
+    color: #000000;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.price-section h2 {
+    font-size: 1.9rem;
+    margin-bottom: 15px;
+}
+
+.price-section p {
+    font-size: 1.5rem;
+    margin: 8px 0;
+}

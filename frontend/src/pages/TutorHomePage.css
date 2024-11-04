@@ -1,0 +1,111 @@
+/* Form and Page Container */
+.tutor-home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
+
+.title-section {
+  text-align: center;
+  margin-top: -100px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-top: 250px;
+  border-top: 5px solid #00C0FF;
+  width: 100%;
+  max-width: 600px;
+}
+
+.logo {
+  width: 140px;
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: #333;
+}
+
+/* Form Section */
+.form-section {
+  background-color: #f5f5f5;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-form div {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.profile-form label {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: px;
+  color: #333;
+}
+
+.profile-form input,
+.profile-form textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+/* Button Styles */
+.update-button {
+  background-color: #00C0FF;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.update-button:hover {
+  background-color: #0088cc;
+}
+
+/* Back Button Styling - Consistent Green */
+button.back-button {
+  background-color: #8CC63F; /* Consistent green color */
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+button.back-button:hover {
+  background-color: #6da830; /* Darker shade for hover effect */
+}
+
+/* Logout Button Styling - Consistent Orange */
+button.logout-button {
+  background-color: #FF8C00; /* Consistent orange color */
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+button.logout-button:hover {
+  background-color: #d57500; /* Darker shade for hover effect */
+}

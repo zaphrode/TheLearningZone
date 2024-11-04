@@ -1,0 +1,93 @@
+/* frontend/src/pages/HomePage.css */
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.home-page::before {
+  /* Faded overlay for background image */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* Light fade effect */
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  z-index: 2;
+}
+
+.logo {
+  width: 100px;
+  margin-right: 15px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  z-index: 2;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap to a new row if needed */
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px; /* Increased max-width for an extra row of buttons */
+  margin-top: 20px; /* Space between rows */
+  z-index: 2;
+}
+
+.tutor-button, .terms-button {
+  padding: 30px;
+  border-radius: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  min-width: 300px;
+  height: 150px;
+  transition: background-color 0.3s;
+}
+
+.apply-tutor {
+  background-color: #00C0FF;
+  color: white;
+}
+
+.find-tutor {
+  background-color: #8CC63F;
+  color: white;
+}
+
+.resources {
+  background-color: #a0a0a0; /* Grey button for Resources */
+  color: white;
+}
+
+.who-are-we {
+  background-color: #FFA500; /* Orange button for Who are we */
+  color: white;
+}
+
+.terms-button {
+  background-color: #000;
+  color: white;
+}
+
+.tutor-button:hover, .terms-button:hover {
+  opacity: 0.9; /* Subtle hover effect */
+}

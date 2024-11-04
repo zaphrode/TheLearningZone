@@ -1,0 +1,80 @@
+/* frontend/src/pages/FindTutorsPage.css */
+
+.find-tutors-page {
+    padding: 40px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.tutor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: 40px;
+}
+
+.tutor-card {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px; /* Fixed width for all cards */
+    text-align: center;
+    transition: transform 0.2s;
+    box-sizing: border-box; /* Ensures padding doesn't add to the width */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+.tutor-card:hover {
+    transform: translateY(-5px);
+}
+
+.tutor-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 20%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.tutor-info h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.bio-list {
+    text-align: left;
+    list-style-position: inside;
+    padding-left: 0;
+    margin: 10px 0;
+}
+
+.bio-list li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.view-profile {
+    display: inline-block;
+    padding: 15px 20px;
+    background-color: #00C0FF;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.view-profile:hover {
+    background-color: #0088cc;
+}
