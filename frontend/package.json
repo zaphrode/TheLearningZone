@@ -13,7 +13,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4",
     "zustand": "^4.5.4"
   },
@@ -24,7 +24,6 @@
     "eject": "react-scripts eject",
     "serve": "react-scripts start --history-api-fallback"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -46,5 +45,4 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
-
 }
