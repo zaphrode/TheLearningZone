@@ -10,7 +10,25 @@
     font-size: 2.2rem;
     margin-bottom: 20px;
   }
+ /* Position the WhatsApp button in the top right */
+.whatsapp-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 10;
+  }
   
+  .whatsapp-logo {
+    width: 128px; /* Adjust size as needed */
+    height: 128px;
+    transition: transform 0.2s ease;
+  }
+  
+  .whatsapp-logo:hover {
+    transform: scale(1.1);
+  }
+ 
   .collapsible-section {
     margin-bottom: 15px;
   }

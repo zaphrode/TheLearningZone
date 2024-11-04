@@ -5,14 +5,30 @@ const User = require("../models/user");
 // Fetch all tutor profiles for the logged-in user
 const fetchTutorProfiles = async (req, res) => {
   try {
-    const profiles = await TutorProfile.find({}, 'name bio picture tutorId gender'); // Include gender
+    const { gender, location, subject } = req.query;
+
+    const filter = {};
+
+    if (gender) {
+      filter.gender = gender;
+    }
+
+    // Use `$in` to match if location exists in the array
+    if (location) {
+      filter.preferredLocations = { $in: [location] };
+    }
+
+    if (subject) {
+      filter.subjects = subject;
+    }
+
+    const profiles = await TutorProfile.find(filter, 'name bio picture tutorId gender preferredLocations subjects');
     res.json({ success: true, profiles });
   } catch (err) {
     console.error("Error fetching tutor profiles:", err);
     res.sendStatus(400);
   }
 };
-
 
 // Fetch a single tutor profile by ID
 const fetchTutorProfile = async (req, res) => {
@@ -28,28 +44,42 @@ const fetchTutorProfile = async (req, res) => {
 
 const createTutorProfile = async (req, res) => {
   try {
-    const { name, number, bio, age, gender, preferredLocation, availability, qualifications, testimonials, tutorId } = req.body;
-    let picture = req.file ? req.file.filename : null;
-
-    // Assign default avatar based on gender if no picture is uploaded
-    if (!picture) {
-      picture = gender === 'male' ? 'male_avatar.png' : 'female_avatar.jpg';
-    }
-
-    // Create the profile with a unique `tutorId` if provided
-    const profile = await TutorProfile.create({
-      tutorId,  // Manually added ID if provided
+    const {
       name,
       number,
       bio,
       age,
       gender,
-      preferredLocation,
+      preferredLocations, // Now expecting this as a comma-separated string or an array
+      availability,
+      qualifications,
+      testimonials,
+      tutorId,
+      subjects
+    } = req.body;
+
+    let picture = req.file ? req.file.filename : null;
+
+    if (!picture) {
+      picture = gender === 'male' ? 'male_avatar.png' : 'female_avatar.jpg';
+    }
+
+    const profile = await TutorProfile.create({
+      tutorId,
+      name,
+      number,
+      bio,
+      age,
+      gender,
+      preferredLocations: Array.isArray(preferredLocations)
+        ? preferredLocations
+        : preferredLocations.split(',').map(loc => loc.trim()), // Convert string to array
       availability,
       qualifications,
       testimonials,
       picture,
       user: req.user._id,
+      subjects: subjects ? subjects.split(',').map(s => s.trim()) : []
     });
 
     res.status(201).json({ success: true, message: "Tutor profile created successfully.", profile });
@@ -62,9 +92,18 @@ const createTutorProfile = async (req, res) => {
 const updateTutorProfile = async (req, res) => {
   try {
     const profileId = req.params.id;
-    const { name, number, bio, age, gender, preferredLocation, availability, tutorId } = req.body;
+    const {
+      name,
+      number,
+      bio,
+      age,
+      gender,
+      preferredLocations,
+      availability,
+      tutorId,
+      subjects
+    } = req.body;
 
-    // Handle file uploads for picture, qualifications, and testimonials
     const picture = req.files?.picture ? req.files.picture[0].filename : null;
     const newQualifications = req.files?.qualifications ? req.files.qualifications.map(file => file.filename) : [];
     const newTestimonials = req.files?.testimonials ? req.files.testimonials.map(file => file.filename) : [];
@@ -81,12 +120,25 @@ const updateTutorProfile = async (req, res) => {
     if (bio) profile.bio = bio;
     if (age) profile.age = age;
     if (gender) profile.gender = gender;
-    if (preferredLocation) profile.preferredLocation = preferredLocation;
+
+    // Handle preferredLocations as an array or comma-separated string
+    if (preferredLocations) {
+      profile.preferredLocations = Array.isArray(preferredLocations)
+        ? preferredLocations
+        : preferredLocations.split(',').map(loc => loc.trim());
+    }
+
     if (availability) profile.availability = availability;
     if (picture) profile.picture = picture;
-    if (tutorId) profile.tutorId = tutorId; // Add tutorId update here
+    if (tutorId) profile.tutorId = tutorId;
 
-    // Append new files to existing qualifications and testimonials
+    // Handle subjects as an array or comma-separated string
+    if (subjects) {
+      profile.subjects = Array.isArray(subjects)
+        ? subjects
+        : subjects.split(',').map(s => s.trim());
+    }
+
     profile.qualifications = [...profile.qualifications, ...newQualifications];
     profile.testimonials = [...profile.testimonials, ...newTestimonials];
 

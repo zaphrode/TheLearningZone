@@ -5,18 +5,20 @@ const tutorProfileSchema = new mongoose.Schema({
   name: { type: String, required: true },
   number: { type: String, required: true },
   bio: { type: String, required: true },
-  age: { type: Number }, // Add age
-  gender: { type: String }, // Add gender
-  preferredLocation: { type: String }, // Add preferred location
-  availability: { type: String }, // Add availability
-  qualifications: [{ type: String }], // Array of qualifications
-  testimonials: [{ type: String }], // Array of testimonials (storing image filenames)
-  picture: { type: String }, // Store profile picture filename
-  tutorId: { type: String, unique: true},
+  age: { type: Number },
+  gender: { type: String },
+  preferredLocations: [{ type: String }], // Change to an array to support multiple locations
+  availability: { type: String },
+  qualifications: [{ type: String }],
+  testimonials: [{ type: String }],
+  picture: { type: String },
+  subjects: [{ type: String }],
+  tutorId: { type: String, unique: true },
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 const TutorProfile = mongoose.model("TutorProfile", tutorProfileSchema);
+
 
 module.exports = TutorProfile;
 

@@ -41,14 +41,14 @@ const TutorProfilePage = () => {
         <div className="profile-details">
           <p><strong>Age:</strong> {profile.age || "Not specified"}</p>
           <p><strong>Gender:</strong> {profile.gender || "Not specified"}</p>
-          <p><strong>Phone:</strong> {profile.number || "Not specified"}</p>
+          <p><strong>Subjects taught:</strong> {profile.subjects ? profile.subjects.join(', ') : "Not specified"}</p>
           <p><strong>Bio:</strong></p>
           <ul className="bio-list">
             {profile.bio ? profile.bio.split('\n').map((line, index) => (
               <li key={index}>{line}</li>
             )) : <p>Not specified</p>}
           </ul>
-          <p><strong>Preferred Location:</strong> {profile.preferredLocation || "Not specified"}</p>
+          <p><strong>Preferred Locations:</strong> {profile.preferredLocations ? profile.preferredLocations.join(', ') : "Not specified"}</p>
           <p><strong>Availability:</strong> {profile.availability || "Not specified"}</p>
         </div>
       </div>

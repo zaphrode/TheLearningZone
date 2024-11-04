@@ -2,6 +2,12 @@
 import React from 'react';
 import './ResourcesPage.css';
 
+// Function to open WhatsApp chat
+const openWhatsAppChat = () => {
+  window.open("https://wa.me/6591684367", "_blank");
+};
+
+
 function ResourcesPage() {
   return (
     <div className="resources-page">
@@ -10,13 +16,19 @@ function ResourcesPage() {
         <h1>Resources</h1>
       </header>
 
+      {/* WhatsApp Button */}
+      <div className="whatsapp-button" onClick={openWhatsAppChat}>
+        <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
+      </div>
+
+
       <div className="resource-card">
         <h2>Free Resources</h2>
         <p>
           Access a variety of free resources to support your learning journey. Click below to explore!
         </p>
         <a href="https://drive.google.com/drive/folders/1gC6GQLgcuoHzwDXtEGzTwvzCz0YsYuwg" target="_blank" rel="noopener noreferrer" className="resource-link">
-          Google Drive Free Resources
+          Free Resources
         </a>
       </div>
 
@@ -26,7 +38,7 @@ function ResourcesPage() {
           Use code: <strong>thelearningzone</strong> for 5% off on all resources.
         </p>
         <a href="https://rtr.sg" target="_blank" rel="noopener noreferrer" className="resource-link">
-          Visit RTR.sg for Discounted Resources
+          Discounted Resources
         </a>
       </div>
     </div>

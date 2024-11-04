@@ -6,9 +6,20 @@ const TermsAndConditionsPage = () => {
   const [isClientOpen, setIsClientOpen] = useState(false);
   const [isTutorOpen, setIsTutorOpen] = useState(false);
 
+  // Function to open WhatsApp chat
+const openWhatsAppChat = () => {
+    window.open("https://wa.me/6591684367", "_blank");
+};
+  
+
   return (
     <div className="terms-and-conditions-page">
       <h1>Terms and Conditions</h1>
+
+        {/* WhatsApp Button */}
+        <div className="whatsapp-button" onClick={openWhatsAppChat}>
+            <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
+        </div>
   
       {/* Clients Section */}
       <div className="collapsible-section">

@@ -2,6 +2,11 @@
 import React from "react";
 import "./WhoAreWePage.css";
 
+// Function to open WhatsApp chat
+const openWhatsAppChat = () => {
+  window.open("https://wa.me/6591684367", "_blank");
+};
+
 const WhoAreWePage = () => {
   return (
     <div
@@ -10,6 +15,10 @@ const WhoAreWePage = () => {
         backgroundImage: `url(${process.env.PUBLIC_URL + '/tlz2.webp'})`,
       }}
     >
+        {/* WhatsApp Button */}
+        <div className="whatsapp-button" onClick={openWhatsAppChat}>
+        <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
+      </div>
       <div className="logo-header">
         <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
       </div>
