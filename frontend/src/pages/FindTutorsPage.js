@@ -14,7 +14,7 @@ const FindTutorsPage = () => {
   const [locationFilter, setLocationFilter] = useState("");
   const [subjectFilter, setSubjectFilter] = useState("");
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = 'https://the-learning-zone-api.vercel.app';
 
   useEffect(() => {
     const fetchTutors = async () => {
