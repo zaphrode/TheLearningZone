@@ -25,11 +25,11 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production'
-    ? 'https://the-learning-zone.vercel.app'  // Production frontend
-    : 'http://localhost:3000',                 // Development frontend
+  origin: '*',
   credentials: true,
 };
+app.use(cors(corsOptions));
+
 console.log("CORS setup:", corsOptions);
 app.use(cors(corsOptions));
 
