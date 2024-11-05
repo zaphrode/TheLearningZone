@@ -18,8 +18,9 @@ const FindTutorsPage = () => {
     const fetchTutors = async () => {
       try {
         const response = await axios.get("/tutor-profiles", { withCredentials: true });
-        setTutors(response.data.profiles);
-        setFilteredTutors(response.data.profiles); // Initialize filteredTutors
+        console.log("Fetched Tutors Response:", response); // Debugging line
+        setTutors(response.data.profiles || []); // Default to empty array if undefined
+        setFilteredTutors(response.data.profiles || []);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching tutors:", error);
@@ -114,7 +115,7 @@ const FindTutorsPage = () => {
       </div>
 
       <div className="tutor-list">
-        {filteredTutors.length > 0 ? (
+        {filteredTutors && filteredTutors.length > 0 ? (
           filteredTutors.map((tutor) => (
             <div className="tutor-card" key={tutor._id}>
               <div className="tutor-header">
@@ -133,7 +134,7 @@ const FindTutorsPage = () => {
                 </div>
               </div>
               <ul className="bio-list">
-                {tutor.bio.split('\n').map((line, index) => (
+                {(tutor.bio ? tutor.bio.split('\n') : []).map((line, index) => (
                   <li key={index}>{line}</li>
                 ))}
               </ul>
