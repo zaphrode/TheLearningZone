@@ -23,11 +23,11 @@ app.use(helmet({
     directives: {
       defaultSrc: ["'none'"],
       scriptSrcElem: ["'self'", 'https://vercel.live/_next-live/feedback/feedback.js'],
+      connectSrc: ["'self'", 'https://the-learning-zone-api.vercel.app'],
       // Add any other necessary directives here
     },
   },
 }));
-
 // CORS Configuration
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production'
