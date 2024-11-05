@@ -31,7 +31,7 @@ app.use(helmet({
 // CORS Configuration
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production'
-    ? 'https://the-learning-zone.vercel.app' // Set this as environment variable for flexibility
+    ? 'https://the-learning-zone.vercel.app'
     : 'http://localhost:3000',
   credentials: true,
 };
