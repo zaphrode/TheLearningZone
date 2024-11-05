@@ -6,11 +6,6 @@
       }
     ],
     "routes": [
-      { "src": "/tutor-profiles.*", "dest": "server.js" }, 
-      { "src": "/signup", "dest": "server.js" }, 
-      { "src": "/login", "dest": "server.js" },
-      { "src": "/check-auth", "dest": "server.js" },
-      { "src": "/uploads/(.*)", "dest": "server.js" },
       { "src": "/(.*)", "dest": "server.js" }
     ]
   }
