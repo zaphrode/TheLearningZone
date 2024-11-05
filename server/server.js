@@ -21,7 +21,7 @@ const app = express();
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'none'"],
+      defaultSrc: ["'self'"],
       scriptSrcElem: ["'self'", 'https://vercel.live/_next-live/feedback/feedback.js'],
       connectSrc: ["'self'", 'https://the-learning-zone-api.vercel.app'],
       // Add any other necessary directives here
@@ -30,10 +30,8 @@ app.use(helmet({
 }));
 // CORS Configuration
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production'
-    ? 'https://the-learning-zone.vercel.app'
-    : 'http://localhost:3000',
-  credentials: true,
+  origin: 'https://the-learning-zone.vercel.app',  // Allow requests from your frontend domain
+  credentials: true,                               // Include credentials if needed (e.g., cookies)
 };
 console.log("CORS setup:", corsOptions);
 app.use(cors(corsOptions));
