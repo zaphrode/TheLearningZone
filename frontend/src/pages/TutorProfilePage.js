@@ -7,18 +7,19 @@ import './TutorProfilePage.css';
 const TutorProfilePage = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/tutor-profiles/${id}`, { withCredentials: true });
+        const response = await axios.get(`${apiUrl}/tutor-profiles/${id}`, { withCredentials: true });
         setProfile(response.data.profile);
       } catch (error) {
         console.error("Error fetching tutor profile:", error);
       }
     };
     fetchProfile();
-  }, [id]);
+  }, [id, apiUrl]);
 
   if (!profile) return <p>Loading...</p>;
 
@@ -30,8 +31,8 @@ const TutorProfilePage = () => {
           <img 
             src={
               profile.picture 
-                ? `http://localhost:3001/uploads/${profile.picture}`
-                : `http://localhost:3001/uploads/${profile.gender === "female" ? "female_avatar.jpg" : "male_avatar.png"}`
+                ? `${apiUrl}/uploads/${profile.picture}`
+                : `${apiUrl}/uploads/${profile.gender === "female" ? "female_avatar.jpg" : "male_avatar.png"}`
             } 
             alt="Profile" 
             className="profile-picture" 
@@ -57,7 +58,7 @@ const TutorProfilePage = () => {
       <div className="qualifications-section">
         {profile.qualifications && profile.qualifications.length > 0 ? (
           profile.qualifications.map((file, index) => (
-            <img key={index} src={`http://localhost:3001/uploads/${file}`} alt={`Qualification ${index + 1}`} className="qualification-img" />
+            <img key={index} src={`${apiUrl}/uploads/${file}`} alt={`Qualification ${index + 1}`} className="qualification-img" />
           ))
         ) : (
           <p>No qualifications available.</p>
@@ -68,7 +69,7 @@ const TutorProfilePage = () => {
       <div className="testimonials-section">
         {profile.testimonials && profile.testimonials.length > 0 ? (
           profile.testimonials.map((file, index) => (
-            <img key={index} src={`http://localhost:3001/uploads/${file}`} alt={`Testimonial ${index + 1}`} className="testimonial-img" />
+            <img key={index} src={`${apiUrl}/uploads/${file}`} alt={`Testimonial ${index + 1}`} className="testimonial-img" />
           ))
         ) : (
           <p>No testimonials available.</p>
