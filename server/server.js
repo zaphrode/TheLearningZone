@@ -22,12 +22,14 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrcElem: ["'self'", 'https://vercel.live/_next-live/feedback/feedback.js'],
-      connectSrc: ["'self'", 'https://the-learning-zone-api.vercel.app'],
-      // Add any other necessary directives here
+      scriptSrc: ["'self'", "https://vercel.live"],
+      connectSrc: ["'self'", "https://the-learning-zone-api.vercel.app"],
+      imgSrc: ["'self'", "https://the-learning-zone-api.vercel.app", "data:"],  // Allow images from API domain and inline images
+      styleSrc: ["'self'", "'unsafe-inline'"],
     },
   },
 }));
+
 // CORS Configuration
 const corsOptions = {
   origin: 'https://the-learning-zone.vercel.app',  // Allow requests from your frontend domain
