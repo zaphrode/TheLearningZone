@@ -40,27 +40,27 @@ app.use('/uploads', express.static('uploads'));
 connectToDb();
 
 // Routing
-app.post("/signup", usersController.signup);
-app.post("/login", usersController.login);
-app.get("/logout", usersController.logout);
-app.get("/check-auth", requireAuth, usersController.checkAuth);
+app.post("/api/signup", usersController.signup);
+app.post("/api/login", usersController.login);
+app.get("/api/logout", usersController.logout);
+app.get("/api/check-auth", requireAuth, usersController.checkAuth);
 
-app.get("/tutor-profiles", requireAuth, tutorProfilesController.fetchTutorProfiles);
-app.get("/tutor-profiles/:id", requireAuth, tutorProfilesController.fetchTutorProfile);
+app.get("/api/tutor-profiles", requireAuth, tutorProfilesController.fetchTutorProfiles);
+app.get("/api/tutor-profiles/:id", requireAuth, tutorProfilesController.fetchTutorProfile);
 
-app.post("/tutor-profiles", requireAuth, upload.fields([
+app.post("/api/tutor-profiles", requireAuth, upload.fields([
   { name: 'picture', maxCount: 1 },
   { name: 'qualifications', maxCount: 10 },
   { name: 'testimonials', maxCount: 10 }
 ]), tutorProfilesController.createTutorProfile);
 
-app.put("/tutor-profiles/:id", requireAuth, upload.fields([
+app.put("/api/tutor-profiles/:id", requireAuth, upload.fields([
   { name: 'picture', maxCount: 1 },
   { name: 'qualifications', maxCount: 10 },
   { name: 'testimonials', maxCount: 10 }
 ]), tutorProfilesController.updateTutorProfile);
 
-app.delete("/tutor-profiles/:id", requireAuth, tutorProfilesController.deleteTutorProfile);
+app.delete("/api/tutor-profiles/:id", requireAuth, tutorProfilesController.deleteTutorProfile);
 
 
 // Start server
