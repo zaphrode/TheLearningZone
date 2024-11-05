@@ -1,4 +1,3 @@
-// frontend/src/pages/FindTutorsPage.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -18,7 +17,7 @@ const FindTutorsPage = () => {
   useEffect(() => {
     const fetchTutors = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/tutor-profiles", { withCredentials: true });
+        const response = await axios.get("/tutor-profiles", { withCredentials: true });
         setTutors(response.data.profiles);
         setFilteredTutors(response.data.profiles); // Initialize filteredTutors
         setLoading(false);
@@ -56,22 +55,21 @@ const FindTutorsPage = () => {
     }
 
     setFilteredTutors(updatedTutors);
-};
+  };
 
-// Handle changes in filter inputs
-const handleFilterChange = (e) => {
+  // Handle changes in filter inputs
+  const handleFilterChange = (e) => {
     const { name, value } = e.target;
 
     if (name === "gender") setGenderFilter(value);
     if (name === "location") setLocationFilter(value);
     if (name === "subject") setSubjectFilter(value);
-};
+  };
 
-// Function to open WhatsApp chat
-const openWhatsAppChat = () => {
+  // Function to open WhatsApp chat
+  const openWhatsAppChat = () => {
     window.open("https://wa.me/6591684367", "_blank");
-};
-
+  };
 
   if (loading) return <p>Loading tutors...</p>;
   if (error) return <p>{error}</p>;
@@ -80,11 +78,10 @@ const openWhatsAppChat = () => {
     <div className="find-tutors-page">
       <h1>Find a Tutor</h1>
 
-    {/* WhatsApp Button */}
-    <div className="whatsapp-button" onClick={openWhatsAppChat}>
+      {/* WhatsApp Button */}
+      <div className="whatsapp-button" onClick={openWhatsAppChat}>
         <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
-    </div>
-
+      </div>
 
       {/* Filter Bar */}
       <div className="filter-bar">
@@ -124,7 +121,7 @@ const openWhatsAppChat = () => {
                 <img 
                   src={
                     tutor.picture 
-                      ? `http://localhost:3001/uploads/${tutor.picture}`
+                      ? `${process.env.NODE_ENV === 'production' ? 'https://the-learning-zone.vercel.app/api/uploads' : 'http://localhost:3001/uploads'}/${tutor.picture}`
                       : `/assets/${tutor.gender?.toLowerCase() === "female" ? "female_avatar.png" : "male_avatar.png"}`
                   } 
                   alt="Profile" 
