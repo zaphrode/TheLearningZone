@@ -18,7 +18,15 @@ if (!fs.existsSync(path)) {
 const app = express();
 
 // Set security headers
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'none'"],
+      scriptSrcElem: ["'self'", 'https://vercel.live/_next-live/feedback/feedback.js'],
+      // Add any other necessary directives here
+    },
+  },
+}));
 
 // CORS Configuration
 const corsOptions = {
@@ -43,6 +51,9 @@ connectToDb()
 // Routes
 app.post("/signup", usersController.signup);
 app.post("/login", usersController.login);
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Welcome to the API!' });
+});
 app.get("/logout", usersController.logout);
 app.get("/check-auth", requireAuth, usersController.checkAuth);
 app.get("/tutor-profiles", requireAuth, tutorProfilesController.fetchTutorProfiles);
