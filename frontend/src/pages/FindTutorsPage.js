@@ -17,7 +17,7 @@ const FindTutorsPage = () => {
   useEffect(() => {
     const fetchTutors = async () => {
       try {
-        const response = await axios.get("/api/tutor-profiles", { withCredentials: true });
+        const response = await axios.get("/tutor-profiles", { withCredentials: true });
         console.log("Fetched Tutors Response:", response); // Debugging line
         setTutors(response.data.profiles || []); // Default to empty array if undefined
         setFilteredTutors(response.data.profiles || []);
@@ -122,7 +122,7 @@ const FindTutorsPage = () => {
                 <img 
                   src={
                     tutor.picture 
-                      ? `${process.env.NODE_ENV === 'production' ? 'https://the-learning-zone.vercel.app/api/uploads' : 'http://localhost:3001/uploads'}/${tutor.picture}`
+                      ? `${process.env.NODE_ENV === 'production' ? 'https://the-learning-zone.vercel.app/uploads' : 'http://localhost:3001/uploads'}/${tutor.picture}`
                       : `/assets/${tutor.gender?.toLowerCase() === "female" ? "female_avatar.png" : "male_avatar.png"}`
                   } 
                   alt="Profile" 
