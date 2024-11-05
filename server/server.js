@@ -56,8 +56,8 @@ app.get('/', (req, res) => {
 });
 app.get("/logout", usersController.logout);
 app.get("/check-auth", requireAuth, usersController.checkAuth);
-app.get("/tutor-profiles", requireAuth, tutorProfilesController.fetchTutorProfiles);
-app.get("/tutor-profiles/:id", requireAuth, tutorProfilesController.fetchTutorProfile);
+app.get("/tutor-profiles", tutorProfilesController.fetchTutorProfiles);
+app.get("/tutor-profiles/:id",  tutorProfilesController.fetchTutorProfile);
 app.get('/uploads/:filename', tutorProfilesController.serveFile);
 app.post("/tutor-profiles", requireAuth, upload.fields([
   { name: 'picture', maxCount: 1 },
