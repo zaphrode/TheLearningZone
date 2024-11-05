@@ -14,22 +14,23 @@ const FindTutorsPage = () => {
   const [locationFilter, setLocationFilter] = useState("");
   const [subjectFilter, setSubjectFilter] = useState("");
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const fetchTutors = async () => {
       try {
-        const response = await axios.get("/api/tutor-profiles", { withCredentials: true });
-        console.log("Fetched Tutors Response:", response); // Debugging line
-        setTutors(response.data.profiles || []); // Default to empty array if undefined
-        setFilteredTutors(response.data.profiles || []);
-        setLoading(false);
+        const response = await axios.get(`${apiUrl}/tutor-profiles`, { withCredentials: true });
+        setTutors(response.data.profiles);
+        setFilteredTutors(response.data.profiles); // Initialize filteredTutors
+        setLoading(false); // Set loading to false after data is fetched
       } catch (error) {
         console.error("Error fetching tutors:", error);
         setError("Failed to load tutors.");
-        setLoading(false);
+        setLoading(false); // Ensure loading is false in error case too
       }
     };
     fetchTutors();
-  }, []);
+  }, [apiUrl]);
 
   // Automatically filter tutors whenever a filter changes
   useEffect(() => {
@@ -122,7 +123,7 @@ const FindTutorsPage = () => {
                 <img 
                   src={
                     tutor.picture 
-                      ? `${process.env.NODE_ENV === 'production' ? 'https://the-learning-zone.vercel.app/api/uploads' : 'http://localhost:3001/uploads'}/${tutor.picture}`
+                      ? `${apiUrl}/uploads/${tutor.picture}`
                       : `/assets/${tutor.gender?.toLowerCase() === "female" ? "female_avatar.png" : "male_avatar.png"}`
                   } 
                   alt="Profile" 
