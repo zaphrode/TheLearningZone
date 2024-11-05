@@ -17,7 +17,7 @@ const tutorProfilesController = require("./controllers/tutorProfilesController")
 const multer = require("multer");
 const upload = multer({ dest: "/tmp/uploads/" }); // Use /tmp/uploads
 
-// Ensure /tmp/uploads directory is created
+// Ensure /tmp/uploads directory is createdd
 const path = '/tmp/uploads';
 if (!fs.existsSync(path)) {
   fs.mkdirSync(path, { recursive: true });
