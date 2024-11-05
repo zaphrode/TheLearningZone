@@ -11,10 +11,18 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const fs = require("fs");
 const connectToDb = require("./config/connectToDb");
 const tutorProfilesController = require("./controllers/tutorProfilesController");
 const multer = require("multer");
-const upload = multer({ dest: "./uploads/" });
+const upload = multer({ dest: "/tmp/uploads/" }); // Use /tmp/uploads
+
+// Ensure /tmp/uploads directory is created
+const path = '/tmp/uploads';
+if (!fs.existsSync(path)) {
+  fs.mkdirSync(path, { recursive: true });
+}
+
 const usersController = require("./controllers/usersController");
 const requireAuth = require("./middleware/requireAuth");
 
@@ -33,8 +41,8 @@ const corsOptions = {
 console.log("CORS setup:", corsOptions);
 app.use(cors(corsOptions));
 
-// Serve the uploads folder as static so frontend can access uploaded files
-app.use('/uploads', express.static('uploads'));
+// Serve files dynamically from /tmp/uploads
+app.use('/uploads', express.static('/tmp/uploads'));
 
 // Connect to database
 connectToDb();
@@ -47,6 +55,7 @@ app.get("/check-auth", requireAuth, usersController.checkAuth);
 
 app.get("/tutor-profiles", requireAuth, tutorProfilesController.fetchTutorProfiles);
 app.get("/tutor-profiles/:id", requireAuth, tutorProfilesController.fetchTutorProfile);
+app.get('/uploads/:filename', tutorProfilesController.serveFile); // Serve uploaded files
 
 app.post("/tutor-profiles", requireAuth, upload.fields([
   { name: 'picture', maxCount: 1 },
@@ -61,7 +70,6 @@ app.put("/tutor-profiles/:id", requireAuth, upload.fields([
 ]), tutorProfilesController.updateTutorProfile);
 
 app.delete("/tutor-profiles/:id", requireAuth, tutorProfilesController.deleteTutorProfile);
-
 
 // Start server
 const PORT = process.env.PORT || 3001;

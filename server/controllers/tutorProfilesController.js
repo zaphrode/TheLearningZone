@@ -1,26 +1,26 @@
-// server/controllers/tutorProfilesController.js
 const TutorProfile = require('../models/tutorProfile');
 const User = require("../models/user");
+const path = require('path');
+const fs = require('fs');
+const multer = require('multer');
+
+// Use /tmp/uploads for temporary storage in Vercel
+const upload = multer({ dest: '/tmp/uploads' });
+
+// Ensure /tmp/uploads exists
+if (!fs.existsSync('/tmp/uploads')) {
+  fs.mkdirSync('/tmp/uploads', { recursive: true });
+}
 
 // Fetch all tutor profiles for the logged-in user
 const fetchTutorProfiles = async (req, res) => {
   try {
     const { gender, location, subject } = req.query;
-
     const filter = {};
 
-    if (gender) {
-      filter.gender = gender;
-    }
-
-    // Use `$in` to match if location exists in the array
-    if (location) {
-      filter.preferredLocations = { $in: [location] };
-    }
-
-    if (subject) {
-      filter.subjects = subject;
-    }
+    if (gender) filter.gender = gender;
+    if (location) filter.preferredLocations = { $in: [location] };
+    if (subject) filter.subjects = subject;
 
     const profiles = await TutorProfile.find(filter, 'name bio picture tutorId gender preferredLocations subjects');
     res.json({ success: true, profiles });
@@ -28,6 +28,19 @@ const fetchTutorProfiles = async (req, res) => {
     console.error("Error fetching tutor profiles:", err);
     res.sendStatus(400);
   }
+};
+
+// Serve uploaded files dynamically from /tmp/uploads
+const serveFile = (req, res) => {
+  const filePath = path.join('/tmp/uploads', req.params.filename);
+  fs.access(filePath, fs.constants.F_OK, (err) => {
+    if (err) {
+      console.error("File not found:", err);
+      res.status(404).send("File not found");
+    } else {
+      res.sendFile(filePath);
+    }
+  });
 };
 
 // Fetch a single tutor profile by ID
@@ -42,6 +55,7 @@ const fetchTutorProfile = async (req, res) => {
   }
 };
 
+// Create a new tutor profile
 const createTutorProfile = async (req, res) => {
   try {
     const {
@@ -50,7 +64,7 @@ const createTutorProfile = async (req, res) => {
       bio,
       age,
       gender,
-      preferredLocations, // Now expecting this as a comma-separated string or an array
+      preferredLocations,
       availability,
       qualifications,
       testimonials,
@@ -59,7 +73,6 @@ const createTutorProfile = async (req, res) => {
     } = req.body;
 
     let picture = req.file ? req.file.filename : null;
-
     if (!picture) {
       picture = gender === 'male' ? 'male_avatar.png' : 'female_avatar.jpg';
     }
@@ -71,9 +84,7 @@ const createTutorProfile = async (req, res) => {
       bio,
       age,
       gender,
-      preferredLocations: Array.isArray(preferredLocations)
-        ? preferredLocations
-        : preferredLocations.split(',').map(loc => loc.trim()), // Convert string to array
+      preferredLocations: Array.isArray(preferredLocations) ? preferredLocations : preferredLocations.split(',').map(loc => loc.trim()),
       availability,
       qualifications,
       testimonials,
@@ -89,20 +100,11 @@ const createTutorProfile = async (req, res) => {
   }
 };
 
+// Update an existing tutor profile
 const updateTutorProfile = async (req, res) => {
   try {
     const profileId = req.params.id;
-    const {
-      name,
-      number,
-      bio,
-      age,
-      gender,
-      preferredLocations,
-      availability,
-      tutorId,
-      subjects
-    } = req.body;
+    const { name, number, bio, age, gender, preferredLocations, availability, tutorId, subjects } = req.body;
 
     const picture = req.files?.picture ? req.files.picture[0].filename : null;
     const newQualifications = req.files?.qualifications ? req.files.qualifications.map(file => file.filename) : [];
@@ -110,33 +112,22 @@ const updateTutorProfile = async (req, res) => {
 
     const profile = await TutorProfile.findOne({ _id: profileId, user: req.user._id });
 
-    if (!profile) {
-      return res.status(404).json({ success: false, message: "Profile not found." });
-    }
+    if (!profile) return res.status(404).json({ success: false, message: "Profile not found." });
 
-    // Update fields if they exist in the request
     if (name) profile.name = name;
     if (number) profile.number = number;
     if (bio) profile.bio = bio;
     if (age) profile.age = age;
     if (gender) profile.gender = gender;
-
-    // Handle preferredLocations as an array or comma-separated string
     if (preferredLocations) {
-      profile.preferredLocations = Array.isArray(preferredLocations)
-        ? preferredLocations
-        : preferredLocations.split(',').map(loc => loc.trim());
+      profile.preferredLocations = Array.isArray(preferredLocations) ? preferredLocations : preferredLocations.split(',').map(loc => loc.trim());
     }
-
     if (availability) profile.availability = availability;
     if (picture) profile.picture = picture;
     if (tutorId) profile.tutorId = tutorId;
 
-    // Handle subjects as an array or comma-separated string
     if (subjects) {
-      profile.subjects = Array.isArray(subjects)
-        ? subjects
-        : subjects.split(',').map(s => s.trim());
+      profile.subjects = Array.isArray(subjects) ? subjects : subjects.split(',').map(s => s.trim());
     }
 
     profile.qualifications = [...profile.qualifications, ...newQualifications];
@@ -151,16 +142,12 @@ const updateTutorProfile = async (req, res) => {
   }
 };
 
-
 // Delete a tutor profile
 const deleteTutorProfile = async (req, res) => {
   try {
     const profileId = req.params.id;
     await TutorProfile.deleteOne({ _id: profileId, user: req.user._id });
-
-    // Remove profile reference from the user
     await User.findByIdAndUpdate(req.user._id, { $pull: { tutorProfiles: profileId } });
-
     res.json({ success: "Tutor profile deleted" });
   } catch (err) {
     console.error("Error deleting tutor profile:", err);
@@ -174,4 +161,5 @@ module.exports = {
   createTutorProfile,
   updateTutorProfile,
   deleteTutorProfile,
+  serveFile // Export the file serving function
 };

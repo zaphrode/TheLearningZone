@@ -10,7 +10,8 @@ async function connectToDb() {
     });
     console.log("Connected to database successfully!");
   } catch (err) {
-    console.error("Database connection failed:", err);
+    console.error("Database connection failed:", err.message);
+    process.exit(1); // Exit on failure to avoid running with no DB connection
   }
 }
 
