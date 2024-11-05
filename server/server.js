@@ -23,7 +23,7 @@ app.use(helmet());
 // CORS Configuration
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production'
-    ? process.env.FRONTEND_URL  //Set this as environment variable for flexibility
+    ? process.env.FRONTEND_URL  // Set this as environment variable for flexibility
     : 'http://localhost:3000',
   credentials: true,
 };
