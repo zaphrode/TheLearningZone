@@ -43,7 +43,8 @@ app.use(cors(corsOptions));
 // Other configurations
 app.use(express.json());
 app.use(cookieParser());
-app.use('/uploads', express.static('/tmp/uploads'));
+app.use('/uploads', cors(corsOptions), express.static('/tmp/uploads'));
+
 
 // Connect to database with confirmation log
 connectToDb()
