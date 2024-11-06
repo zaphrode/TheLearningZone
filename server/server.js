@@ -22,14 +22,15 @@ const app = express();
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'", "*"],  // Allow all sources temporarily
+      defaultSrc: ["*"],  // Completely unrestricted for testing purposes
       scriptSrc: ["'self'", "https://vercel.live"],
       connectSrc: ["'self'", "https://the-learning-zone-api.vercel.app"],
-      imgSrc: ["'self'", "*", "data:", "blob:"],  // Allow images from any source, data URIs, and blobs
+      imgSrc: ["*", "data:", "blob:"],  // Allow images from any source
       styleSrc: ["'self'", "'unsafe-inline'"],
     },
   },
 }));
+
 
 // CORS Configuration
 const corsOptions = {
