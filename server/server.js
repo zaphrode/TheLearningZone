@@ -22,12 +22,11 @@ const app = express();
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'"],
+      defaultSrc: ["'self'", "*"],  // Allow all sources temporarily
       scriptSrc: ["'self'", "https://vercel.live"],
       connectSrc: ["'self'", "https://the-learning-zone-api.vercel.app"],
-      imgSrc: ["'self'", "https://the-learning-zone-api.vercel.app", "data:", "blob:"],  // Allow images from API, inline images, and in-memory images
+      imgSrc: ["'self'", "*", "data:", "blob:"],  // Allow images from any source, data URIs, and blobs
       styleSrc: ["'self'", "'unsafe-inline'"],
-      // Add other necessary directives if needed
     },
   },
 }));
