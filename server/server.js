@@ -25,9 +25,9 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "https://vercel.live"],
       connectSrc: ["'self'", "https://the-learning-zone-api.vercel.app"],
-      imgSrc: ["'self'", "https://the-learning-zone-api.vercel.app", "data:"],  // Allow images from the API domain and inline images
+      imgSrc: ["'self'", "https://the-learning-zone-api.vercel.app", "data:", "blob:"],  // Allow images from API, inline images, and in-memory images
       styleSrc: ["'self'", "'unsafe-inline'"],
-      // You can add other CSP directives here as needed
+      // Add other necessary directives if needed
     },
   },
 }));
