@@ -17,6 +17,7 @@ if (!fs.existsSync(path)) {
 
 const app = express();
 
+
 // Set security headers
 app.use(helmet({
   contentSecurityPolicy: {
@@ -24,8 +25,9 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "https://vercel.live"],
       connectSrc: ["'self'", "https://the-learning-zone-api.vercel.app"],
-      imgSrc: ["'self'", "https://the-learning-zone-api.vercel.app", "data:"],  // Allow images from API domain and inline images
+      imgSrc: ["'self'", "https://the-learning-zone-api.vercel.app", "data:"],  // Allow images from the API domain and inline images
       styleSrc: ["'self'", "'unsafe-inline'"],
+      // You can add other CSP directives here as needed
     },
   },
 }));
