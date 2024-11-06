@@ -32,6 +32,15 @@ const FindTutorsPage = () => {
     fetchTutors();
   }, [apiUrl]);
 
+  // Helper function to get the image path based on gender and index
+  const getImagePath = (gender, index) => {
+    if (gender?.toLowerCase() === "female") {
+      return `/AvatarFemale${(index % 5) + 1}.PNG`; // Cycles through AvatarFemale1 to AvatarFemale5
+    } else {
+      return `/AvatarMale${(index % 7) + 1}.PNG`; // Cycles through AvatarMale1 to AvatarMale7
+    }
+  };
+
   // Automatically filter tutors whenever a filter changes
   useEffect(() => {
     filterTutors();
@@ -117,15 +126,11 @@ const FindTutorsPage = () => {
 
       <div className="tutor-list">
         {filteredTutors && filteredTutors.length > 0 ? (
-          filteredTutors.map((tutor) => (
+          filteredTutors.map((tutor, index) => (
             <div className="tutor-card" key={tutor._id}>
               <div className="tutor-header">
                 <img 
-                  src={
-                    tutor.picture 
-                      ? `${apiUrl}/uploads/${tutor.picture}`
-                      : `/assets/${tutor.gender?.toLowerCase() === "female" ? "female_avatar.png" : "male_avatar.png"}`
-                  } 
+                  src={getImagePath(tutor.gender, index)}
                   alt="Profile" 
                   className="tutor-picture" 
                 />
@@ -135,8 +140,8 @@ const FindTutorsPage = () => {
                 </div>
               </div>
               <ul className="bio-list">
-                {(tutor.bio ? tutor.bio.split('\n') : []).map((line, index) => (
-                  <li key={index}>{line}</li>
+                {(tutor.bio ? tutor.bio.split('\n') : []).map((line, idx) => (
+                  <li key={idx}>{line}</li>
                 ))}
               </ul>
               <Link to={`/tutor/${tutor._id}`} className="view-profile">View Profile</Link>
