@@ -33,15 +33,12 @@ app.use(helmet({
 
 
 // CORS Configuration
-app.use(cors({
-  origin: ['https://the-learning-zone.vercel.app', 'http://localhost:3000'],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
-}));
-
-// Enable pre-flight requests
-app.options('*', cors());
+const corsOptions = {
+  origin: 'https://the-learning-zone.vercel.app',  // Allow requests from your frontend domain
+  credentials: true,                               // Include credentials if needed (e.g., cookies)
+};
+console.log("CORS setup:", corsOptions);
+app.use(cors(corsOptions));
 
 // Other configurations
 app.use(express.json());

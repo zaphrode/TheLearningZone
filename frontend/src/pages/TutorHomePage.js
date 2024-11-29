@@ -51,7 +51,7 @@ function TutorHome() {
   const handleBackToHome = () => navigate('/home'); 
   const handleLogout = async () => {
     try {
-      await axios.get("/logout", { withCredentials: true });
+      await axios.get("http://localhost:3001/logout", { withCredentials: true });
       navigate("/login");
     } catch (error) {
       console.error("Logout failed.");
