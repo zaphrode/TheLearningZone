@@ -9,6 +9,9 @@ const TutorProfilePage = () => {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
   
+  // Get the base URL from axios defaults
+  const baseURL = axios.defaults.baseURL;
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -39,8 +42,8 @@ const TutorProfilePage = () => {
           <img 
             src={
               profile.picture 
-                ? `${apiUrl}/uploads/${profile.picture}`
-                : `${apiUrl}/uploads/${profile.gender === "female" ? "female_avatar.jpg" : "male_avatar.png"}`
+                ? `${baseURL}/uploads/${profile.picture}`
+                : `${baseURL}/uploads/${profile.gender === "female" ? "female_avatar.jpg" : "male_avatar.png"}`
             } 
             alt="Profile" 
             className="profile-picture" 
@@ -66,7 +69,7 @@ const TutorProfilePage = () => {
       <div className="qualifications-section">
         {profile.qualifications && profile.qualifications.length > 0 ? (
           profile.qualifications.map((file, index) => (
-            <img key={index} src={`${apiUrl}/uploads/${file}`} alt={`Qualification ${index + 1}`} className="qualification-img" />
+            <img key={index} src={`${baseURL}/uploads/${file}`} alt={`Qualification ${index + 1}`} className="qualification-img" />
           ))
         ) : (
           <p>No qualifications available.</p>
@@ -77,7 +80,7 @@ const TutorProfilePage = () => {
       <div className="testimonials-section">
         {profile.testimonials && profile.testimonials.length > 0 ? (
           profile.testimonials.map((file, index) => (
-            <img key={index} src={`${apiUrl}/uploads/${file}`} alt={`Testimonial ${index + 1}`} className="testimonial-img" />
+            <img key={index} src={`${baseURL}/uploads/${file}`} alt={`Testimonial ${index + 1}`} className="testimonial-img" />
           ))
         ) : (
           <p>No testimonials available.</p>
