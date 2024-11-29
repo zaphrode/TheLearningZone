@@ -47,11 +47,16 @@ const serveFile = (req, res) => {
 const fetchTutorProfile = async (req, res) => {
   try {
     const profileId = req.params.id;
-    const profile = await TutorProfile.findOne({ _id: profileId, user: req.user._id });
-    res.json({ profile });
+    const profile = await TutorProfile.findById(profileId);
+    
+    if (!profile) {
+      return res.status(404).json({ success: false, message: "Profile not found" });
+    }
+    
+    res.json({ success: true, profile });
   } catch (err) {
     console.error("Error fetching tutor profile:", err);
-    res.sendStatus(400);
+    res.status(500).json({ success: false, message: "Error fetching profile" });
   }
 };
 

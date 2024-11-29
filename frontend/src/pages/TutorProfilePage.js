@@ -7,20 +7,28 @@ import './TutorProfilePage.css';
 const TutorProfilePage = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
-  const apiUrl = process.env.REACT_APP_API_URL;
-
+  const [error, setError] = useState(null);
+  
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/tutor-profiles/${id}`, { withCredentials: true });
-        setProfile(response.data.profile);
+        const response = await axios.get(`/tutor-profiles/${id}`, { 
+          withCredentials: true 
+        });
+        if (response.data.profile) {
+          setProfile(response.data.profile);
+        } else {
+          setError("Profile not found");
+        }
       } catch (error) {
         console.error("Error fetching tutor profile:", error);
+        setError("Error loading profile");
       }
     };
     fetchProfile();
-  }, [id, apiUrl]);
+  }, [id]);
 
+  if (error) return <p>{error}</p>;
   if (!profile) return <p>Loading...</p>;
 
   return (
