@@ -19,17 +19,12 @@ const app = express();
 
 
 // Set security headers
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["*"],  // Completely unrestricted for testing purposes
-      scriptSrc: ["'self'", "https://vercel.live"],
-      connectSrc: ["'self'", "https://the-learning-zone-api.vercel.app"],
-      imgSrc: ["*", "data:", "blob:"],  // Allow images from any source
-      styleSrc: ["'self'", "'unsafe-inline'"],
-    },
-  },
-}));
+app.use('/uploads', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+}, express.static('/tmp/uploads'));
 
 
 // CORS Configuration

@@ -30,18 +30,20 @@ const fetchTutorProfiles = async (req, res) => {
   }
 };
 
-// Serve uploaded files dynamically from /tmp/uploads
 const serveFile = (req, res) => {
   const filePath = path.join('/tmp/uploads', req.params.filename);
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
       console.error("File not found:", err);
-      res.status(404).send("File not found");
-    } else {
-      res.sendFile(filePath);
+      return res.status(404).send("File not found");
     }
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
+    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.sendFile(filePath);
   });
 };
+
 
 // Fetch a single tutor profile by ID
 const fetchTutorProfile = async (req, res) => {
