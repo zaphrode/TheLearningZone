@@ -19,12 +19,17 @@ const app = express();
 
 
 // Set security headers
-app.use('/uploads', (req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-}, express.static('/tmp/uploads'));
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["*"],  // Completely unrestricted for testing purposes
+      scriptSrc: ["'self'", "https://vercel.live"],
+      connectSrc: ["'self'", "https://the-learning-zone-api.vercel.app"],
+      imgSrc: ["*", "data:", "blob:"],  // Allow images from any source
+      styleSrc: ["'self'", "'unsafe-inline'"],
+    },
+  },
+}));
 
 
 // CORS Configuration
@@ -33,12 +38,26 @@ const corsOptions = {
   credentials: true,                               // Include credentials if needed (e.g., cookies)
 };
 console.log("CORS setup:", corsOptions);
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://the-learning-zone.vercel.app'); // Allow your frontend domain
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allow all HTTP methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow necessary headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true'); // Include credentials if needed
+  next();
+});
+
 
 // Other configurations
 app.use(express.json());
 app.use(cookieParser());
-app.use('/uploads', cors(corsOptions), express.static('/tmp/uploads'));
+app.use('/uploads', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+}, express.static('/tmp/uploads'));
+
 
 
 // Connect to database with confirmation log
