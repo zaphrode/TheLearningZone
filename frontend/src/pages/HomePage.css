@@ -58,7 +58,7 @@
   top: 20px;
   right: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack button and text vertically */
   align-items: center;
   z-index: 10;
 }
@@ -66,12 +66,13 @@
 /* WhatsApp button styling */
 .whatsapp-button {
   cursor: pointer;
+  margin-bottom: 5px; /* Add space between the button and the text */
 }
 
 /* WhatsApp logo styling */
 .whatsapp-logo {
-  width: 128px; /* Adjust size as needed */
-  height: 128px;
+  width: 64px; /* Smaller size for mobile compatibility */
+  height: 64px;
   transition: transform 0.2s ease;
 }
 
@@ -81,11 +82,13 @@
 
 /* Bold contact text styling */
 .contact-agent {
-  margin-top: 10px; /* Add spacing below the WhatsApp logo */
-  font-size: 1.2rem; /* Adjust font size */
+  font-size: 0.9rem; /* Adjust font size for readability on mobile */
   color: #555; /* Subtle gray color for the text */
   font-weight: bold;
   text-align: center;
+  line-height: 1.2; /* Improve text spacing */
+  max-width: 100px; /* Wrap text nicely for smaller screens */
+  word-wrap: break-word;
 }
 /* Position the WhatsApp button in the top right *
 .whatsapp-button {
