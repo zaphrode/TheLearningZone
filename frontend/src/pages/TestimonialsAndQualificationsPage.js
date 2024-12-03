@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./TestimonialsAndQualifications.css";
+import "./TestimonialsAndQualificationsPage.css";
 
 const TestimonialsAndQualifications = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -7,14 +7,10 @@ const TestimonialsAndQualifications = () => {
   // Array of image file paths for testimonials and qualifications
   const testimonials = [
     "/testimonials/testimonial1.png",
-    "/testimonials/testimonial2.png",
-    "/testimonials/testimonial3.png",
   ];
 
   const qualifications = [
     "/qualifications/qualification1.png",
-    "/qualifications/qualification2.png",
-    "/qualifications/qualification3.png",
   ];
 
   // Function to handle closing the modal
