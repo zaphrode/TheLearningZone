@@ -90,26 +90,9 @@
   max-width: 120px; /* Wrap text for smaller screens */
   word-wrap: break-word;
   margin-top: 140px; /* Additional margin to ensure text is below the button */
-  margin-right: 20px;
-}
-/* Position the WhatsApp button in the top right *
-.whatsapp-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-  z-index: 10;
+  margin-right: 15px;
 }
 
-.whatsapp-logo {
-  width: 128px; 
-  height: 128px;
-  transition: transform 0.2s ease;
-}
-
-.whatsapp-logo:hover {
-  transform: scale(1.1);
-}*/
 
 /* Styling for rings that appear on mouse clicks */
 .click-ring {
