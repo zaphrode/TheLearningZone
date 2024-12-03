@@ -11,7 +11,7 @@ import TutorProfilePage from '../pages/TutorProfilePage';
 import ResourcesPage from "../pages/ResourcesPage";
 import WhoAreWePage from '../pages/WhoAreWePage';
 import TermsAndConditionsPage from '../pages/TermsAndConditionsPage';
-import TestimonialsAndQualifications from "../pages/TestimonialsAndQualificationsPage";
+import TestimonialsAndQualificationsPage from "../pages/TestimonialsAndQualificationsPage";
 
 function App() {
   return (
