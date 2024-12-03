@@ -90,8 +90,9 @@
   max-width: 120px; /* Wrap text for smaller screens */
   word-wrap: break-word;
   margin-top: 140px; /* Additional margin to ensure text is below the button */
-  margin-right: 15px;
+  margin-right: 20px;
 }
+
 /* Position the WhatsApp button in the top right *
 .whatsapp-button {
   position: fixed;
