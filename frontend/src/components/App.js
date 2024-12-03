@@ -11,6 +11,7 @@ import TutorProfilePage from '../pages/TutorProfilePage';
 import ResourcesPage from "../pages/ResourcesPage";
 import WhoAreWePage from '../pages/WhoAreWePage';
 import TermsAndConditionsPage from '../pages/TermsAndConditionsPage';
+import TestimonialsAndQualifications from "../pages/TestimonialsAndQualificationsPage";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/logout" element={<LogoutPage />} />
-          <Route path="/find-tutors" element={<FindTutorsPage />} />
+          <Route path="/testimonials-and-qualifications" element={<TestimonialsAndQualificationsPage />} />
           <Route path="/tutor/:id" element={<TutorProfilePage />} />
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/who-are-we" element={<WhoAreWePage />} />

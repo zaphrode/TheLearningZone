@@ -9,7 +9,7 @@ function HomePage() {
 
   // Navigation functions for each button
   const handleApplyClick = () => navigate('/signup');
-  const handleFindClick = () => navigate('/find-tutors');
+  const handleFindClick = () => navigate('/testimonials-and-qualifcations');
   const handleResourcesClick = () => navigate('/resources');
   const handleWhoAreWeClick = () => navigate('/who-are-we');
   const handleTermsClick = () => navigate('/terms-and-conditions');
@@ -78,7 +78,7 @@ function HomePage() {
           Apply As Tutor
         </button>
         <button className="tutor-button find-tutor" onClick={handleFindClick}>
-          Find Tutor
+          Testimnoials And Qualifications
         </button>
       </div>
 
