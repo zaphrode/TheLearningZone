@@ -26,24 +26,46 @@
     margin-bottom: 40px;
   }
 
-  /* Position the WhatsApp button in the top right */
+ /* WhatsApp button container */
+.whatsapp-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column; /* Stack button and text vertically */
+  align-items: center;
+  z-index: 10;
+}
+
+/* WhatsApp button styling */
 .whatsapp-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 10;
-  }
-  
-  .whatsapp-logo {
-    width: 128px; /* Adjust size as needed */
-    height: 128px;
-    transition: transform 0.2s ease;
-  }
-  
-  .whatsapp-logo:hover {
-    transform: scale(1.1);
-  }
+  cursor: pointer;
+  margin-bottom: 15px; /* Increase spacing below the button */
+}
+
+/* WhatsApp logo styling */
+.whatsapp-logo {
+  width: 64px; /* Ensure mobile-friendly size */
+  height: 64px;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Bold contact text styling */
+.contact-agent {
+  font-size: 1.0rem; /* Adjust font size for readability */
+  color: #2f2f2f; /* Subtle gray color for the text */
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2; /* Improve text spacing */
+  max-width: 120px; /* Wrap text for smaller screens */
+  word-wrap: break-word;
+  margin-top: 140px; /* Additional margin to ensure text is below the button */
+  margin-right: 20px;
+}
 
   
   .resource-card {

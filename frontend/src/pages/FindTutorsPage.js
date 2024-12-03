@@ -90,8 +90,11 @@ const FindTutorsPage = () => {
       <h1>Find a Tutor</h1>
 
       {/* WhatsApp Button */}
-      <div className="whatsapp-button" onClick={openWhatsAppChat}>
-        <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
+      <div className="whatsapp-container">
+        <div className="whatsapp-button" onClick={openWhatsAppChat}>
+          <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
+        </div>
+        <div className="contact-agent">Click here to contact an agent!</div>
       </div>
 
       {/* Filter Bar */}

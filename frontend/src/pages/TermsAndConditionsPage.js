@@ -16,10 +16,13 @@ const openWhatsAppChat = () => {
     <div className="terms-and-conditions-page">
       <h1>Terms and Conditions</h1>
 
-        {/* WhatsApp Button */}
+      {/* WhatsApp Button */}
+      <div className="whatsapp-container">
         <div className="whatsapp-button" onClick={openWhatsAppChat}>
-            <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
+          <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
         </div>
+        <div className="contact-agent">Click here to contact an agent!</div>
+      </div>
   
       {/* Clients Section */}
       <div className="collapsible-section">
