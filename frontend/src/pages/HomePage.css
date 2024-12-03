@@ -52,15 +52,23 @@
 .automatic-ring:nth-child(4) { animation-delay: 1.5s; }
 .automatic-ring:nth-child(5) { animation-delay: 2s; }
 
-/* Position the WhatsApp button in the top right */
-.whatsapp-button {
+/* WhatsApp button container */
+.whatsapp-container {
   position: fixed;
   top: 20px;
   right: 20px;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 10;
 }
 
+/* WhatsApp button styling */
+.whatsapp-button {
+  cursor: pointer;
+}
+
+/* WhatsApp logo styling */
 .whatsapp-logo {
   width: 128px; /* Adjust size as needed */
   height: 128px;
@@ -70,6 +78,33 @@
 .whatsapp-logo:hover {
   transform: scale(1.1);
 }
+
+/* Bold contact text styling */
+.contact-agent {
+  margin-top: 10px; /* Add spacing below the WhatsApp logo */
+  font-size: 1.2rem; /* Adjust font size */
+  color: #555; /* Subtle gray color for the text */
+  font-weight: bold;
+  text-align: center;
+}
+/* Position the WhatsApp button in the top right *
+.whatsapp-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.whatsapp-logo {
+  width: 128px; 
+  height: 128px;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-logo:hover {
+  transform: scale(1.1);
+}*/
 
 /* Styling for rings that appear on mouse clicks */
 .click-ring {
