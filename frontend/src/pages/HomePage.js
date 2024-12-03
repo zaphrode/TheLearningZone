@@ -9,7 +9,7 @@ function HomePage() {
 
   // Navigation functions for each button
   const handleApplyClick = () => navigate('/signup');
-  const handleFindClick = () => navigate('/testimonials-and-qualifcations');
+  const handleFindClick = () => navigate('/testimonials-and-qualifications');
   const handleResourcesClick = () => navigate('/resources');
   const handleWhoAreWeClick = () => navigate('/who-are-we');
   const handleTermsClick = () => navigate('/terms-and-conditions');
