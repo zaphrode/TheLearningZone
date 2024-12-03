@@ -82,14 +82,15 @@
 
 /* Bold contact text styling */
 .contact-agent {
-  font-size: 0.9rem; /* Adjust font size for readability */
-  color: #555; /* Subtle gray color for the text */
+  font-size: 1.0rem; /* Adjust font size for readability */
+  color: #2f2f2f; /* Subtle gray color for the text */
   font-weight: bold;
   text-align: center;
   line-height: 1.2; /* Improve text spacing */
   max-width: 120px; /* Wrap text for smaller screens */
   word-wrap: break-word;
-  margin-top: 150px; /* Additional margin to ensure text is below the button */
+  margin-top: 140px; /* Additional margin to ensure text is below the button */
+  margin-right: 20px;
 }
 /* Position the WhatsApp button in the top right *
 .whatsapp-button {
