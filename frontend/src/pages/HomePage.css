@@ -66,12 +66,12 @@
 /* WhatsApp button styling */
 .whatsapp-button {
   cursor: pointer;
-  margin-bottom: 5px; /* Add space between the button and the text */
+  margin-bottom: 15px; /* Increase spacing below the button */
 }
 
 /* WhatsApp logo styling */
 .whatsapp-logo {
-  width: 64px; /* Smaller size for mobile compatibility */
+  width: 64px; /* Ensure mobile-friendly size */
   height: 64px;
   transition: transform 0.2s ease;
 }
@@ -82,13 +82,14 @@
 
 /* Bold contact text styling */
 .contact-agent {
-  font-size: 0.9rem; /* Adjust font size for readability on mobile */
+  font-size: 0.9rem; /* Adjust font size for readability */
   color: #555; /* Subtle gray color for the text */
   font-weight: bold;
   text-align: center;
   line-height: 1.2; /* Improve text spacing */
-  max-width: 100px; /* Wrap text nicely for smaller screens */
+  max-width: 120px; /* Wrap text for smaller screens */
   word-wrap: break-word;
+  margin-top: 10px; /* Additional margin to ensure text is below the button */
 }
 /* Position the WhatsApp button in the top right *
 .whatsapp-button {
