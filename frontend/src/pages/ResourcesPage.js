@@ -17,11 +17,8 @@ function ResourcesPage() {
       </header>
 
       {/* WhatsApp Button */}
-      <div className="whatsapp-container">
-        <div className="whatsapp-button" onClick={openWhatsAppChat}>
-          <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
-        </div>
-        <div className="contact-agent">Click here to contact an agent!</div>
+      <div className="whatsapp-button" onClick={openWhatsAppChat}>
+        <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
       </div>
 
 
