@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./TestimonialsAndQualificationsPage.css";
 
-const TestimonialsAndQualifications = () => {
+const TestimonialsAndQualificationsPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Array of image file paths for testimonials and qualifications
@@ -64,4 +64,4 @@ const TestimonialsAndQualifications = () => {
   );
 };
 
-export default TestimonialsAndQualifications;
+export default TestimonialsAndQualificationsPage;
