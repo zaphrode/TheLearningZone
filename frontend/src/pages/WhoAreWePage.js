@@ -15,12 +15,9 @@ const WhoAreWePage = () => {
         backgroundImage: `url(${process.env.PUBLIC_URL + '/tlz2.webp'})`,
       }}
     >
-      {/* WhatsApp Button */}
-      <div className="whatsapp-container">
+        {/* WhatsApp Button */}
         <div className="whatsapp-button" onClick={openWhatsAppChat}>
-          <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
-        </div>
-        <div className="contact-agent">Click here to contact an agent!</div>
+        <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
       </div>
       <div className="logo-header">
         <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
