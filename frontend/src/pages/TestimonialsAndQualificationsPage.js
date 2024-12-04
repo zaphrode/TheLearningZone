@@ -32,7 +32,7 @@ const TestimonialsAndQualificationsPage = () => {
       {/* Testimonials Section */}
       <div className="gallery-section">
         <h2 className="gallery-title">Testimonials</h2>
-        <div className="gallery-grid">
+        <div className="gallery-belt">
           {testimonials.map((image, index) => (
             <img
               key={index}
@@ -48,7 +48,7 @@ const TestimonialsAndQualificationsPage = () => {
       {/* Qualifications Section */}
       <div className="gallery-section">
         <h2 className="gallery-title">Qualifications</h2>
-        <div className="gallery-grid">
+        <div className="gallery-belt">
           {qualifications.map((image, index) => (
             <img
               key={index}

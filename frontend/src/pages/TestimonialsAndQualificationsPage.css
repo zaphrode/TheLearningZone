@@ -1,85 +1,97 @@
 /* Container for the gallery */
 .gallery-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Prevent overflow from the sliding images */
+  position: relative;
+}
+
+/* Section for each gallery type */
+.gallery-section {
+  margin-bottom: 40px;
+  position: relative; /* For controlling the slider */
+}
+
+.gallery-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Belt container for the images */
+.gallery-belt {
+  display: flex;
+  gap: 20px; /* Spacing between images */
+  animation: slideBelt 20s linear infinite; /* Add continuous sliding animation */
+}
+
+/* Animation for horizontal sliding */
+@keyframes slideBelt {
+  0% {
+    transform: translateX(0); /* Start from the beginning */
   }
-  
-  /* Section for each gallery type */
-  .gallery-section {
-    margin-bottom: 40px;
+  100% {
+    transform: translateX(-100%); /* Slide entire belt to the left */
   }
-  
-  .gallery-title {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
+}
+
+/* Images in the gallery */
+.gallery-image {
+  width: 200px; /* Increased size */
+  height: 200px; /* Increased size */
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0; /* Prevent images from shrinking in the flexbox */
+}
+
+.gallery-image:hover {
+  transform: scale(1.1); /* Slightly larger on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal content */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Enlarged image in the modal */
+.modal-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+}
+
+/* Animation for modal appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  /* Grid layout for images */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    justify-items: center;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  /* Images in the gallery */
-  .gallery-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .gallery-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Modal overlay */
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  /* Modal content */
-  .modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease;
-  }
-  
-  /* Enlarged image in the modal */
-  .modal-image {
-    max-width: 90vw;
-    max-height: 90vh;
-    border-radius: 8px;
-  }
-  
-  /* Animation for modal appearance */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
+}
