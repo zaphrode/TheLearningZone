@@ -20,6 +20,9 @@ const TestimonialsAndQualificationsPage = () => {
     "/qualifications/qualification2.jpg",
     "/qualifications/qualification3.jpg",
     "/qualifications/qualification4.jpg",
+    "/qualifications/qualification5.jpg",
+    "/qualifications/qualification6.jpg",
+    "/qualifications/qualification7.jpg",
   ];
 
   // Function to handle closing the modal
