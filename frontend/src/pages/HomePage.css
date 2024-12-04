@@ -120,7 +120,8 @@
 
 .header {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Change layout to column */
+  align-items: center; /* Center align title and subtitle */
   justify-content: center;
   margin-bottom: 30px;
   z-index: 2;
@@ -131,10 +132,9 @@
   font-style: italic; /* Italics style */
   font-weight: bold; /* Bold text */
   color: #555; /* Subtle gray color for distinction */
-  margin-top: -10px; /* Adjust spacing between title and subtitle */
-  text-align: center;
+  margin-top: 10px; /* Add spacing below the title */
+  text-align: center; /* Ensure subtitle is centered */
 }
-
 
 
 .logo {
