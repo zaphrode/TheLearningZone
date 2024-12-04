@@ -1,5 +1,5 @@
 // frontend/src/pages/HomePage.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 
@@ -39,7 +39,6 @@ function HomePage() {
     window.open("https://wa.me/6591684367", "_blank");
   };
 
-
   return (
     <div className="home-page" onClick={handleAddRing}>
       {/* Automatic concentric rings */}
@@ -52,7 +51,6 @@ function HomePage() {
         </div>
         <div className="contact-agent">Click here to contact an agent!</div>
       </div>
-
 
       {/* Click rings that appear at mouse click positions */}
       {rings.map((ring) => (
@@ -71,6 +69,7 @@ function HomePage() {
       <header className="header">
         <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
         <h1 className="title">The Learning Zone</h1>
+        <p className="subtitle"><em>Singapore's premium home tutors</em></p> {/* Added subtitle */}
       </header>
 
       <div className="button-container">
