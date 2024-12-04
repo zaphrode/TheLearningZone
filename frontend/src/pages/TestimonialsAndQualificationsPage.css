@@ -33,8 +33,8 @@
   0% {
     transform: translateX(0); /* Start from the beginning */
   }
-  100% {
-    transform: translateX(-100%); /* Slide entire belt to the left */
+  80% {
+    transform: translateX(-80%); /* Slide entire belt to the left */
   }
 }
 
