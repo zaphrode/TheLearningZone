@@ -6,11 +6,20 @@ const TestimonialsAndQualificationsPage = () => {
 
   // Array of image file paths for testimonials and qualifications
   const testimonials = [
-    "/testimonials/testimonial1.png",
+    "/testimonials/testimonial1.jpg",
+    "/testimonials/testimonial2.jpg",
+    "/testimonials/testimonial3.jpg",
+    "/testimonials/testimonial4.jpg",
+    "/testimonials/testimonial5.jpg",
+    "/testimonials/testimonial6.jpg",
+    "/testimonials/testimonial7.jpg",
   ];
 
   const qualifications = [
-    "/qualifications/qualification1.png",
+    "/qualifications/qualification1.jpg",
+    "/qualifications/qualification2.jpg",
+    "/qualifications/qualification3.jpg",
+    "/qualifications/qualification4.jpg",
   ];
 
   // Function to handle closing the modal

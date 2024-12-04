@@ -78,7 +78,7 @@ function HomePage() {
           Apply As Tutor
         </button>
         <button className="tutor-button find-tutor" onClick={handleFindClick}>
-          Testimnoials And Qualifications
+          Testimonials And Qualifications
         </button>
       </div>
 
