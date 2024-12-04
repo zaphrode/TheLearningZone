@@ -32,6 +32,13 @@ const TestimonialsAndQualificationsPage = () => {
 
   return (
     <div className="gallery-container">
+      {/* Automatic concentric rings */}
+      <div className="automatic-rings">
+        {[...Array(5)].map((_, index) => (
+          <div key={index} className="automatic-ring"></div>
+        ))}
+      </div>
+
       {/* Testimonials Section */}
       <div className="gallery-section">
         <h2 className="gallery-title">Testimonials</h2>
