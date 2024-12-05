@@ -1,5 +1,6 @@
 // frontend/src/pages/TermsAndConditionsPage.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './TermsAndConditionsPage.css';
 
 const TermsAndConditionsPage = () => {
@@ -7,13 +8,24 @@ const TermsAndConditionsPage = () => {
   const [isTutorOpen, setIsTutorOpen] = useState(false);
 
   // Function to open WhatsApp chat
-const openWhatsAppChat = () => {
-    window.open("https://wa.me/6591684367", "_blank");
-};
+  const openWhatsAppChat = () => {
+      window.open("https://wa.me/6591684367", "_blank");
+  };
+  const navigate = useNavigate();
+  // Function to navigate back to the homepage
+  const handleBackClick = () => {
+    navigate("/home"); // Navigate to the homepage
+  };
   
 
   return (
     <div className="terms-and-conditions-page">
+
+      {/* Back Button */}
+      <button className="back-button" onClick={handleBackClick}>
+        ← Back
+      </button>
+
       <h1>Terms and Conditions</h1>
 
         {/* WhatsApp Button */}
