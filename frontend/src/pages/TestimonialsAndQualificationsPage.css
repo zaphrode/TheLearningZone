@@ -1,21 +1,22 @@
 /* Back button styling */
 .back-button {
-  position: absolute; /* Ensures it's in the top-left corner */
-  top: 20px; /* Space from the top */
-  left: 20px; /* Space from the left */
-  right: 400px;
-  margin-right: 180px;
+  position: absolute; /* Fixed in the top-left corner */
+  top: 20px; /* Distance from the top */
+  left: 20px; /* Distance from the left */
   background-color: #d3d3d3; /* Light grey background */
   color: #000; /* Black text */
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 10; /* Ensure it's above other elements */
+  border: 1px solid #ccc; /* Slight border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 12px; /* Compact padding for a small button */
+  font-size: 0.9rem; /* Slightly smaller font size */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Center align text inside the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  z-index: 10; /* Ensure it stays on top */
+  display: inline-block; /* Ensure it doesn’t behave like a block element */
   width: auto; /* Prevent it from stretching */
-  display: inline-block; /* Prevent block-level behavior */
+  max-width: fit-content; /* Ensure button width fits content */
+  white-space: nowrap; /* Prevent text wrapping */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 

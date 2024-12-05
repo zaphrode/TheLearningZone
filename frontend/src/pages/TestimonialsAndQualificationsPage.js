@@ -38,6 +38,7 @@ const TestimonialsAndQualificationsPage = () => {
   };
 
   return (
+    
     <div className="gallery-container">
       {/* Back Button */}
       <button className="back-button" onClick={handleBackClick}>
