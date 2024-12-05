@@ -1,5 +1,36 @@
 /* frontend/src/pages/WhoAreWePage.css */
 
+/* Back button styling */
+.back-button {
+    position: absolute; /* Fixed in the top-left corner */
+    top: 20px; /* Distance from the top */
+    left: 20px; /* Distance from the left */
+    background-color: #d3d3d3; /* Light grey background */
+    color: #000; /* Black text */
+    border: 1px solid #ccc; /* Slight border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Compact padding for a small button */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center align text inside the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 10; /* Ensure it stays on top */
+    display: inline-block; /* Ensure it doesn’t behave like a block element */
+    width: auto; /* Prevent it from stretching */
+    max-width: fit-content; /* Ensure button width fits content */
+    white-space: nowrap; /* Prevent text wrapping */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+.back-button:hover {
+    background-color: #a9a9a9; /* Darker grey on hover */
+    transform: scale(1.05);
+  }
+  
+.back-button:active {
+    transform: scale(1);
+  }
+  
 .who-are-we-page {
     position: relative;
     text-align: center;
@@ -16,7 +47,7 @@
   }
   
   /* Automatic concentric rings */
-  .automatic-rings {
+.automatic-rings {
     position: absolute;
     top: 50%; /* Center rings vertically */
     left: 50%; /* Center rings horizontally */

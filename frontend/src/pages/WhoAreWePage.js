@@ -1,5 +1,6 @@
 // frontend/src/pages/WhoAreWePage.js
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import "./WhoAreWePage.css";
 
 // Function to open WhatsApp chat
@@ -7,7 +8,7 @@ const openWhatsAppChat = () => {
   window.open("https://wa.me/6591684367", "_blank");
 };
 
-const WhoAreWePage = () => {
+  const WhoAreWePage = () => {
   // Render automatic rings in the background
   const renderAutomaticRings = () => {
     const ringCount = 5; // Number of concentric rings
@@ -16,8 +17,19 @@ const WhoAreWePage = () => {
     ));
   };
 
+  const navigate = useNavigate();
+  // Function to navigate back to the homepage
+  const handleBackClick = () => {
+    navigate("/home"); // Navigate to the homepage
+  };
+
   return (
     <div className="who-are-we-page">
+      {/* Back Button */}
+      <button className="back-button" onClick={handleBackClick}>
+        ← Back
+      </button>
+
       {/* Automatic concentric rings */}
       <div className="automatic-rings">{renderAutomaticRings()}</div>
 
