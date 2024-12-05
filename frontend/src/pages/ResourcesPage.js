@@ -9,16 +9,16 @@ const openWhatsAppChat = () => {
 };
 
 const navigate = useNavigate();
-  // Function to navigate back to the homepage
-  const handleBackClick = () => {
-    navigate("/home"); // Navigate to the homepage
-  };
+// Function to navigate back to the homepage
+const handleBackClick = () => {
+  navigate("/home"); // Navigate to the homepage
+};
 
 
 function ResourcesPage() {
   return (
     <div className="resources-page">
-      
+
       {/* Back Button */}
       <button className="back-button" onClick={handleBackClick}>
         ← Back
