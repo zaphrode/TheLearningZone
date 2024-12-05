@@ -3,6 +3,7 @@
   position: absolute; /* Ensures it's in the top-left corner */
   top: 20px; /* Space from the top */
   left: 20px; /* Space from the left */
+  margin-right: 180px;
   background-color: #d3d3d3; /* Light grey background */
   color: #000; /* Black text */
   border: none;
