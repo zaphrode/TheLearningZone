@@ -8,14 +8,14 @@ const openWhatsAppChat = () => {
   window.open("https://wa.me/6591684367", "_blank");
 };
 
-const navigate = useNavigate();
-// Function to navigate back to the homepage
-const handleBackClick = () => {
-  navigate("/home"); // Navigate to the homepage
-};
-
 
 function ResourcesPage() {
+
+  const navigate = useNavigate();
+  // Function to navigate back to the homepage
+  const handleBackClick = () => {
+    navigate("/home"); // Navigate to the homepage
+  };
   return (
     <div className="resources-page">
 
