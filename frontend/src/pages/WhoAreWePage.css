@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden; /* Ensure rings stay within bounds */
-    background-color: #ddffaa; /* Light green background */
+    background-color: #ffffff; /* Light green background */
   }
   
   /* Automatic concentric rings */
