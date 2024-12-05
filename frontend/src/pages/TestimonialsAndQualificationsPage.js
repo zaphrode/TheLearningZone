@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./TestimonialsAndQualificationsPage.css";
 
 const TestimonialsAndQualificationsPage = () => {
@@ -24,6 +25,7 @@ const TestimonialsAndQualificationsPage = () => {
     "/qualifications/qualification6.jpg",
     "/qualifications/qualification7.jpg",
   ];
+  const navigate = useNavigate();
 
   // Function to handle closing the modal
   const closeModal = () => {
