@@ -30,13 +30,18 @@ const TestimonialsAndQualificationsPage = () => {
     setSelectedImage(null);
   };
 
+  // Function to navigate back to the homepage
+  const handleBackClick = () => {
+    navigate("/home"); // Navigate to the homepage
+  };
+
   return (
     <div className="gallery-container">
       {/* Back Button */}
       <button className="back-button" onClick={handleBackClick}>
         ← Back
       </button>
-      
+
       {/* Automatic concentric rings */}
       <div className="automatic-rings">
         {[...Array(5)].map((_, index) => (
