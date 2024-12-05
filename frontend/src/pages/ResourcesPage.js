@@ -1,5 +1,6 @@
 // frontend/src/pages/ResourcesPage.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ResourcesPage.css';
 
 // Function to open WhatsApp chat
@@ -7,10 +8,22 @@ const openWhatsAppChat = () => {
   window.open("https://wa.me/6591684367", "_blank");
 };
 
+const navigate = useNavigate();
+  // Function to navigate back to the homepage
+  const handleBackClick = () => {
+    navigate("/home"); // Navigate to the homepage
+  };
+
 
 function ResourcesPage() {
   return (
     <div className="resources-page">
+      
+      {/* Back Button */}
+      <button className="back-button" onClick={handleBackClick}>
+        ← Back
+      </button>
+
       <header className="resources-header">
         <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="resources-logo" />
         <h1>Resources</h1>
