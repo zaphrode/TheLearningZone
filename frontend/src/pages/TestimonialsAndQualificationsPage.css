@@ -3,6 +3,7 @@
   position: fixed;
   top: 20px;
   left: 20px;
+  right: 240px;
   background-color: #d3d3d3; /* Light grey background */
   color: #000; /* Black text */
   border: none;
