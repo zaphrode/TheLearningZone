@@ -1,9 +1,8 @@
 /* Back button styling */
 .back-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  right: 240px;
+  position: absolute; /* Ensures it's in the top-left corner */
+  top: 20px; /* Space from the top */
+  left: 20px; /* Space from the left */
   background-color: #d3d3d3; /* Light grey background */
   color: #000; /* Black text */
   border: none;
@@ -12,7 +11,9 @@
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  z-index: 10; /* Ensure it appears above the rings */
+  z-index: 10; /* Ensure it's above other elements */
+  width: auto; /* Prevent it from stretching */
+  display: inline-block; /* Prevent block-level behavior */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
