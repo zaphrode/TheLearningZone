@@ -32,6 +32,11 @@ const TestimonialsAndQualificationsPage = () => {
 
   return (
     <div className="gallery-container">
+      {/* Back Button */}
+      <button className="back-button" onClick={handleBackClick}>
+        ← Back
+      </button>
+      
       {/* Automatic concentric rings */}
       <div className="automatic-rings">
         {[...Array(5)].map((_, index) => (
