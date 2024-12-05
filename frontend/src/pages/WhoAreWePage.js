@@ -8,17 +8,24 @@ const openWhatsAppChat = () => {
 };
 
 const WhoAreWePage = () => {
+  // Render automatic rings in the background
+  const renderAutomaticRings = () => {
+    const ringCount = 5; // Number of concentric rings
+    return Array.from({ length: ringCount }, (_, index) => (
+      <div key={index} className="automatic-ring" style={{ animationDelay: `${index * 0.5}s` }}></div>
+    ));
+  };
+
   return (
-    <div
-      className="who-are-we-page"
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL + '/tlz2.webp'})`,
-      }}
-    >
-        {/* WhatsApp Button */}
-        <div className="whatsapp-button" onClick={openWhatsAppChat}>
+    <div className="who-are-we-page">
+      {/* Automatic concentric rings */}
+      <div className="automatic-rings">{renderAutomaticRings()}</div>
+
+      {/* WhatsApp Button */}
+      <div className="whatsapp-button" onClick={openWhatsAppChat}>
         <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
       </div>
+
       <div className="logo-header">
         <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
       </div>
@@ -32,10 +39,10 @@ const WhoAreWePage = () => {
 
         <div className="price-section">
           <h2>Prices</h2>
-          <p><strong>Primary:</strong> $35/h</p>
-          <p><strong>Lower Secondary:</strong> $40/h</p>
-          <p><strong>Upper Secondary:</strong> $45/h</p>
-          <p><strong>JC:</strong> $50/h</p>
+          <p><strong>Primary:</strong> $35/h - $40/h</p>
+          <p><strong>Lower Secondary:</strong> $40/h - $45/h</p>
+          <p><strong>Upper Secondary:</strong> $45/h - $50/h</p>
+          <p><strong>JC:</strong> $50/h - $55/h</p>
         </div>
       </div>
     </div>
@@ -43,4 +50,3 @@ const WhoAreWePage = () => {
 };
 
 export default WhoAreWePage;
-

@@ -11,84 +11,112 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden; /* Ensure rings stay within bounds */
     background-color: #ddffaa; /* Light green background */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23AE9' points='120 120 60 120 90 90 120 60 120 0 120 0 60 60 0 0 0 60 30 90 60 120 120 120 '/%3E%3C/svg%3E");
-}
-
-/* Light overlay for content readability */
-.who-are-we-page::before {
-    content: "";
+  }
+  
+  /* Automatic concentric rings */
+  .automatic-rings {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.7); /* Light fade effect */
-    z-index: 1;
-}
-
-/* WhatsApp button styling */
-.whatsapp-button {
+    top: 50%; /* Center rings vertically */
+    left: 50%; /* Center rings horizontally */
+    transform: translate(-50%, -50%);
+    z-index: 0; /* Send behind content */
+  }
+  
+  .automatic-ring {
+    position: absolute;
+    width: 0; /* Start small */
+    height: 0; /* Start small */
+    border: 2px solid #cfe9ff;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: radialExpand 5s ease-in-out infinite;
+  }
+  
+  @keyframes radialExpand {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 0.8;
+    }
+    100% {
+      width: 800px; /* Adjust the final size of the rings */
+      height: 800px;
+      opacity: 0;
+    }
+  }
+  
+  /* Offset each ring’s animation delay to create a layered effect */
+  .automatic-ring:nth-child(1) { animation-delay: 0s; }
+  .automatic-ring:nth-child(2) { animation-delay: 0.5s; }
+  .automatic-ring:nth-child(3) { animation-delay: 1s; }
+  .automatic-ring:nth-child(4) { animation-delay: 1.5s; }
+  .automatic-ring:nth-child(5) { animation-delay: 2s; }
+  
+  /* WhatsApp button styling */
+  .whatsapp-button {
     position: fixed;
     top: 20px;
     right: 20px;
     cursor: pointer;
     z-index: 10;
-}
-
-.whatsapp-logo {
+  }
+  
+  .whatsapp-logo {
     width: 128px; /* Adjust size as needed */
     height: 128px;
     transition: transform 0.2s ease;
-}
-
-.whatsapp-logo:hover {
+  }
+  
+  .whatsapp-logo:hover {
     transform: scale(1.1);
-}
-
-.logo-header {
+  }
+  
+  .logo-header {
     position: relative;
     z-index: 2;
     margin-bottom: 20px;
-}
-
-.logo {
+  }
+  
+  .logo {
     width: 120px;
-}
-
-.content-overlay {
+  }
+  
+  .content-overlay {
     position: relative;
     z-index: 2;
     max-width: 800px;
     width: 100%;
-}
-
-.banner-section {
+  }
+  
+  .banner-section {
     background-color: #b0c4de; /* Muted blue */
     color: #000000;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 30px;
     font-size: 1.7rem;
-}
-
-.banner-section p {
+  }
+  
+  .banner-section p {
     margin: 0;
-}
-
-.price-section {
+  }
+  
+  .price-section {
     background-color: #d3e5d6; /* Muted green */
     color: #000000;
     border-radius: 8px;
     padding: 20px;
-}
-
-.price-section h2 {
+  }
+  
+  .price-section h2 {
     font-size: 1.9rem;
     margin-bottom: 15px;
-}
-
-.price-section p {
+  }
+  
+  .price-section p {
     font-size: 1.5rem;
     margin: 8px 0;
-}
+  }
+  
