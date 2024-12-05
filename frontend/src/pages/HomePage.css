@@ -9,6 +9,7 @@
   overflow: hidden;
   background-color: #ffffff;
   cursor: pointer;
+  margin-bottom: 40px;
 }
 
 /* Center automatic concentric rings container absolutely */
@@ -165,7 +166,6 @@
   width: 100%;
   max-width: 800px;
   margin-top: 20px;
-  margin-bottom: 40px;
   z-index: 2;
 }
 
