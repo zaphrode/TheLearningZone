@@ -139,6 +139,7 @@
 
 
 .logo {
+  margin-top: 40px;
   width: 100px;
   margin-right: 10px;
   /* Ensure no shadow, border, or background */
@@ -180,6 +181,7 @@
   height: 80px;
   color: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 50px;
 }
 
 .apply-tutor { background-color: #4fbcff; }
