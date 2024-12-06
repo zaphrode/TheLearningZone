@@ -9,7 +9,7 @@
   overflow: hidden;
   background-color: #ffffff;
   cursor: pointer;
-  margin-top: 100px;
+  margin-top: 50px;
   min-height: calc(100vh + 300px); /* Add extra scroll space beyond the viewport */
   margin-bottom: 100px;
 }
