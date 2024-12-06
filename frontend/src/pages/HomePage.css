@@ -10,8 +10,8 @@
   background-color: #ffffff;
   cursor: pointer;
   margin-top: 100px;
-  min-height: calc(100vh + 200px); /* Add extra scroll space beyond the viewport */
-  margin-bottom: 200px;
+  min-height: calc(100vh + 300px); /* Add extra scroll space beyond the viewport */
+  margin-bottom: 100px;
 }
 
 /* Center automatic concentric rings container absolutely */
