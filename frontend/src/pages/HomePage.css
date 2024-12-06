@@ -10,6 +10,7 @@
   background-color: #ffffff;
   cursor: pointer;
   margin-top: 200px;
+  min-height: calc(100vh + 200px); /* Add extra scroll space beyond the viewport */
   margin-bottom: 400px;
 }
 
