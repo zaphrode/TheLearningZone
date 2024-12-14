@@ -1,3 +1,6 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 /* General Page Styling */
 .signup-page {
     display: flex;
@@ -5,7 +8,7 @@
     justify-content: center;
     min-height: 100vh;
     background-color: #f0f9ff; /* Light blue background */
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Modern, friendly font */
     color: #333;
     padding: 20px;
     overflow-y: auto; /* Enable scrolling for mobile */
@@ -20,7 +23,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
     text-align: left;
-    line-height: 1.6;
+    line-height: 1.7; /* Relaxed text spacing */
 }
 
 /* Header Section */
@@ -40,18 +43,20 @@
 
 .header-title {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 600;
     color: #1e90ff; /* Vibrant blue */
     margin-bottom: 5px;
     background: linear-gradient(90deg, #1e90ff, #00c0ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header-subtitle {
     font-size: 1.2rem;
     color: #555;
     font-weight: 400;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Rates Section */
@@ -64,12 +69,13 @@
 .rates-list li {
     font-size: 1.1rem;
     margin-bottom: 8px;
-    color: #444;
+    color: #555;
+    font-family: 'Poppins', sans-serif;
 }
 
 .important-text {
-    font-weight: bold;
-    color: #000;
+    font-weight: 600;
+    color: #333;
     font-size: 1.2rem;
 }
 
@@ -77,8 +83,9 @@
 .telegram-link {
     color: #007bff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .telegram-link:hover {
@@ -110,4 +117,5 @@
 .tutor-profile-format li {
     margin-bottom: 5px;
     list-style-type: disc;
+    font-family: 'Poppins', sans-serif;
 }
