@@ -1,10 +1,22 @@
 // frontend/src/pages/SignupPage.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignupPage.css';
 
 export default function SignupPage() {
+    const navigate = useNavigate();
+
+    const handleBackClick = () => {
+        navigate('/home'); // Navigate to the home page
+    };
+
     return (
         <div className="signup-page">
+            {/* Back Button */}
+            <button className="back-button" onClick={handleBackClick}>
+                ← Back
+            </button>
+
             <div className="signup-container">
                 {/* Header */}
                 <header className="signup-header">

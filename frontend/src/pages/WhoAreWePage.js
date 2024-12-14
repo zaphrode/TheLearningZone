@@ -45,7 +45,7 @@ const openWhatsAppChat = () => {
       <div className="content-overlay">
         <div className="banner-section">
           <p>
-            We noticed a lack of vetting and quality control in the market. Hence, we decided to take it upon ourselves to provide quality tuition to your doorstep. Contact us now to find a reliable private home tutor.
+            We noticed a lack of vetting and quality control in the market. Hence, we decided to take it upon ourselves to provide quality tuition to your doorstep. Contact us now to find a reliable private home tutor !
           </p>
         </div>
 
