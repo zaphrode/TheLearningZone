@@ -1,29 +1,36 @@
 /* Back button styling */
 .back-button {
-  position: absolute; /* Fixed in the top-left corner */
+  position: absolute; /* Keep it absolute in the corner */
   top: 20px; /* Distance from the top */
   left: 20px; /* Distance from the left */
   background-color: #d3d3d3; /* Light grey background */
   color: #000; /* Black text */
   border: 1px solid #ccc; /* Slight border */
   border-radius: 5px; /* Rounded corners */
-  padding: 8px 12px; /* Compact padding for a small button */
-  font-size: 0.9rem; /* Slightly smaller font size */
-  font-weight: bold; /* Bold text */
-  text-align: center; /* Center align text inside the button */
-  cursor: pointer; /* Pointer cursor on hover */
-  z-index: 10; /* Ensure it stays on top */
-  display: inline-block; /* Ensure it doesn’t behave like a block element */
-  width: auto; /* Prevent it from stretching */
-  max-width: fit-content; /* Ensure button width fits content */
-  white-space: nowrap; /* Prevent text wrapping */
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10; /* Stay above other content */
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .back-button:hover {
-  background-color: #a9a9a9; /* Darker grey on hover */
+  background-color: #a9a9a9;
   transform: scale(1.05);
 }
+
+/* Add padding to prevent overlap */
+.gallery-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 20px; /* Extra padding at the top to account for the back button */
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
 
 .back-button:active {
   transform: scale(1);
