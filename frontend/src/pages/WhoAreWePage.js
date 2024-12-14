@@ -51,10 +51,10 @@ const openWhatsAppChat = () => {
 
         <div className="price-section">
           <h2>Prices</h2>
-          <p><strong>Primary:</strong> $35/h - $40/h</p>
-          <p><strong>Lower Secondary:</strong> $40/h - $45/h</p>
-          <p><strong>Upper Secondary:</strong> $45/h - $50/h</p>
-          <p><strong>JC:</strong> $50/h - $55/h</p>
+          <p><strong>Primary:</strong> $35/h-$40/h</p>
+          <p><strong>Low. Secondary:</strong> $40/h-$45/h</p>
+          <p><strong>Upp. Secondary:</strong> $45/h-$50/h</p>
+          <p><strong>JC:</strong> $50/h-$55/h</p>
         </div>
       </div>
     </div>
