@@ -1,5 +1,3 @@
-/* frontend/src/pages/SignupPage.css */
-
 /* General Page Styling */
 .signup-page {
     display: flex;
@@ -7,68 +5,77 @@
     justify-content: center;
     min-height: 100vh;
     background-color: #f0f9ff; /* Light blue background */
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     color: #333;
     padding: 20px;
-    overflow-y: auto; /* Allow scrolling on mobile devices */
+    overflow-y: auto; /* Enable scrolling for mobile */
 }
 
 /* Main container */
 .signup-container {
-    max-width: 600px; /* Larger width for content */
+    max-width: 600px;
     width: 100%;
     padding: 30px;
-    background-color: #fff;
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    text-align: left; /* Align content to the left */
-    line-height: 1.6; /* Improve text spacing */
-    margin-bottom: 20px;
+    background-color: #ffffff; /* Clean white background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    text-align: left;
+    line-height: 1.6;
 }
 
-/* Header Styling */
+/* Header Section */
 .signup-header {
     text-align: center;
     margin-bottom: 20px;
 }
 
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     margin-bottom: 10px;
-    border-radius: 50%; /* Circular logo */
+    border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.signup-header h1 {
-    font-size: 2rem;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 10px;
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e90ff; /* Vibrant blue */
+    margin-bottom: 5px;
+    background: linear-gradient(90deg, #1e90ff, #00c0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Content Sections */
-.signup-content p {
-    font-size: 1.1rem;
-    color: #444;
-    margin-bottom: 10px;
+.header-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 400;
 }
 
+/* Rates Section */
 .rates-list {
-    list-style-type: none; /* Remove bullet points */
+    list-style-type: none;
     padding-left: 0;
-    margin: 10px 0 20px 0;
+    margin: 15px 0 20px 0;
 }
 
 .rates-list li {
     font-size: 1.1rem;
     margin-bottom: 8px;
-    color: #555;
+    color: #444;
 }
 
+.important-text {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.2rem;
+}
+
+/* Telegram Link */
 .telegram-link {
-    color: #007bff; /* Blue for emphasis */
+    color: #007bff;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
@@ -76,12 +83,13 @@
 
 .telegram-link:hover {
     text-decoration: underline;
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3;
 }
 
+/* Tutor Profile Format */
 .tutor-profile-format {
-    background-color: #f8f9fa; /* Light gray background */
-    border-left: 5px solid #00c0ff; /* Highlight bar */
+    background-color: #f8f9fa;
+    border-left: 5px solid #00c0ff;
     padding: 15px;
     border-radius: 8px;
     font-size: 1rem;
@@ -101,12 +109,5 @@
 
 .tutor-profile-format li {
     margin-bottom: 5px;
-    list-style-type: disc; /* Bullets for list items */
-}
-
-/* Emphasize Important Text */
-.important-text {
-    font-weight: bold;
-    color: #000;
-    font-size: 1.1rem;
+    list-style-type: disc;
 }
