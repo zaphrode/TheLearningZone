@@ -49,9 +49,9 @@ export default function SignupPage() {
 
                     {/* Instructions Section */}
                     <p>If you are interested, do create your tutor profile in this format: 
-                    (Please list in point form with '-'')</p>
+                    (Please list in point form with a '-')</p>
                     <div className="tutor-profile-format">
-                        <p><strong>Tutor K: ((Name, e.g.Kyler))</strong></p>
+                        <p><strong>Tutor K: (Name, e.g.Kyler)</strong></p>
                         <ul>
                             <li>If you are an undergraduate, do state your degree pursuit and school.</li>
                             <li>If you are a JC/IB/Poly student, do state your school and year.</li>
@@ -65,8 +65,8 @@ export default function SignupPage() {
                             <li>Age</li>
                             <li>Gender</li>
                         </ul>
-                        <p><strong>We will revert to you within 3 days if you are selected!</strong></p>
                     </div>
+                    <p><strong>We will revert to you within 3 days if you are selected!</strong></p>
                 </div>
             </div>
         </div>
