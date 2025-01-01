@@ -21,7 +21,7 @@ export default function SignupPage() {
                 {/* Header */}
                 <header className="signup-header">
                     <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
-                    <h1 className="header-title">Hi Future Tutor</h1>
+                    <h1 className="header-title">Hi Future Tutor !</h1>
                     <p className="header-subtitle">Welcome to The Learning Zone! 🎓</p>
                 </header>
 
@@ -48,8 +48,8 @@ export default function SignupPage() {
                     </p>
 
                     {/* Instructions Section */}
-                    <p>If you are interested, do create your tutor profile in this format: 
-                    (Please list in point form with a '-')</p>
+                    <p>If you are interested, do create your tutor profile in this format: </p>
+                    <p>(Please list in point form with a '-')</p>
                     <div className="tutor-profile-format">
                         <p><strong>Tutor K: (Name, e.g.Kyler)</strong></p>
                         <ul>
@@ -66,7 +66,7 @@ export default function SignupPage() {
                             <li>Gender</li>
                         </ul>
                     </div>
-                    <p><strong>We will revert to you within 3 days if you are selected!</strong></p>
+                <p><strong>We will revert to you within 3 days if you are selected :)</strong></p>
                 </div>
             </div>
         </div>
