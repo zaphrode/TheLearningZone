@@ -6,7 +6,7 @@
     position: fixed; /* Keep button at the top-left corner */
     top: 20px; /* Distance from the top */
     left: 20px; /* Distance from the left */
-    background-color: #1e90ff; /* Vibrant blue */
+    background-color: #0080ff; /* Vibrant blue */
     color: #ffffff; /* White text */
     border: none; /* Remove border */
     border-radius: 5px; /* Rounded corners */
