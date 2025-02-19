@@ -1,155 +1,199 @@
 /* frontend/src/pages/WhoAreWePage.css */
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 /* Back button styling */
 .back-button {
-    position: absolute; /* Fixed in the top-left corner */
-    top: 20px; /* Distance from the top */
-    left: 20px; /* Distance from the left */
-    background-color: #d3d3d3; /* Light grey background */
-    color: #000; /* Black text */
-    border: 1px solid #ccc; /* Slight border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 8px 12px; /* Compact padding for a small button */
-    font-size: 0.9rem; /* Slightly smaller font size */
-    font-weight: bold; /* Bold text */
-    text-align: center; /* Center align text inside the button */
-    cursor: pointer; /* Pointer cursor on hover */
-    z-index: 10; /* Ensure it stays on top */
-    display: inline-block; /* Ensure it doesn’t behave like a block element */
-    width: auto; /* Prevent it from stretching */
-    max-width: fit-content; /* Ensure button width fits content */
-    white-space: nowrap; /* Prevent text wrapping */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
 .back-button:hover {
-    background-color: #a9a9a9; /* Darker grey on hover */
-    transform: scale(1.05);
-  }
-  
-.back-button:active {
-    transform: scale(1);
-  }
-  
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 .who-are-we-page {
     position: relative;
     text-align: center;
-    font-family: "Poppins" , sans-serif;
+    font-family: "Poppins", sans-serif;
     padding: 40px 20px;
-    color: #000000;
+    color: #333;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    overflow: hidden; /* Ensure rings stay within bounds */
-    background-color: #ffffff; /* Light green background */
-  }
-  
-  /* Automatic concentric rings */
+    justify-content: flex-start;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+
+/* Automatic concentric rings */
 .automatic-rings {
-    position: absolute;
-    top: 50%; /* Center rings vertically */
-    left: 50%; /* Center rings horizontally */
+    position: fixed;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 0; /* Send behind content */
-  }
-  
-  .automatic-ring {
+    z-index: 1;
+}
+
+.automatic-ring {
     position: absolute;
-    width: 0; /* Start small */
-    height: 0; /* Start small */
-    border: 2px solid #cfe9ff;
+    border: 2px solid rgba(207, 233, 255, 0.4);
     border-radius: 50%;
-    opacity: 0.5;
-    animation: radialExpand 5s ease-in-out infinite;
-  }
-  
-  @keyframes radialExpand {
+    animation: radialExpand 6s ease-in-out infinite;
+}
+
+@keyframes radialExpand {
     0% {
-      width: 0;
-      height: 0;
-      opacity: 0.8;
+        width: 0;
+        height: 0;
+        opacity: 0.8;
     }
     100% {
-      width: 800px; /* Adjust the final size of the rings */
-      height: 800px;
-      opacity: 0;
+        width: 1000px;
+        height: 1000px;
+        opacity: 0;
     }
-  }
-  
-  /* Offset each ring’s animation delay to create a layered effect */
-  .automatic-ring:nth-child(1) { animation-delay: 0s; }
-  .automatic-ring:nth-child(2) { animation-delay: 0.5s; }
-  .automatic-ring:nth-child(3) { animation-delay: 1s; }
-  .automatic-ring:nth-child(4) { animation-delay: 1.5s; }
-  .automatic-ring:nth-child(5) { animation-delay: 2s; }
-  
-  /* WhatsApp button styling */
-  .whatsapp-button {
+}
+
+/* WhatsApp button styling */
+.whatsapp-container {
     position: fixed;
     top: 20px;
     right: 20px;
-    cursor: pointer;
-    z-index: 10;
-  }
-  
-  .whatsapp-logo {
-    width: 128px; /* Adjust size as needed */
-    height: 128px;
-    transition: transform 0.2s ease;
-  }
-  
-  .whatsapp-logo:hover {
+    z-index: 100;
+}
+
+.whatsapp-button {
+    background: #25D366;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
     transform: scale(1.1);
-  }
-  
-  .logo-header {
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.logo-header {
+    margin: 60px 0 30px;
     position: relative;
     z-index: 2;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
     margin-bottom: 20px;
-  }
-  
-  .logo {
-    width: 120px;
-  }
-  
-  .content-overlay {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.content-overlay {
     position: relative;
     z-index: 2;
-    max-width: 800px;
-    width: 100%;
-  }
-  
-  .banner-section {
-    background-color: #b0c4de; /* Muted blue */
-    color: #000000;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    font-size: 1.7rem;
-  }
-  
-  .banner-section p {
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.banner-section {
+    background: linear-gradient(135deg, #b0c4de, #9fb6d4);
+    color: #333;
+    border-radius: 16px;
+    padding: 40px 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.banner-section:hover {
+    transform: translateY(-5px);
+}
+
+.banner-section p {
     margin: 0;
-  }
-  
-  .price-section {
-    background-color: #d3e5d6; /* Muted green */
-    color: #000000;
-    border-radius: 8px;
-    padding: 20px;
-  }
-  
-  .price-section h2 {
-    font-size: 1.9rem;
-    margin-bottom: 15px;
-  }
-  
-  .price-section p {
-    font-size: 1.5rem;
-    margin: 8px 0;
-  }
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.price-section {
+    background: linear-gradient(135deg, #d3e5d6, #c5dbc9);
+    color: #333;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.price-section:hover {
+    transform: translateY(-5px);
+}
+
+.price-section h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.price-section p {
+    font-size: 1.3rem;
+    margin: 15px 0;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .banner-section p {
+        font-size: 1.2rem;
+    }
+
+    .price-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .price-section p {
+        font-size: 1.1rem;
+    }
+
+    .content-overlay {
+        width: 95%;
+    }
+}
   
