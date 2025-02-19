@@ -14,6 +14,12 @@ const TestimonialsAndQualificationsPage = () => {
     "/testimonials/testimonial5.jpg",
     "/testimonials/testimonial6.jpg",
     "/testimonials/testimonial7.jpg",
+    "/testimonials/testimonial8.jpg",
+    "/testimonials/testimonial9.jpg",
+    "/testimonials/testimonial10.jpg",
+    "/testimonials/testimonial11.jpg",
+    "/testimonials/testimonial12.jpg",
+    "/testimonials/testimonial13.jpg",
   ];
 
   const qualifications = [
@@ -24,6 +30,12 @@ const TestimonialsAndQualificationsPage = () => {
     "/qualifications/qualification5.jpg",
     "/qualifications/qualification6.jpg",
     "/qualifications/qualification7.jpg",
+    "/qualifications/qualification8.jpg",
+    "/qualifications/qualification9.jpg",
+    "/qualifications/qualification10.jpg",
+    "/qualifications/qualification11.jpg",
+    "/qualifications/qualification12.jpg",
+    "/qualifications/qualification13.jpg",
   ];
   const navigate = useNavigate();
 
