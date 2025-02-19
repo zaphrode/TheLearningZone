@@ -51,18 +51,22 @@ export default function SignupPage() {
                     <p>If you are interested, do create your tutor profile in this format: </p>
                     <p>(Please list in point form with a '-')</p>
                     <div className="tutor-profile-format">
-                        <p><strong>Tutor K: (Name, e.g.Kyler)</strong></p>
+                        <p><strong>Tutor: (Name, e.g.Kyler)</strong></p>
                         <ul>
-                            <li>If you are an undergraduate, do state your degree pursuit and school.</li>
-                            <li>If you are a JC/IB/Poly student, do state your school and year.</li>
-                            <li>Any tutoring experience (elaborate on duration and subject, more importantly - notable tutoring accomplishments such as tutee improvements or notable grades).</li>
-                            <li>Any notable A level/Poly/IB grades (Do include your RP/GPA).</li>
-                            <li>Any notable O level/IP grades.</li>
+                            <li>If you are an undergraduate, do state your degree pursuit and school</li>
+                            <li>If you are a jc/ib/poly student, do state your school and year</li>
+                            <li>Any tutoring experience, siblings and friends included<br/>
+                                (elaborate on duration and subject, more importantly - notable tutoring accomplishments such as tutee improvements or notable grades)<br/>
+                                Examples of tutoring experience elaboration: 2 years tutoring experience, secondary level - E Maths, A Maths, Physics, tutee went from D7 to A1 for O Level Physics in 4 months (testimonials can be provided)</li>
+                            <li>Any other relevant information (e.g. tutoring methods, school  achivements, accomplishments)</li>
+                            <li>Notable A level/ Poly/ IB grades (Do include your RP/GPA. If you're an A level grad, prelim results are okay)</li>
+                            <li>Notable O level / IP grades (A1/A2)</li>
+                            <li>PSLE results and grades (e.g. 261/AAAA*)</li>
                             <li>Telegram handle</li>
                             <li>WhatsApp Number</li>
                             <li>Preferred Subjects to teach</li>
                             <li>Preferred Locations to teach</li>
-                            <li>Age</li>
+                            <li>Age in 2025</li>
                             <li>Gender</li>
                         </ul>
                     </div>
