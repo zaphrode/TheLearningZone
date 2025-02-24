@@ -66,13 +66,6 @@
   z-index: 10;
 }
 
-/* WhatsApp button styling */
-.whatsapp-button {
-  cursor: pointer;
-  background: #25D366;
-  border-radius: 50%;
-  padding: 10px;
-}
 
 /* WhatsApp logo styling */
 .whatsapp-logo {
