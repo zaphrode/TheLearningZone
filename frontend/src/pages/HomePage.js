@@ -46,9 +46,12 @@ function HomePage() {
 
       {/* WhatsApp Button */}
       <div className="whatsapp-container">
-        <div className="whatsapp-button" onClick={openWhatsAppChat}>
-          <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
-        </div>
+        <img 
+          src="/whatsapp-logo2.png" 
+          alt="WhatsApp" 
+          className="whatsapp-logo" 
+          onClick={openWhatsAppChat}
+        />
         <div className="contact-agent">Click here to contact an agent!</div>
       </div>
 
