@@ -63,6 +63,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 60px; /* Add space between button and text */
   z-index: 10;
 }
 
@@ -72,7 +73,6 @@
   background: #25D366;
   border-radius: 50%;
   padding: 10px;
-  margin-bottom: 10px;
 }
 
 /* WhatsApp logo styling */
@@ -88,9 +88,6 @@
 
 /* Bold contact text styling */
 .contact-agent {
-  position: fixed;
-  top: 100px; /* Position text 100px from top */
-  right: 20px;
   font-size: 1.0rem;
   color: #2f2f2f;
   font-weight: bold;
@@ -101,7 +98,8 @@
   background-color: rgba(255, 255, 255, 0.9);
   padding: 5px;
   border-radius: 5px;
-  z-index: 10;
+  position: relative;
+  top: 20px; /* Push text down */
 }
 
 /* Styling for rings that appear on mouse clicks */

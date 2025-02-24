@@ -41,10 +41,6 @@ function HomePage() {
 
   return (
     <div className="home-page" onClick={handleAddRing}>
-      <Helmet>
-        <title>The Learning Zone | Online Learning Platform</title>
-        <meta name="description" content="Learn and grow with The Learning Zone - your go-to platform for online education, tutoring, and study resources." />
-      </Helmet>
       {/* Automatic concentric rings */}
       <div className="automatic-rings">{renderAutomaticRings()}</div>
 
