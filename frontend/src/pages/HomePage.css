@@ -98,8 +98,8 @@
   padding: 5px;
   border-radius: 5px;
   position: fixed;
-  top: 240px; /* Position below the WhatsApp button */
-  right: 20px;
+  top: 200px; /* Position below the WhatsApp button */
+  right: 40px;
 }
 
 /* Styling for rings that appear on mouse clicks */
