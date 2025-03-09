@@ -113,7 +113,7 @@ function HomePage() {
           <h2>Why Choose The Learning Zone?</h2>
           <ul>
             <li>✅ <strong>Expert Tutors:</strong> Only the most qualified and experienced tutors are matched to your child.</li>
-            <li>✅ <strong>Personalized Learning:</strong> Lessons are tailored to each student's strengths and weaknesses.</li>
+            <li>✅ <strong>Personalised Learning:</strong> Lessons are tailored to each student's strengths and weaknesses.</li>
             <li>✅ <strong>All Subjects & Levels:</strong> We offer tuition for <strong>Math, Science, English, Chinese, and more</strong>.</li>
             <li>✅ <strong>Flexible Scheduling:</strong> Tutors available for <strong>weekday and weekend</strong> lessons at your convenience.</li>
             <li>✅ <strong>Trusted by Parents:</strong> Hundreds of successful matches made across Singapore.</li>
@@ -123,7 +123,7 @@ function HomePage() {
         <section className="get-started">
           <h2>Find Your Perfect Tutor Today!</h2>
           <p>
-            Need a tutor? Let us help! Whether you're looking for <strong>1-on-1 private tuition</strong> or <strong>group classes</strong>, 
+            Need a tutor? Let us help! If you're looking for <strong>1-on-1 private tuition</strong>, 
             The Learning Zone ensures your child gets the <strong>best guidance</strong> for academic excellence.  
             Click below to connect with a tutor now!
           </p>
