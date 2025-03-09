@@ -72,10 +72,32 @@ function HomePage() {
       <header className="header">
         <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
         <h1 className="title">The Learning Zone</h1>
-        <p className="subtitle"><em>Singapore's premium home tutors</em></p> {/* Added subtitle */}
+        <p className="subtitle"><em>Singapore's premium home tutors</em></p>
       </header>
 
-      {/* New SEO-friendly content sections */}
+      {/* Navigation buttons - Now before SEO content */}
+      <div className="button-container">
+        <button className="tutor-button apply-tutor" onClick={handleApplyClick}>
+          Apply As Tutor
+        </button>
+        <button className="tutor-button find-tutor" onClick={handleFindClick}>
+          Testimonials And&nbsp;Qualifications
+        </button>
+      </div>
+
+      <div className="button-container">
+        <button className="tutor-button resources" onClick={handleResourcesClick}>
+          Resources
+        </button>
+        <button className="tutor-button who-are-we" onClick={handleWhoAreWeClick}>
+          Who Are We
+        </button>
+        <button className="tutor-button terms-button" onClick={handleTermsClick}>
+          Terms And Conditions
+        </button>
+      </div>
+
+      {/* SEO-friendly content sections - Now after the buttons */}
       <div className="seo-content">
         <section className="intro-section">
           <h2>Welcome to The Learning Zone – Singapore's Leading Home Tuition Agency</h2>
@@ -109,27 +131,6 @@ function HomePage() {
             Contact Us on WhatsApp 📲
           </button>
         </section>
-      </div>
-
-      <div className="button-container">
-        <button className="tutor-button apply-tutor" onClick={handleApplyClick}>
-          Apply As Tutor
-        </button>
-        <button className="tutor-button find-tutor" onClick={handleFindClick}>
-          Testimonials And&nbsp;Qualifications
-        </button>
-      </div>
-
-      <div className="button-container">
-        <button className="tutor-button resources" onClick={handleResourcesClick}>
-          Resources
-        </button>
-        <button className="tutor-button who-are-we" onClick={handleWhoAreWeClick}>
-          Who Are We
-        </button>
-        <button className="tutor-button terms-button" onClick={handleTermsClick}>
-          Terms And Conditions
-        </button>
       </div>
     </div>
   );

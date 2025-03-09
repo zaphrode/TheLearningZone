@@ -10,8 +10,8 @@
   background-color: #ffffff;
   cursor: pointer;
   margin-top: 50px;
-  min-height: calc(100vh + 1000px); /* Increased from 500px to 800px for more scrollable space */
-  margin-bottom: 500px; /* Increased from 200px to 300px for more bottom space */
+  min-height: calc(100vh + 1500px); /* Increased further for better mobile scrolling */
+  margin-bottom: 1000px; /* Increased further for more bottom space */
 }
 
 /* Center automatic concentric rings container absolutely */
@@ -210,7 +210,7 @@
 /* SEO Content Styling */
 .seo-content {
   max-width: 800px;
-  margin: 20px auto;
+  margin: 60px auto 20px; /* Increased margin-top for spacing after buttons */
   padding: 0 20px;
   text-align: left;
   z-index: 2;
@@ -267,4 +267,17 @@
 .contact-button:hover {
   background-color: #128C7E;
   transform: scale(1.05);
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .home-page {
+    min-height: calc(100vh + 2000px); /* Even more space on mobile */
+    margin-bottom: 1000px;
+  }
+  
+  .seo-content {
+    padding: 15px;
+    margin-top: 40px;
+  }
 }
