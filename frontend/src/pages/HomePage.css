@@ -206,3 +206,65 @@
 .tutor-button:active {
   transform: scale(1.02);
 }
+
+/* SEO Content Styling */
+.seo-content {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+  text-align: left;
+  z-index: 2;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+}
+
+.seo-content h2 {
+  color: #00C0FF;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.seo-content p {
+  color: #444;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.intro-section, .why-choose-us, .get-started {
+  margin-bottom: 30px;
+}
+
+.why-choose-us ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.why-choose-us li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.contact-button {
+  background-color: #25D366; /* WhatsApp green */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+.contact-button:hover {
+  background-color: #128C7E;
+  transform: scale(1.05);
+}

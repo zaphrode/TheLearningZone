@@ -75,6 +75,42 @@ function HomePage() {
         <p className="subtitle"><em>Singapore's premium home tutors</em></p> {/* Added subtitle */}
       </header>
 
+      {/* New SEO-friendly content sections */}
+      <div className="seo-content">
+        <section className="intro-section">
+          <h2>Welcome to The Learning Zone – Singapore's Leading Home Tuition Agency</h2>
+          <p>
+            Finding the right tutor for your child is crucial for academic success. <strong>The Learning Zone</strong> 
+            connects <strong>experienced home tutors</strong> with parents looking for <strong>personalized</strong> and <strong>effective</strong> learning.
+            Whether your child needs help with <strong>PSLE, O-Level, A-Level, IB, or international curriculums</strong>,
+            we provide the <strong>best private tutors</strong> in Singapore.
+          </p>
+        </section>
+
+        <section className="why-choose-us">
+          <h2>Why Choose The Learning Zone?</h2>
+          <ul>
+            <li>✅ <strong>Expert Tutors:</strong> Only the most qualified and experienced tutors are matched to your child.</li>
+            <li>✅ <strong>Personalized Learning:</strong> Lessons are tailored to each student's strengths and weaknesses.</li>
+            <li>✅ <strong>All Subjects & Levels:</strong> We offer tuition for <strong>Math, Science, English, Chinese, and more</strong>.</li>
+            <li>✅ <strong>Flexible Scheduling:</strong> Tutors available for <strong>weekday and weekend</strong> lessons at your convenience.</li>
+            <li>✅ <strong>Trusted by Parents:</strong> Hundreds of successful matches made across Singapore.</li>
+          </ul>
+        </section>
+
+        <section className="get-started">
+          <h2>Find Your Perfect Tutor Today!</h2>
+          <p>
+            Need a tutor? Let us help! Whether you're looking for <strong>1-on-1 private tuition</strong> or <strong>group classes</strong>, 
+            The Learning Zone ensures your child gets the <strong>best guidance</strong> for academic excellence.  
+            Click below to connect with a tutor now!
+          </p>
+          <button className="contact-button" onClick={openWhatsAppChat}>
+            Contact Us on WhatsApp 📲
+          </button>
+        </section>
+      </div>
+
       <div className="button-container">
         <button className="tutor-button apply-tutor" onClick={handleApplyClick}>
           Apply As Tutor
