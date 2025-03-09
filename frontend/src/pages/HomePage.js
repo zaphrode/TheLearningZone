@@ -102,10 +102,10 @@ function HomePage() {
         <section className="intro-section">
           <h2>Welcome to The Learning Zone – Singapore's Leading Home Tuition Agency</h2>
           <p>
-            Finding the right tutor for your child is crucial for academic success. <strong>The Learning Zone</strong> 
-            connects <strong>experienced home tutors</strong> with parents looking for <strong>personalized</strong> and <strong>effective</strong> learning.
+            Finding the right tutor for your child is crucial for academic success. <strong>The Learning Zone </strong> 
+            connects <strong>experienced home tutors</strong> with parents looking for <strong>personalised</strong> and <strong>effective</strong> learning.
             Whether your child needs help with <strong>PSLE, O-Level, A-Level, IB, or international curriculums</strong>,
-            we provide the <strong>best private tutors</strong> in Singapore.
+            we provide the <strong>best private tutors</strong> in Singapore. To ensure quality, we vet all our tutors on their exeperience and qualifications.
           </p>
         </section>
 
