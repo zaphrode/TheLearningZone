@@ -39,7 +39,7 @@ function BlogPage() {
             title: "IB vs A-Levels: Which Curriculum is Right for Your Child?", 
             slug: "ib-vs-a-levels", 
             date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 days ago
-            excerpt: "Comparing the International Baccalaureate and A-Levels programs to help you make an informed decision about your child's educational path.",
+            excerpt: "Comparing the International Baccalaureate and A-Levels programmes to help you make an informed decision about your child's educational path.",
             image: "/tlz3.webp"
         },
     ];

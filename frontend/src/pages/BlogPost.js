@@ -65,11 +65,11 @@ function BlogPost() {
                 <h2>Create a Structured Study Plan</h2>
                 <p>Develop a realistic study schedule that covers all subjects and topics. Break down the syllabus into manageable chunks and allocate time for revision and practice papers.</p>
                 
-                <h2>Focus on Understanding, Not Memorization</h2>
-                <p>Encourage your child to understand concepts rather than memorize facts. This deeper understanding will help them apply knowledge to different types of questions.</p>
+                <h2>Focus on Understanding, Not Memorisation</h2>
+                <p>Encourage your child to understand concepts rather than memorise facts. This deeper understanding will help them apply knowledge to different types of questions.</p>
                 
-                <h2>Practice Past Papers</h2>
-                <p>Regularly practicing past PSLE papers helps familiarize your child with the exam format and types of questions. It also builds time management skills and confidence.</p>
+                <h2>Practise Past Papers</h2>
+                <p>Regularly practising past PSLE papers helps familiarise your child with the exam format and types of questions. It also builds time management skills and confidence.</p>
                 
                 <h2>Identify and Address Weak Areas</h2>
                 <p>Regularly assess your child's progress to identify areas that need more attention. Dedicate extra time to these subjects or topics.</p>
@@ -78,7 +78,7 @@ function BlogPost() {
                 <p>Maintain a balance between study and relaxation. Ensure your child gets enough sleep, regular exercise, and healthy meals to support optimal brain function.</p>
                 
                 <h2>Manage Exam Anxiety</h2>
-                <p>Teach your child stress management techniques such as deep breathing, positive visualization, and mindfulness. Remind them that their worth is not determined by exam results.</p>
+                <p>Teach your child stress management techniques such as deep breathing, positive visualisation, and mindfulness. Remind them that their worth is not determined by exam results.</p>
                 
                 <h2>How The Learning Zone Can Support PSLE Preparation</h2>
                 <p>Our experienced PSLE tutors provide targeted support for all subjects. They help students master key concepts, develop effective exam strategies, and build confidence. Contact us to learn how we can help your child achieve their best in the PSLE!</p>
@@ -94,22 +94,22 @@ function BlogPost() {
                 
                 <h2>Curriculum Structure</h2>
                 <p><strong>IB:</strong> The IB Diploma Programme requires students to study six subjects from different subject groups, complete the Theory of Knowledge course, write an Extended Essay, and participate in Creativity, Activity, Service (CAS).</p>
-                <p><strong>A-Levels:</strong> Students typically select three or four subjects to study in depth, allowing for greater specialization in areas of interest or strength.</p>
+                <p><strong>A-Levels:</strong> Students typically select three or four subjects to study in depth, allowing for greater specialisation in areas of interest or strength.</p>
                 
                 <h2>Assessment Approach</h2>
                 <p><strong>IB:</strong> Uses a combination of internal assessments (coursework, oral examinations, etc.) and final examinations. The assessment is more continuous throughout the two years.</p>
                 <p><strong>A-Levels:</strong> Primarily assessed through final examinations at the end of the two-year course, though some subjects include coursework components.</p>
                 
                 <h2>Teaching Philosophy</h2>
-                <p><strong>IB:</strong> Emphasizes critical thinking, research skills, and making connections between subjects. It aims to develop well-rounded individuals with a global perspective.</p>
-                <p><strong>A-Levels:</strong> Focuses on in-depth knowledge and analytical skills within specific subject areas, preparing students for specialized university courses.</p>
+                <p><strong>IB:</strong> Emphasises critical thinking, research skills, and making connections between subjects. It aims to develop well-rounded individuals with a global perspective.</p>
+                <p><strong>A-Levels:</strong> Focuses on in-depth knowledge and analytical skills within specific subject areas, preparing students for specialised university courses.</p>
                 
                 <h2>Workload and Time Management</h2>
                 <p><strong>IB:</strong> Generally considered more demanding due to its breadth of requirements. Students need excellent time management skills to balance the various components.</p>
                 <p><strong>A-Levels:</strong> More focused workload, but still requires significant independent study and depth of understanding.</p>
                 
                 <h2>University Recognition</h2>
-                <p>Both qualifications are widely recognized by universities worldwide. The IB may offer broader options internationally, while A-Levels are particularly well-regarded by UK universities.</p>
+                <p>Both qualifications are widely recognised by universities worldwide. The IB may offer broader options internationally, while A-Levels are particularly well-regarded by UK universities.</p>
                 
                 <h2>Which is Right for Your Child?</h2>
                 <p>Consider your child's:</p>
@@ -122,7 +122,7 @@ function BlogPost() {
                 </ul>
                 
                 <h2>How The Learning Zone Can Help</h2>
-                <p>Our tutors are experienced in both IB and A-Level curricula and can provide guidance and support regardless of which path your child chooses. We offer specialized tutoring to help students excel in either curriculum. Contact us to discuss your child's specific needs!</p>
+                <p>Our tutors are experienced in both IB and A-Level curricula and can provide guidance and support regardless of which path your child chooses. We offer specialised tutoring to help students excel in either curriculum. Contact us to discuss your child's specific needs!</p>
             `
         }
     };
