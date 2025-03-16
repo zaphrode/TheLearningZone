@@ -342,3 +342,11 @@
     padding: 12px 20px;
   }
 }
+
+/* Add this to your existing button styles */
+.blog-button { 
+  background-color: #9c27b0; /* Purple color for the blog button */
+}
+.blog-button:hover {
+  background-color: #7b1fa2; /* Darker purple on hover */
+}

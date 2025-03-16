@@ -12,6 +12,8 @@ import ResourcesPage from "../pages/ResourcesPage";
 import WhoAreWePage from '../pages/WhoAreWePage';
 import TermsAndConditionsPage from '../pages/TermsAndConditionsPage';
 import TestimonialsAndQualificationsPage from "../pages/TestimonialsAndQualificationsPage";
+import BlogPage from "../pages/BlogPage";
+import BlogPost from "../pages/BlogPost";
 
 function App() {
   return (
@@ -23,6 +25,10 @@ function App() {
 
           {/* Main Home Page */}
           <Route path="/home" element={<HomePage />} />
+
+          {/* Blog Routes */}
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
 
           {/* Other Routes */}
           <Route path="/tutor-home" element={<TutorHome />} />

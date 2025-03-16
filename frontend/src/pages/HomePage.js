@@ -82,23 +82,23 @@ function HomePage() {
 
       {/* Navigation buttons - Now before SEO content */}
       <div className="button-container">
-        <button className="tutor-button apply-tutor" onClick={handleApplyClick}>
+        <button className="tutor-button apply-tutor" onClick={() => navigate("/signup")}>
           Apply As Tutor
         </button>
-        <button className="tutor-button find-tutor" onClick={handleFindClick}>
-          Testimonials And&nbsp;Qualifications
+        <button className="tutor-button find-tutor" onClick={openWhatsAppChat}>
+          Find A Tutor
         </button>
-      </div>
-
-      <div className="button-container">
-        <button className="tutor-button resources" onClick={handleResourcesClick}>
+        <button className="tutor-button resources" onClick={() => navigate("/resources")}>
           Resources
         </button>
-        <button className="tutor-button who-are-we" onClick={handleWhoAreWeClick}>
-          Who Are We
+        <button className="tutor-button who-are-we" onClick={() => navigate("/who-are-we")}>
+          Who Are We?
         </button>
-        <button className="tutor-button terms-button" onClick={handleTermsClick}>
-          Terms And Conditions
+        <button className="tutor-button blog-button" onClick={() => navigate("/blog")}>
+          Our Blog
+        </button>
+        <button className="tutor-button terms-button" onClick={() => navigate("/terms-and-conditions")}>
+          Terms & Conditions
         </button>
       </div>
 
