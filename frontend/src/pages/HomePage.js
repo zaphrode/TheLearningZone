@@ -52,7 +52,12 @@ function HomePage() {
           className="whatsapp-logo" 
           onClick={openWhatsAppChat}
         />
-        <div className="contact-agent">Click here to contact an agent!</div>
+        <div 
+          className="contact-agent" 
+          onClick={openWhatsAppChat}
+        >
+          Click here to contact an agent!
+        </div>
       </div>
 
       {/* Click rings that appear at mouse click positions */}
