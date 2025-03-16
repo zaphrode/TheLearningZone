@@ -128,7 +128,7 @@ function HomePage() {
         <section className="get-started">
           <h2>Find Your Perfect Tutor Today!</h2>
           <p>
-            Need a tutor? Let us help! If you're looking for <strong>1-on-1 private tuition</strong>, 
+            Need a tutor? Let us help! If you're looking for <strong>1-1 private tuition</strong>, 
             The Learning Zone ensures your child gets the <strong>best guidance</strong> for academic excellence.  
             Click below to connect with a tutor now!
           </p>

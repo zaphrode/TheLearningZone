@@ -207,30 +207,32 @@
   transform: scale(1.02);
 }
 
-/* SEO Content Styling */
+/* SEO Content Styling - Updated to match button styling */
 .seo-content {
   max-width: 800px;
-  margin: 60px auto 20px; /* Increased margin-top for spacing after buttons */
+  margin: 60px auto 20px;
   padding: 0 20px;
   text-align: left;
   z-index: 2;
   position: relative;
   background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
+  border-radius: 12px; /* Match button border-radius */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 25px;
+  font-family: Arial, sans-serif; /* Match button font family */
 }
 
 .seo-content h2 {
-  color: #00C0FF;
-  font-size: 1.8rem;
+  color: #4fbcff; /* Match apply-tutor button color */
+  font-size: 1.6rem; /* Closer to button font size */
   margin-bottom: 15px;
+  font-weight: bold; /* Match button font weight */
 }
 
 .seo-content p {
-  color: #444;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  color: #333; /* Darker text color to match button text */
+  font-size: 1.2rem; /* Closer to button font size */
+  line-height: 1.5;
   margin-bottom: 20px;
 }
 
@@ -244,29 +246,31 @@
 }
 
 .why-choose-us li {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
+  margin-bottom: 12px;
+  font-size: 1.2rem; /* Match paragraph font size */
   line-height: 1.5;
-  color: #444;
+  color: #333; /* Match paragraph color */
 }
 
 .contact-button {
   background-color: #25D366; /* WhatsApp green */
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 1.2rem;
+  border-radius: 12px; /* Match other buttons */
+  padding: 15px 25px; /* Match button padding */
+  font-size: 1.4rem; /* Match button font size */
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-block;
   margin: 10px 0;
+  font-family: Arial, sans-serif; /* Match button font family */
 }
 
 .contact-button:hover {
   background-color: #128C7E;
-  transform: scale(1.05);
+  transform: scale(1.05); /* Match button hover effect */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Match button hover shadow */
 }
 
 /* Mobile-specific improvements */
@@ -323,5 +327,18 @@
     background-color: rgba(255, 255, 255, 0.95) !important;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
     cursor: pointer !important;
+  }
+  
+  .seo-content h2 {
+    font-size: 1.4rem;
+  }
+  
+  .seo-content p, .why-choose-us li {
+    font-size: 1.1rem;
+  }
+  
+  .contact-button {
+    font-size: 1.3rem;
+    padding: 12px 20px;
   }
 }
