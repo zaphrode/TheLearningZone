@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import "./BlogPost.css";
 
@@ -295,32 +295,7 @@ function BlogPost() {
         }
     };
 
-    // Get the post based on the slug
     const post = blogPosts[slug];
-    
-    // Add this useEffect to handle cases where the page is refreshed
-    useEffect(() => {
-        // If the post doesn't exist and we're not in the process of navigating
-        if (!post && slug) {
-            console.log(`Post with slug "${slug}" not found`);
-        }
-    }, [post, slug]);
-    
-    // If post not found, show a 404 message
-    if (!post) {
-        return (
-            <div className="blog-post-container">
-                <button className="back-button" onClick={handleBackClick}>
-                    ← Back to Blog
-                </button>
-                <div className="blog-post-not-found">
-                    <h1>404 - Blog Post Not Found</h1>
-                    <p>Sorry, the blog post you're looking for doesn't exist.</p>
-                    <Link to="/blog" className="back-to-blog-button">Back to Blog</Link>
-                </div>
-            </div>
-        );
-    }
 
     // Function to render automatic rings in the background
     const renderAutomaticRings = () => {
@@ -329,6 +304,16 @@ function BlogPost() {
             <div key={index} className="automatic-ring" style={{ animationDelay: `${index * 0.5}s` }}></div>
         ));
     };
+
+    if (!post) {
+        return (
+            <div className="blog-post-not-found">
+                <h1>404 - Blog Post Not Found</h1>
+                <p>Sorry, the blog post you're looking for doesn't exist.</p>
+                <Link to="/blog" className="back-to-blog-button">Back to Blog</Link>
+            </div>
+        );
+    }
 
     return (
         <div className="blog-post-page">
