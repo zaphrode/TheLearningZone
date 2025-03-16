@@ -95,7 +95,7 @@ function HomePage() {
           Who Are We?
         </button>
         <button className="tutor-button blog-button" onClick={() => navigate("/blog")}>
-          Our Blog
+          Our Blogs
         </button>
         <button className="tutor-button terms-button" onClick={() => navigate("/terms-and-conditions")}>
           Terms & Conditions

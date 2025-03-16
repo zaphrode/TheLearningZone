@@ -10,13 +10,19 @@ function BlogPage() {
         navigate("/home");
     };
     
-    // Sample blog posts - you'll replace these with your actual content
+    // Function to format dates nicely
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    };
+    
+    // Sample blog posts with actual date objects
     const blogPosts = [
         { 
             id: 1,
             title: "How to Choose the Best Home Tutor in Singapore", 
             slug: "best-home-tutor", 
-            date: "March 16, 2024",
+            date: new Date(), // Current date (today)
             excerpt: "Finding the right tutor can make all the difference in your child's academic journey. Learn what qualities to look for and questions to ask.",
             image: "/blog-images/choosing-tutor.jpg"
         },
@@ -24,7 +30,7 @@ function BlogPage() {
             id: 2,
             title: "PSLE Preparation: Effective Strategies for Success", 
             slug: "psle-preparation-strategies", 
-            date: "March 12, 2024",
+            date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 days ago
             excerpt: "PSLE is a crucial milestone in your child's education. Discover proven strategies to help them prepare effectively and manage exam stress.",
             image: "/blog-images/psle-prep.jpg"
         },
@@ -32,13 +38,13 @@ function BlogPage() {
             id: 3,
             title: "IB vs A-Levels: Which Curriculum is Right for Your Child?", 
             slug: "ib-vs-a-levels", 
-            date: "March 10, 2024",
+            date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 days ago
             excerpt: "Comparing the International Baccalaureate and A-Levels programs to help you make an informed decision about your child's educational path.",
             image: "/blog-images/curriculum-choice.jpg"
         },
     ];
 
-    // Function to render automatic rings in the background (matching your existing design)
+    // Function to render automatic rings in the background
     const renderAutomaticRings = () => {
         const ringCount = 5;
         return Array.from({ length: ringCount }, (_, index) => (
@@ -56,7 +62,7 @@ function BlogPage() {
             {/* Automatic concentric rings */}
             <div className="automatic-rings">{renderAutomaticRings()}</div>
             
-            {/* WhatsApp Button - reusing your existing component */}
+            {/* WhatsApp Button */}
             <div className="whatsapp-container">
                 <img 
                     src="/whatsapp-logo2.png" 
@@ -74,7 +80,7 @@ function BlogPage() {
             
             <div className="blog-header">
                 <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
-                <h1 className="blog-title">The Learning Zone Blog</h1>
+                <h1 className="blog-title">The Learning Zone Blogs</h1>
                 <p className="blog-subtitle">Expert insights, study tips, and guidance to help students excel in Singapore</p>
             </div>
             
@@ -90,7 +96,7 @@ function BlogPage() {
                             <Link to={`/blog/${post.slug}`} className="blog-post-link">
                                 <h2 className="blog-post-title">{post.title}</h2>
                             </Link>
-                            <p className="blog-post-date">Published on {post.date}</p>
+                            <p className="blog-post-date">Published on {formatDate(post.date)}</p>
                             <p className="blog-post-excerpt">{post.excerpt}</p>
                             <Link to={`/blog/${post.slug}`} className="read-more-button">
                                 Read More →

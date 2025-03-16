@@ -11,11 +11,17 @@ function BlogPost() {
         navigate("/blog");
     };
     
-    // Sample blog post content - you'll replace with your actual content
+    // Function to format dates nicely
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    };
+    
+    // Sample blog post content with actual date objects
     const blogPosts = {
         "best-home-tutor": {
             title: "How to Choose the Best Home Tutor in Singapore",
-            date: "March 16, 2024",
+            date: new Date(), // Current date (today)
             author: "The Learning Zone Team",
             image: "/blog-images/choosing-tutor.jpg",
             content: `
@@ -47,7 +53,7 @@ function BlogPost() {
         },
         "psle-preparation-strategies": {
             title: "PSLE Preparation: Effective Strategies for Success",
-            date: "March 12, 2024",
+            date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 days ago
             author: "The Learning Zone Team",
             image: "/blog-images/psle-prep.jpg",
             content: `
@@ -80,7 +86,7 @@ function BlogPost() {
         },
         "ib-vs-a-levels": {
             title: "IB vs A-Levels: Which Curriculum is Right for Your Child?",
-            date: "March 10, 2024",
+            date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 days ago
             author: "The Learning Zone Team",
             image: "/blog-images/curriculum-choice.jpg",
             content: `
@@ -170,7 +176,7 @@ function BlogPost() {
             <div className="blog-post-container">
                 <h1 className="blog-post-title">{post.title}</h1>
                 <div className="blog-post-meta">
-                    <span className="blog-post-date">Published on {post.date}</span>
+                    <span className="blog-post-date">Published on {formatDate(post.date)}</span>
                     <span className="blog-post-author">by {post.author}</span>
                 </div>
                 
