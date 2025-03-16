@@ -28,6 +28,9 @@ function App() {
 
           {/* Blog Routes */}
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/best-home-tutor" element={<BlogPost />} />
+          <Route path="/blog/psle-preparation-strategies" element={<BlogPost />} />
+          <Route path="/blog/ib-vs-a-levels" element={<BlogPost />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
 
           {/* Other Routes */}
