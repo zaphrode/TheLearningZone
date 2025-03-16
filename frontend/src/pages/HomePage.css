@@ -2,16 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  justify-content: flex-start;
+  min-height: 100vh;
   padding: 20px;
   position: relative;
   overflow: hidden;
   background-color: #ffffff;
   cursor: pointer;
-  margin-top: 50px;
-  min-height: calc(100vh + 1500px); /* Increased further for better mobile scrolling */
-  margin-bottom: 1000px; /* Increased further for more bottom space */
+  margin-top: 0;
+  padding-top: env(safe-area-inset-top, 20px);
+  min-height: calc(100vh + 1500px);
+  margin-bottom: 1000px;
 }
 
 /* Center automatic concentric rings container absolutely */
@@ -58,8 +59,8 @@
 /* WhatsApp button container */
 .whatsapp-container {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: env(safe-area-inset-top, 10px);
+  right: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,19 +81,19 @@
 
 /* Bold contact text styling */
 .contact-agent {
-  font-size: 1.0rem;
+  font-size: 0.9rem;
   color: #2f2f2f;
   font-weight: bold;
   text-align: center;
   line-height: 1.2;
-  max-width: 120px;
+  max-width: 100px;
   word-wrap: break-word;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 5px;
   border-radius: 5px;
   position: fixed;
-  top: 150px; /* Moved higher from 200px */
-  right: 25px; /* Moved more to the right from 40px */
+  top: calc(env(safe-area-inset-top, 10px) + 50px);
+  right: 15px;
 }
 
 /* Styling for rings that appear on mouse clicks */
@@ -121,11 +122,13 @@
 
 .header {
   display: flex;
-  flex-direction: column; /* Change layout to column */
-  align-items: center; /* Center align title and subtitle */
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-bottom: 30px;
   z-index: 2;
+  width: 100%;
+  padding-top: 60px;
 }
 
 .subtitle {
@@ -138,10 +141,9 @@
 }
 
 .logo {
-  margin-top: 40px;
-  margin-bottom: -60px;
   width: 100px;
-  margin-right: 10px;
+  margin: 0 auto 10px;
+  display: block;
   /* Ensure no shadow, border, or background */
   box-shadow: none !important;
   border: none;
@@ -155,7 +157,8 @@
   font-weight: 700;
   font-family: Arial, sans-serif;
   z-index: 2;
-  margin-right: 50px;
+  margin: 0;
+  text-align: center;
 }
 
 .button-container {
@@ -272,12 +275,40 @@
 /* Mobile-specific improvements */
 @media (max-width: 768px) {
   .home-page {
-    min-height: calc(100vh + 2000px); /* Even more space on mobile */
+    min-height: calc(100vh + 2000px);
     margin-bottom: 1000px;
+    padding-top: env(safe-area-inset-top, 60px);
+    justify-content: flex-start;
+  }
+  
+  .header {
+    padding-top: 20px;
+    margin-top: 40px;
+  }
+  
+  .logo {
+    width: 80px;
+    margin-bottom: 5px;
+  }
+  
+  .title {
+    font-size: 2.4rem;
   }
   
   .seo-content {
     padding: 15px;
     margin-top: 40px;
+  }
+  
+  .whatsapp-container {
+    top: env(safe-area-inset-top, 10px);
+    right: 10px;
+  }
+  
+  .contact-agent {
+    top: calc(env(safe-area-inset-top, 10px) + 50px);
+    right: 15px;
+    font-size: 0.9rem;
+    max-width: 100px;
   }
 }
