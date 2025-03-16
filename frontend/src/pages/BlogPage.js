@@ -24,7 +24,7 @@ function BlogPage() {
             slug: "best-home-tutor", 
             date: new Date(), // Current date (today)
             excerpt: "Finding the right tutor can make all the difference in your child's academic journey. Learn what qualities to look for and questions to ask.",
-            image: "/blog-images/choosing-tutor.jpg"
+            image: "/tlz1.webp"
         },
         { 
             id: 2,
@@ -32,7 +32,7 @@ function BlogPage() {
             slug: "psle-preparation-strategies", 
             date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 days ago
             excerpt: "PSLE is a crucial milestone in your child's education. Discover proven strategies to help them prepare effectively and manage exam stress.",
-            image: "/blog-images/psle-prep.jpg"
+            image: "/tlz2.webp"
         },
         { 
             id: 3,
@@ -40,7 +40,7 @@ function BlogPage() {
             slug: "ib-vs-a-levels", 
             date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 days ago
             excerpt: "Comparing the International Baccalaureate and A-Levels programs to help you make an informed decision about your child's educational path.",
-            image: "/blog-images/curriculum-choice.jpg"
+            image: "/tlz3.webp"
         },
     ];
 

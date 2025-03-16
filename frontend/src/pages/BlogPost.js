@@ -23,7 +23,7 @@ function BlogPost() {
             title: "How to Choose the Best Home Tutor in Singapore",
             date: new Date(), // Current date (today)
             author: "The Learning Zone Team",
-            image: "/blog-images/choosing-tutor.jpg",
+            image: "/tlz1.webp",
             content: `
                 <p>Finding the right home tutor for your child is crucial for their academic success. With so many options available in Singapore, how do you make the best choice?</p>
                 
@@ -55,7 +55,7 @@ function BlogPost() {
             title: "PSLE Preparation: Effective Strategies for Success",
             date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 days ago
             author: "The Learning Zone Team",
-            image: "/blog-images/psle-prep.jpg",
+            image: "/tlz2.webp",
             content: `
                 <p>The Primary School Leaving Examination (PSLE) is a significant milestone in your child's educational journey. Here are proven strategies to help them prepare effectively and manage exam stress.</p>
                 
@@ -88,7 +88,7 @@ function BlogPost() {
             title: "IB vs A-Levels: Which Curriculum is Right for Your Child?",
             date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 days ago
             author: "The Learning Zone Team",
-            image: "/blog-images/curriculum-choice.jpg",
+            image: "/tlz3.webp",
             content: `
                 <p>Choosing between the International Baccalaureate (IB) and A-Levels is a significant decision that can impact your child's educational journey and university options. Let's compare these two popular curricula to help you make an informed choice.</p>
                 
