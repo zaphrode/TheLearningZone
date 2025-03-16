@@ -25,30 +25,51 @@ function BlogPost() {
             author: "The Learning Zone Team",
             image: "/tlz1.webp",
             content: `
-                <p>Finding the right home tutor for your child is crucial for their academic success. With so many options available in Singapore, how do you make the best choice?</p>
+                <p>Finding the right home tutor can make all the difference in your child's academic journey, especially with the rigorous demands of our local curriculum. The right educational support can transform a struggling student into a confident learner who excels in national examinations.</p>
                 
-                <h2>Understand Your Child's Needs</h2>
-                <p>Before beginning your search, assess what your child specifically needs help with. Is it a particular subject? Do they need help with exam preparation? Understanding these needs will help you find a tutor with the right expertise.</p>
+                <h2>Understand Your Child's Specific Academic Needs</h2>
+                <p>Before engaging a tutor, identify exactly where your child needs support. Is it the challenging problem sums in P5 Math? Perhaps it's the application questions in Upper Secondary Chemistry? Or maybe it's improving their composition skills for English Paper 1?</p>
+                <p>Different academic challenges require different teaching approaches. A child struggling with PSLE Science might need help with concept application and answering techniques for open-ended questions, while a JC1 student might need support with the leap in difficulty from O-Level to H2 Mathematics.</p>
                 
-                <h2>Check Qualifications and Experience</h2>
-                <p>Look for tutors with relevant qualifications and experience teaching the specific subjects your child needs help with. Experienced tutors will have developed effective teaching methods and understand common challenges students face.</p>
+                <h2>Verify Relevant Qualifications and Track Record</h2>
+                <p>Look beyond general teaching credentials. For primary levels, tutors familiar with the latest SEAB assessment objectives and PSLE scoring bands can provide targeted preparation. For secondary students, subject specialists who understand the nuances between Express, Normal (Academic), and IP streams offer more valuable guidance.</p>
+                <p>Ask potential tutors about their experience with students from schools similar to your child's. A tutor who has successfully guided students from schools like Raffles Institution, Hwa Chong, or Nanyang Girls' High will have different strengths than one experienced with neighbourhood schools. Neither is inherently better—what matters is the match with your child's needs.</p>
                 
-                <h2>Consider Teaching Style</h2>
-                <p>Every child learns differently. Some respond better to structured approaches, while others thrive with creative teaching methods. Discuss teaching styles with potential tutors to ensure they can adapt to your child's learning preferences.</p>
+                <h2>Assess Teaching Methodology</h2>
+                <p>The MOE curriculum has evolved significantly in recent years, moving away from rote learning toward conceptual understanding and application. Effective tutors should demonstrate how they develop both fundamental skills and higher-order thinking.</p>
+                <p>For Mathematics, ask how they approach heuristics and model drawing for problem-solving. For languages, inquire about their methods for improving comprehension and composition beyond formulaic templates. For Science, understand how they balance conceptual teaching with examination techniques for data-based questions.</p>
                 
-                <h2>Evaluate Communication Skills</h2>
-                <p>A good tutor should be able to explain complex concepts in simple terms. They should also communicate regularly with you about your child's progress and areas that need improvement.</p>
+                <h2>Consider Subject-Specific Expertise</h2>
+                <p>Different subjects at different levels require specialised knowledge:</p>
+                <ul>
+                    <li><strong>Primary Mathematics:</strong> Look for tutors who can teach model drawing, heuristics, and problem-solving strategies aligned with the latest PSLE requirements.</li>
+                    <li><strong>Secondary Sciences:</strong> Chemistry, Physics, and Biology tutors should be familiar with practical assessment requirements and the latest syllabus changes from SEAB.</li>
+                    <li><strong>JC subjects:</strong> H1/H2/H3 subjects require tutors with deep subject knowledge and familiarity with A-Level marking schemes.</li>
+                    <li><strong>Mother Tongue:</strong> For Higher Chinese, Tamil, or Malay, tutors should understand both the oral examination format and the written component requirements.</li>
+                </ul>
                 
-                <h2>Ask for References</h2>
-                <p>Don't hesitate to ask for references from parents of other students the tutor has taught. This can provide valuable insights into their teaching effectiveness and reliability.</p>
+                <h2>Evaluate Communication Style and Rapport</h2>
+                <p>Effective tutors can break down complex topics from the MOE syllabus into digestible parts. They should explain challenging concepts like Differentiation in Calculus or Organic Chemistry reactions in ways that resonate with your child's learning style.</p>
+                <p>Beyond academic instruction, good tutors provide regular updates on progress, highlighting improvements in areas like AQ (Application Questions) responses or Mathematical problem-solving approaches. They should be able to identify when your child is struggling with specific topics like Vectors or Redox Reactions before these gaps affect overall performance.</p>
                 
-                <h2>Trial Lessons</h2>
-                <p>Consider arranging a trial lesson to see how your child responds to the tutor. This gives you an opportunity to assess the tutor's teaching style and your child's comfort level before making a longer-term commitment.</p>
+                <h2>Request Concrete Evidence of Results</h2>
+                <p>Experienced tutors should be able to share specific examples of how they've helped students improve. Rather than vague claims, look for concrete evidence: "I helped a student move from AL6 to AL2 in PSLE Math" or "My O-Level Chemistry students improved from C5 to A2 within six months."</p>
+                <p>Ask about their familiarity with school-specific requirements. Different schools set papers with different emphases—RI preliminary papers often feature challenging application questions, while schools like Dunman High might emphasise certain topic areas differently.</p>
                 
-                <h2>How The Learning Zone Can Help</h2>
-                <p>At The Learning Zone, we carefully vet all our tutors to ensure they meet our high standards for qualifications, experience, and teaching ability. We match tutors to students based on specific needs, learning styles, and personalities to create the most effective learning partnership.</p>
+                <h2>Arrange a Diagnostic Session</h2>
+                <p>Before committing to regular lessons, arrange a diagnostic session where the tutor can assess your child's current level and identify specific gaps. A good tutor will quickly pinpoint whether your child struggles with Algebraic manipulation, Scientific concept application, or Comprehension inference questions.</p>
+                <p>During this session, observe how the tutor builds rapport and whether they can adapt their teaching to your child's responses. Do they merely provide answers, or do they guide your child through the thinking process? The latter approach builds long-term understanding essential for examinations like the N-Levels, O-Levels, or A-Levels.</p>
                 
-                <p>Contact us today to find the perfect tutor for your child!</p>
+                <h2>Consider Practical Logistics</h2>
+                <p>With the demanding schedules many students face—balancing CCAs, supplementary lessons, and regular schoolwork—practical considerations matter. Evaluate whether home-based tuition would save valuable time compared to travelling to a tuition centre in places like Bishan or Jurong East.</p>
+                <p>Discuss scheduling flexibility, particularly during examination periods when additional sessions before PSLE, EOYs, or prelims might be beneficial. A good tutor should be able to provide more intensive support during the crucial weeks before major examinations.</p>
+                
+                <h2>How The Learning Zone Matches Students with the Right Tutors</h2>
+                <p>At The Learning Zone, we carefully select tutors based on their proven track record with local curricula. Many of our tutors are former MOE teachers or graduates from our top universities who have excelled in the subjects they teach.</p>
+                <p>We match tutors to students based on specific academic needs, learning styles, and the particular school curriculum they follow. Our tutors are familiar with the latest syllabus requirements from SEAB and keep updated with changes to examination formats for all major national examinations.</p>
+                <p>We also provide regular progress updates using concrete metrics relevant to your child's academic goals, whether that's improving PSLE foundation scores or preparing for the rigour of JC promotional examinations.</p>
+                
+                <p>Contact us today to find a tutor who can truly make a difference in your child's academic journey!</p>
             `
         },
         "psle-preparation-strategies": {
@@ -57,31 +78,87 @@ function BlogPost() {
             author: "The Learning Zone Team",
             image: "/tlz2.webp",
             content: `
-                <p>The Primary School Leaving Examination (PSLE) is a significant milestone in your child's educational journey. Here are proven strategies to help them prepare effectively and manage exam stress.</p>
+                <p>The Primary School Leaving Examination represents the first major academic milestone in a student's journey. With the shift to the Achievement Level (AL) scoring system and increasingly application-based questions, preparation strategies must evolve beyond mere memorisation and drilling.</p>
                 
-                <h2>Start Early</h2>
-                <p>Begin preparation well in advance to allow sufficient time for thorough understanding of concepts and plenty of practice. Last-minute cramming is rarely effective and increases stress.</p>
+                <h2>Master the New AL Scoring System</h2>
+                <p>The AL scoring system (bands from AL1 to AL8) has transformed how students should approach their preparation. Unlike the previous T-score system, each subject is now assessed independently, making consistent performance across all four subjects crucial. A single weak subject can significantly impact secondary school options.</p>
+                <p>Familiarise yourself with the cut-off points for various secondary schools under the new system. Popular schools like Nanyang Girls' High School, Raffles Institution, and Methodist Girls' School typically require scores in the 6-8 range (lower is better), while the cut-off for schools like Crescent Girls' School or Catholic High School might be slightly higher.</p>
                 
-                <h2>Create a Structured Study Plan</h2>
-                <p>Develop a realistic study schedule that covers all subjects and topics. Break down the syllabus into manageable chunks and allocate time for revision and practice papers.</p>
+                <h2>Develop Subject-Specific Strategies</h2>
                 
-                <h2>Focus on Understanding, Not Memorisation</h2>
-                <p>Encourage your child to understand concepts rather than memorise facts. This deeper understanding will help them apply knowledge to different types of questions.</p>
+                <h3>English Language</h3>
+                <p>Beyond basic grammar and vocabulary, focus on the nuanced requirements of Paper 1 (Writing) and Paper 2 (Comprehension):</p>
+                <ul>
+                    <li><strong>Situational Writing:</strong> Practice the various formats (email, letter, report) with attention to purpose, audience, and context.</li>
+                    <li><strong>Continuous Writing:</strong> Develop strong narrative techniques and descriptive vocabulary for the four main composition types (narrative, personal recount, expository, argumentative).</li>
+                    <li><strong>Comprehension:</strong> Work specifically on inference questions and vocabulary-in-context questions, which students typically find challenging.</li>
+                    <li><strong>Oral Communication:</strong> Prepare for the Reading Aloud and Stimulus-based Conversation components by developing clear articulation and the ability to express personal viewpoints.</li>
+                </ul>
                 
-                <h2>Practise Past Papers</h2>
-                <p>Regularly practising past PSLE papers helps familiarise your child with the exam format and types of questions. It also builds time management skills and confidence.</p>
+                <h3>Mathematics</h3>
+                <p>The PSLE Mathematics paper has evolved to include more heuristic problem-solving questions that test conceptual understanding:</p>
+                <ul>
+                    <li><strong>Heuristics:</strong> Master strategies like working backwards, using models, look for patterns, and making systematic lists.</li>
+                    <li><strong>Model Drawing:</strong> Practice the bar model method for solving complex word problems involving ratios, fractions, and percentages.</li>
+                    <li><strong>Non-routine Problems:</strong> Expose your child to challenging questions that require multiple concepts and steps to solve.</li>
+                    <li><strong>Time Management:</strong> Develop strategies for the two booklets, ensuring sufficient time for the more challenging Paper 2 questions.</li>
+                </ul>
                 
-                <h2>Identify and Address Weak Areas</h2>
-                <p>Regularly assess your child's progress to identify areas that need more attention. Dedicate extra time to these subjects or topics.</p>
+                <h3>Science</h3>
+                <p>PSLE Science tests both content knowledge and process skills, with open-ended questions forming a significant portion of the paper:</p>
+                <ul>
+                    <li><strong>Experimental Design:</strong> Understand fair testing and variable control in scientific investigations.</li>
+                    <li><strong>Data Analysis:</strong> Practice interpreting graphs, tables, and diagrams to draw conclusions.</li>
+                    <li><strong>Open-ended Responses:</strong> Master the technique of providing complete answers with scientific reasoning, particularly for "explain" and "why" questions.</li>
+                    <li><strong>Key Concepts:</strong> Focus on commonly tested topics like energy conversions, forces, plant and animal systems, and materials.</li>
+                </ul>
                 
-                <h2>Ensure Balanced Lifestyle</h2>
-                <p>Maintain a balance between study and relaxation. Ensure your child gets enough sleep, regular exercise, and healthy meals to support optimal brain function.</p>
+                <h3>Mother Tongue</h3>
+                <p>Whether it's Chinese, Malay, or Tamil, effective preparation requires regular exposure and practice:</p>
+                <ul>
+                    <li><strong>Comprehension:</strong> Develop strategies for both literal and inferential understanding of passages.</li>
+                    <li><strong>Composition:</strong> Build a bank of useful phrases and practice planning structured narratives.</li>
+                    <li><strong>Oral:</strong> Improve fluency through regular reading practice and conversation in the language.</li>
+                    <li><strong>Higher Mother Tongue:</strong> If applicable, prepare for the additional components and higher language demands.</li>
+                </ul>
                 
-                <h2>Manage Exam Anxiety</h2>
-                <p>Teach your child stress management techniques such as deep breathing, positive visualisation, and mindfulness. Remind them that their worth is not determined by exam results.</p>
+                <h2>Utilise Targeted Resources</h2>
+                <p>Not all assessment books are created equal. Select resources that align with the current PSLE format:</p>
+                <ul>
+                    <li><strong>TopicalTest Papers:</strong> Use these for initial mastery of individual topics before attempting full papers.</li>
+                    <li><strong>Preliminary Papers:</strong> Papers from schools known for their rigorous standards (like Nanyang Primary, Rosyth School, or Catholic High Primary) provide excellent practice.</li>
+                    <li><strong>SEAB Sample Papers:</strong> These official resources give insight into the expected standard and question types.</li>
+                    <li><strong>Digital Resources:</strong> Platforms like Student Learning Space (SLS) and approved educational websites offer interactive practice aligned with the latest syllabus.</li>
+                </ul>
                 
-                <h2>How The Learning Zone Can Support PSLE Preparation</h2>
-                <p>Our experienced PSLE tutors provide targeted support for all subjects. They help students master key concepts, develop effective exam strategies, and build confidence. Contact us to learn how we can help your child achieve their best in the PSLE!</p>
+                <h2>Implement Strategic Practice</h2>
+                <p>Quality trumps quantity when it comes to examination preparation:</p>
+                <ul>
+                    <li><strong>Timed Practice:</strong> Gradually introduce time constraints to build examination stamina and pace management.</li>
+                    <li><strong>Error Analysis:</strong> Maintain an error log to identify pattern mistakes and conceptual misunderstandings.</li>
+                    <li><strong>Spaced Repetition:</strong> Revisit challenging topics at increasing intervals to strengthen long-term retention.</li>
+                    <li><strong>Mock Examinations:</strong> Simulate full examination conditions, including all papers and time constraints, at least a month before the actual PSLE.</li>
+                </ul>
+                
+                <h2>Manage Examination Anxiety</h2>
+                <p>The pressure surrounding PSLE can affect even well-prepared students:</p>
+                <ul>
+                    <li><strong>Develop Routines:</strong> Establish consistent study and rest patterns that can be maintained through the examination period.</li>
+                    <li><strong>Teach Calming Techniques:</strong> Simple breathing exercises and positive self-talk can help manage in-the-moment anxiety.</li>
+                    <li><strong>Maintain Perspective:</strong> Remind your child that while PSLE is important, it's just one of many assessments in their academic journey.</li>
+                    <li><strong>Practice Paper Navigation:</strong> Teach strategies like attempting easier questions first and managing time per mark to build confidence during the actual examination.</li>
+                </ul>
+                
+                <h2>How The Learning Zone Supports PSLE Preparation</h2>
+                <p>Our PSLE preparation programme addresses both content mastery and examination techniques:</p>
+                <ul>
+                    <li><strong>Diagnostic Assessment:</strong> We identify specific areas for improvement across all four subjects.</li>
+                    <li><strong>Customised Learning Plans:</strong> Our tutors develop targeted strategies based on your child's learning profile and current achievement levels.</li>
+                    <li><strong>Examination Techniques:</strong> We teach specific approaches for different question types, from model drawing in Mathematics to structured responses in Science.</li>
+                    <li><strong>Regular Mock Assessments:</strong> We provide realistic practice with detailed feedback to track progress and refine examination strategies.</li>
+                </ul>
+                
+                <p>Contact us to learn how we can help your child achieve their best possible PSLE results and secure a place in their preferred secondary school!</p>
             `
         },
         "ib-vs-a-levels": {
@@ -90,39 +167,130 @@ function BlogPost() {
             author: "The Learning Zone Team",
             image: "/tlz3.webp",
             content: `
-                <p>Choosing between the International Baccalaureate (IB) and A-Levels is a significant decision that can impact your child's educational journey and university options. Let's compare these two popular curricula to help you make an informed choice.</p>
+                <p>Choosing between the International Baccalaureate Diploma Programme (IBDP) and Cambridge GCE A-Levels represents a significant decision that shapes not only the next two years of education but potentially university pathways and beyond. Each curriculum offers distinct advantages that may align differently with your child's learning style, academic strengths, and future aspirations.</p>
                 
-                <h2>Curriculum Structure</h2>
-                <p><strong>IB:</strong> The IB Diploma Programme requires students to study six subjects from different subject groups, complete the Theory of Knowledge course, write an Extended Essay, and participate in Creativity, Activity, Service (CAS).</p>
-                <p><strong>A-Levels:</strong> Students typically select three or four subjects to study in depth, allowing for greater specialisation in areas of interest or strength.</p>
+                <h2>Curriculum Structure and Subject Selection</h2>
                 
-                <h2>Assessment Approach</h2>
-                <p><strong>IB:</strong> Uses a combination of internal assessments (coursework, oral examinations, etc.) and final examinations. The assessment is more continuous throughout the two years.</p>
-                <p><strong>A-Levels:</strong> Primarily assessed through final examinations at the end of the two-year course, though some subjects include coursework components.</p>
-                
-                <h2>Teaching Philosophy</h2>
-                <p><strong>IB:</strong> Emphasises critical thinking, research skills, and making connections between subjects. It aims to develop well-rounded individuals with a global perspective.</p>
-                <p><strong>A-Levels:</strong> Focuses on in-depth knowledge and analytical skills within specific subject areas, preparing students for specialised university courses.</p>
-                
-                <h2>Workload and Time Management</h2>
-                <p><strong>IB:</strong> Generally considered more demanding due to its breadth of requirements. Students need excellent time management skills to balance the various components.</p>
-                <p><strong>A-Levels:</strong> More focused workload, but still requires significant independent study and depth of understanding.</p>
-                
-                <h2>University Recognition</h2>
-                <p>Both qualifications are widely recognised by universities worldwide. The IB may offer broader options internationally, while A-Levels are particularly well-regarded by UK universities.</p>
-                
-                <h2>Which is Right for Your Child?</h2>
-                <p>Consider your child's:</p>
+                <h3>A-Levels</h3>
+                <p>The A-Level curriculum typically involves selecting three or four subjects to study in depth over two years. Students at institutions like Raffles Institution, Hwa Chong Institution, or Victoria Junior College usually take:</p>
                 <ul>
-                    <li>Learning style and preferences</li>
-                    <li>Academic strengths and interests</li>
-                    <li>Future university and career plans</li>
-                    <li>Time management abilities</li>
-                    <li>Need for breadth vs. depth in education</li>
+                    <li>Three H2 subjects (major subjects with greater depth and breadth)</li>
+                    <li>One H1 subject (typically General Paper)</li>
+                    <li>Project Work (completed in JC1)</li>
+                    <li>Mother Tongue (if requirements haven't been fulfilled at O-Levels)</li>
+                </ul>
+                <p>Popular subject combinations include PCME (Physics, Chemistry, Mathematics, Economics), BCME (Biology, Chemistry, Mathematics, Economics), or arts-focused combinations with subjects like Literature, History, and Economics.</p>
+                
+                <h3>IB Diploma</h3>
+                <p>The IBDP, offered at schools like Anglo-Chinese School (Independent), St. Joseph's Institution, and School of the Arts, requires students to study six subjects from different subject groups:</p>
+                <ul>
+                    <li>Three subjects at Higher Level (HL)</li>
+                    <li>Three subjects at Standard Level (SL)</li>
+                    <li>Theory of Knowledge (TOK) course</li>
+                    <li>Extended Essay (EE) - a 4,000-word research paper</li>
+                    <li>Creativity, Activity, Service (CAS) - extracurricular programme</li>
+                </ul>
+                <p>This structure ensures breadth across languages, humanities, sciences, mathematics, and arts, while still allowing some specialisation through HL subjects.</p>
+                
+                <h2>Assessment Approaches</h2>
+                
+                <h3>A-Levels</h3>
+                <p>The A-Level assessment model is predominantly examination-based:</p>
+                <ul>
+                    <li><strong>Examination Focus:</strong> Most subjects are assessed through final examinations at the end of JC2, with some having practical components or coursework.</li>
+                    <li><strong>Grading System:</strong> Results are reported on an A to E scale, with distinctions possible in H1 General Paper and H3 subjects.</li>
+                    <li><strong>University Admission Points:</strong> Calculated using the University Admission Score (UAS) system, which converts grades to points (A=10 points for H2, A=5 points for H1).</li>
+                    <li><strong>Examination Periods:</strong> Major examinations occur in October/November, with preliminary examinations typically held in August/September.</li>
                 </ul>
                 
-                <h2>How The Learning Zone Can Help</h2>
-                <p>Our tutors are experienced in both IB and A-Level curricula and can provide guidance and support regardless of which path your child chooses. We offer specialised tutoring to help students excel in either curriculum. Contact us to discuss your child's specific needs!</p>
+                <h3>IB Diploma</h3>
+                <p>The IBDP uses a more balanced assessment approach:</p>
+                <ul>
+                    <li><strong>Internal Assessments:</strong> 20-30% of the final grade comes from coursework assessed by teachers and moderated externally.</li>
+                    <li><strong>External Examinations:</strong> 70-80% comes from final examinations held in May or November.</li>
+                    <li><strong>Grading System:</strong> Each subject is graded from 1-7, with additional points (up to 3) awarded for TOK and EE performance.</li>
+                    <li><strong>Total Score:</strong> Maximum of 45 points (42 from six subjects plus 3 bonus points).</li>
+                    <li><strong>Continuous Assessment:</strong> Work is assessed throughout the two-year programme, not just in final examinations.</li>
+                </ul>
+                
+                <h2>Teaching and Learning Approaches</h2>
+                
+                <h3>A-Levels</h3>
+                <p>The A-Level curriculum tends to emphasise:</p>
+                <ul>
+                    <li><strong>Subject Specialisation:</strong> Deep knowledge within chosen disciplines.</li>
+                    <li><strong>Analytical Thinking:</strong> Developing critical analysis within subject boundaries.</li>
+                    <li><strong>Examination Techniques:</strong> Mastering specific question types and formats.</li>
+                    <li><strong>Content Mastery:</strong> Thorough understanding of prescribed syllabus content.</li>
+                </ul>
+                <p>Teaching methods in JCs often include lecture-tutorial systems, with content delivery in larger groups followed by smaller tutorial discussions. Independent study is expected but within clearly defined syllabus parameters.</p>
+                
+                <h3>IB Diploma</h3>
+                <p>The IBDP emphasises:</p>
+                <ul>
+                    <li><strong>Interdisciplinary Connections:</strong> Making links between different subject areas.</li>
+                    <li><strong>Research Skills:</strong> Developed through the Extended Essay and internal assessments.</li>
+                    <li><strong>Critical Thinking:</strong> Encouraged through Theory of Knowledge.</li>
+                    <li><strong>Global Perspective:</strong> International mindedness is embedded throughout the curriculum.</li>
+                    <li><strong>Balanced Development:</strong> Academic, physical, and social growth through CAS.</li>
+                </ul>
+                <p>Teaching approaches tend to be more discussion-based, with an emphasis on inquiry and student-led learning. Classes are typically smaller, allowing for more personalised attention.</p>
+                
+                <h2>University Recognition and Pathways</h2>
+                
+                <h3>A-Levels</h3>
+                <p>A-Levels have particular advantages for:</p>
+                <ul>
+                    <li><strong>Local Universities:</strong> NUS, NTU, and SMU are very familiar with the A-Level system and have clear cut-off points for different courses.</li>
+                    <li><strong>UK Universities:</strong> The British university system is designed around A-Level qualifications, with specific grade requirements for different courses.</li>
+                    <li><strong>Specialised Courses:</strong> Medicine, Law, and Engineering at prestigious universities often have specific subject requirements that align well with A-Level specialisation.</li>
+                    <li><strong>Scholarship Applications:</strong> Many local scholarships have traditionally been geared toward A-Level graduates.</li>
+                </ul>
+                
+                <h3>IB Diploma</h3>
+                <p>The IB Diploma offers advantages for:</p>
+                <ul>
+                    <li><strong>International Universities:</strong> Widely recognised across North America, Europe, Australia, and beyond.</li>
+                    <li><strong>Liberal Arts Colleges:</strong> The breadth of the IB curriculum aligns well with the philosophy of liberal arts education.</li>
+                    <li><strong>Competitive US Universities:</strong> The holistic nature of the IB programme is valued by selective institutions like Ivy League schools.</li>
+                    <li><strong>Research-Focused Programmes:</strong> The research skills developed through the Extended Essay transfer well to university-level research.</li>
+                </ul>
+                <p>Both qualifications are accepted by all local universities, with conversion tables to equate IB scores to A-Level points for admission purposes.</p>
+                
+                <h2>Student Suitability Factors</h2>
+                
+                <h3>A-Levels May Suit Students Who:</h3>
+                <ul>
+                    <li>Have clear strengths in specific subject areas</li>
+                    <li>Perform well under examination conditions</li>
+                    <li>Prefer depth over breadth in their studies</li>
+                    <li>Have definite career paths in mind that require specific subject expertise</li>
+                    <li>Thrive in structured learning environments with clear expectations</li>
+                    <li>Are targeting competitive courses at local universities or UK institutions</li>
+                </ul>
+                
+                <h3>IB Diploma May Suit Students Who:</h3>
+                <ul>
+                    <li>Have balanced abilities across different subject areas</li>
+                    <li>Enjoy research and independent learning</li>
+                    <li>Prefer continuous assessment over high-stakes examinations</li>
+                    <li>Are interested in making connections between different disciplines</li>
+                    <li>Value developing a global perspective</li>
+                    <li>Are considering international university options</li>
+                    <li>Enjoy participating in extracurricular activities as part of their educational experience</li>
+                </ul>
+                
+                <h2>How The Learning Zone Supports Both Pathways</h2>
+                <p>Our tutors have extensive experience with both curricula and can provide:</p>
+                <ul>
+                    <li><strong>Subject Expertise:</strong> Specialised tutoring for A-Level H1/H2 subjects and IB HL/SL courses.</li>
+                    <li><strong>Examination Preparation:</strong> Targeted strategies for both assessment systems.</li>
+                    <li><strong>Extended Essay and Project Work Support:</strong> Guidance on research methodologies and academic writing.</li>
+                    <li><strong>University Application Advice:</strong> Help with personal statements, interviews, and course selection.</li>
+                    <li><strong>Curriculum Transition Support:</strong> Assistance for students moving from O-Levels or IGCSE to either A-Levels or IB.</li>
+                </ul>
+                
+                <p>Contact us to discuss how we can support your child's pre-university education, whether they choose the A-Level or IB pathway!</p>
             `
         }
     };
