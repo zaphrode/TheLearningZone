@@ -298,15 +298,29 @@
   }
   
   .whatsapp-container {
-    top: env(safe-area-inset-top, 10px);
-    right: 10px;
+    position: fixed !important;
+    top: env(safe-area-inset-top, 10px) !important;
+    right: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    z-index: 999 !important; /* Higher z-index to ensure visibility */
+    width: auto !important; /* Ensure container sizes to content */
+  }
+  
+  .whatsapp-logo {
+    width: 40px !important;
+    height: 40px !important;
+    margin-bottom: 5px !important; /* Add space below logo */
   }
   
   .contact-agent {
-    position: fixed;
-    top: calc(env(safe-area-inset-top, 10px) + 50px);
-    right: 15px;
-    font-size: 0.9rem;
-    max-width: 100px;
+    position: static !important; /* Override any fixed positioning */
+    margin-top: 5px !important;
+    font-size: 0.8rem !important; /* Slightly smaller font for mobile */
+    max-width: 80px !important; /* Narrower text area */
+    padding: 4px !important;
+    background-color: rgba(255, 255, 255, 0.95) !important; /* More opaque background */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important; /* Add shadow for visibility */
   }
 }
