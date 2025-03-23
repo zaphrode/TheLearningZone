@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./BlogPost.css";
 
 function BlogPost() {
@@ -295,7 +295,17 @@ function BlogPost() {
         }
     };
 
-    const post = blogPosts[slug];
+    // Redirect if blog post doesn't exist - this handles the refresh case
+    useEffect(() => {
+        if (!blogPosts[slug]) {
+            navigate("/blog", { replace: true });
+        }
+    }, [slug, navigate]);
+
+    // If blog post doesn't exist, don't render anything while redirecting
+    if (!blogPosts[slug]) {
+        return null;
+    }
 
     // Function to render automatic rings in the background
     const renderAutomaticRings = () => {
@@ -305,70 +315,48 @@ function BlogPost() {
         ));
     };
 
-    if (!post) {
-        return (
-            <div className="blog-post-not-found">
-                <h1>404 - Blog Post Not Found</h1>
-                <p>Sorry, the blog post you're looking for doesn't exist.</p>
-                <Link to="/blog" className="back-to-blog-button">Back to Blog</Link>
-            </div>
-        );
-    }
-
     return (
-        <div className="blog-post-page">
+        <div className="blog-post">
             {/* Back Button */}
             <button className="back-button" onClick={handleBackClick}>
-                ← Back to Blog
+                ← Back
             </button>
             
             {/* Automatic concentric rings */}
             <div className="automatic-rings">{renderAutomaticRings()}</div>
             
             {/* WhatsApp Button */}
-            <div className="whatsapp-container">
-                <img 
-                    src="/whatsapp-logo2.png" 
-                    alt="WhatsApp" 
-                    className="whatsapp-logo" 
-                    onClick={() => window.open("https://wa.me/6591684367", "_blank")}
-                />
-                <div 
-                    className="contact-agent"
-                    onClick={() => window.open("https://wa.me/6591684367", "_blank")}
-                >
-                    Click here to contact an agent!
-                </div>
+            <div className="whatsapp-button" onClick={() => window.open("https://wa.me/6591684367", "_blank")}>
+                <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
             </div>
             
+            {/* Main Content */}
             <div className="blog-post-container">
-                <h1 className="blog-post-title">{post.title}</h1>
-                <div className="blog-post-meta">
-                    <span className="blog-post-date">Published on {formatDate(post.date)}</span>
-                    <span className="blog-post-author">by {post.author}</span>
+                <div className="blog-post-header">
+                    <h1 className="blog-post-title">{blogPosts[slug].title}</h1>
+                    <p className="blog-post-meta">
+                        By {blogPosts[slug].author} | {formatDate(blogPosts[slug].date)}
+                    </p>
                 </div>
                 
-                {post.image && (
-                    <div className="blog-post-feature-image">
-                        <img src={post.image} alt={post.title} />
+                {blogPosts[slug].image && (
+                    <div className="blog-post-featured-image">
+                        <img src={blogPosts[slug].image} alt={blogPosts[slug].title} />
                     </div>
                 )}
                 
-                <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.content }}></div>
+                <div 
+                    className="blog-post-content"
+                    dangerouslySetInnerHTML={{ __html: blogPosts[slug].content }}
+                ></div>
                 
-                <div className="blog-post-cta">
-                    <h3>Need help with your child's education?</h3>
-                    <p>Our experienced tutors are ready to provide personalized support.</p>
+                <div className="blog-post-navigation">
                     <button 
-                        className="contact-button"
-                        onClick={() => window.open("https://wa.me/6591684367", "_blank")}
+                        className="blog-post-nav-button"
+                        onClick={handleBackClick}
                     >
-                        Contact Us on WhatsApp 📲
+                        ← Back to All Blog Posts
                     </button>
-                </div>
-                
-                <div className="blog-navigation">
-                    <Link to="/blog" className="back-to-blog-button">← Back to All Articles</Link>
                 </div>
             </div>
         </div>

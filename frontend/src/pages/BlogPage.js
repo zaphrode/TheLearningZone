@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./BlogPage.css";
 
 function BlogPage() {
@@ -43,6 +43,11 @@ function BlogPage() {
             image: "/tlz3.webp"
         },
     ];
+
+    // Navigate to blog post
+    const navigateToBlogPost = (slug) => {
+        navigate(`/blog/${slug}`);
+    };
 
     // Function to render automatic rings in the background
     const renderAutomaticRings = () => {
@@ -89,18 +94,30 @@ function BlogPage() {
                     <div className="blog-post-card" key={post.id}>
                         {post.image && (
                             <div className="blog-post-image">
-                                <img src={post.image} alt={post.title} />
+                                <img 
+                                    src={post.image} 
+                                    alt={post.title} 
+                                    onClick={() => navigateToBlogPost(post.slug)}
+                                    style={{ cursor: 'pointer' }}
+                                />
                             </div>
                         )}
                         <div className="blog-post-content">
-                            <Link to={`/blog/${post.slug}`} className="blog-post-link">
-                                <h2 className="blog-post-title">{post.title}</h2>
-                            </Link>
+                            <h2 
+                                className="blog-post-title" 
+                                onClick={() => navigateToBlogPost(post.slug)}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                {post.title}
+                            </h2>
                             <p className="blog-post-date">Published on {formatDate(post.date)}</p>
                             <p className="blog-post-excerpt">{post.excerpt}</p>
-                            <Link to={`/blog/${post.slug}`} className="read-more-button">
+                            <button 
+                                className="read-more-button"
+                                onClick={() => navigateToBlogPost(post.slug)}
+                            >
                                 Read More →
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 ))}
