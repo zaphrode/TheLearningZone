@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import "./BlogPage.css";
 
 function BlogPage() {
@@ -54,6 +55,42 @@ function BlogPage() {
 
     return (
         <div className="blog-page">
+            <Helmet>
+                <title>Singapore Home Tuition Blog | Private Tutors | The Learning Zone</title>
+                <meta name="description" content="Explore The Learning Zone's blog for expert insights on 1-1 private home tuition in Singapore, finding the best home tutors, and educational strategies for academic success." />
+                <meta name="keywords" content="1-1 home tuition Singapore, private tuition Singapore, private tutors Singapore, home tutors Singapore, PSLE preparation, O-Level tuition, A-Level tuition" />
+                <link rel="canonical" href="https://the-learning-zone.vercel.app/blog" />
+                {/* Open Graph / Social Media */}
+                <meta property="og:title" content="Singapore Home Tuition Blog | Private Tutors | The Learning Zone" />
+                <meta property="og:description" content="Explore our blog for expert insights on 1-1 private home tuition in Singapore, finding the best home tutors, and educational strategies." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://the-learning-zone.vercel.app/blog" />
+                <meta property="og:image" content="https://the-learning-zone.vercel.app/TLZ.jpeg" />
+                {/* Structured Data */}
+                <script type="application/ld+json">{`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Blog",
+                        "headline": "Singapore Home Tuition Blog | The Learning Zone",
+                        "description": "Expert insights on 1-1 private home tuition in Singapore, finding the best home tutors, and educational strategies for academic success.",
+                        "keywords": "1-1 home tuition Singapore, private tuition Singapore, private tutors Singapore, home tutors Singapore",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "The Learning Zone",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://the-learning-zone.vercel.app/TLZ.jpeg"
+                            }
+                        },
+                        "url": "https://the-learning-zone.vercel.app/blog",
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": "https://the-learning-zone.vercel.app/blog"
+                        }
+                    }
+                `}</script>
+            </Helmet>
+            
             {/* Back Button */}
             <button className="back-button" onClick={handleBackClick}>
                 ← Back
@@ -80,13 +117,13 @@ function BlogPage() {
             
             <div className="blog-header">
                 <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
-                <h1 className="blog-title">The Learning Zone Blogs</h1>
-                <p className="blog-subtitle">Expert insights, study tips, and guidance to help students excel in Singapore</p>
+                <h1 className="blog-title">The Learning Zone: Singapore's Home Tuition Blog</h1>
+                <p className="blog-subtitle">Expert insights, study tips, and guidance from Singapore's leading private tutors</p>
             </div>
             
             <div className="blog-posts-container">
                 {blogPosts.map((post) => (
-                    <div className="blog-post-card" key={post.id}>
+                    <article className="blog-post-card" key={post.id}>
                         {post.image && (
                             <div className="blog-post-image">
                                 <img src={post.image} alt={post.title} />
@@ -102,7 +139,7 @@ function BlogPage() {
                                 Read More →
                             </Link>
                         </div>
-                    </div>
+                    </article>
                 ))}
             </div>
         </div>

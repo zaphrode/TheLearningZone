@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import "./BlogPost.css";
 
 function BlogPost() {
@@ -24,6 +25,7 @@ function BlogPost() {
             date: new Date(), // Current date (today)
             author: "The Learning Zone Team",
             image: "/tlz1.webp",
+            keywords: "1-1 home tuition Singapore, home tutors Singapore, private tutors Singapore, best home tutor",
             content: `
                 <p>Finding the right home tutor can make all the difference in your child's academic journey, especially with the rigorous demands of our local curriculum. The right educational support can transform a struggling student into a confident learner who excels in national examinations.</p>
                 
@@ -77,6 +79,7 @@ function BlogPost() {
             date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 days ago
             author: "The Learning Zone Team",
             image: "/tlz2.webp",
+            keywords: "private tuition Singapore, PSLE tutors, 1-1 home tuition Singapore, private tutors Singapore",
             content: `
                 <p>The Primary School Leaving Examination represents the first major academic milestone in a student's journey. With the shift to the Achievement Level (AL) scoring system and increasingly application-based questions, preparation strategies must evolve beyond mere memorisation and drilling.</p>
                 
@@ -166,6 +169,7 @@ function BlogPost() {
             date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 days ago
             author: "The Learning Zone Team",
             image: "/tlz3.webp",
+            keywords: "IB tutors Singapore, A-level private tuition, home tutors Singapore, private tutors Singapore",
             content: `
                 <p>Choosing between the International Baccalaureate Diploma Programme (IBDP) and Cambridge GCE A-Levels represents a significant decision that shapes not only the next two years of education but potentially university pathways and beyond. Each curriculum offers distinct advantages that may align differently with your child's learning style, academic strengths, and future aspirations.</p>
                 
@@ -305,9 +309,24 @@ function BlogPost() {
         ));
     };
 
+    // Extract the first paragraph from content for meta description
+    const getMetaDescription = (content) => {
+        if (!content) return "";
+        const firstParagraph = content.match(/<p>(.*?)<\/p>/);
+        if (firstParagraph && firstParagraph[1]) {
+            // Remove HTML tags for description
+            return firstParagraph[1].replace(/<\/?[^>]+(>|$)/g, "").substring(0, 160);
+        }
+        return "";
+    };
+
     if (!post) {
         return (
             <div className="blog-post-not-found">
+                <Helmet>
+                    <title>Blog Post Not Found | The Learning Zone Singapore</title>
+                    <meta name="robots" content="noindex, nofollow" />
+                </Helmet>
                 <h1>404 - Blog Post Not Found</h1>
                 <p>Sorry, the blog post you're looking for doesn't exist.</p>
                 <Link to="/blog" className="back-to-blog-button">Back to Blog</Link>
@@ -315,8 +334,73 @@ function BlogPost() {
         );
     }
 
+    const metaDescription = getMetaDescription(post.content);
+    const fullUrl = `https://the-learning-zone.vercel.app/blog/${slug}`;
+    const imageUrl = `https://the-learning-zone.vercel.app${post.image}`;
+    
+    // Enhanced meta description with target keywords
+    const enhancedDescription = `Learn about ${post.title.toLowerCase()} from Singapore's leading 1-1 home tuition agency. Find qualified private tutors in Singapore for personalized learning and academic excellence.`;
+
     return (
         <div className="blog-post-page">
+            <Helmet>
+                <title>{post.title} | Private Home Tuition Singapore</title>
+                <meta name="description" content={enhancedDescription} />
+                <meta name="keywords" content={post.keywords} />
+                <meta name="author" content={post.author} />
+                <link rel="canonical" href={fullUrl} />
+                
+                {/* Open Graph / Social Media */}
+                <meta property="og:title" content={`${post.title} | Home Tuition Singapore`} />
+                <meta property="og:description" content={enhancedDescription} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={fullUrl} />
+                <meta property="og:image" content={imageUrl} />
+                <meta property="article:published_time" content={post.date.toISOString()} />
+                <meta property="article:author" content={post.author} />
+                <meta property="article:section" content="Education" />
+                <meta property="article:tag" content="1-1 home tuition Singapore" />
+                <meta property="article:tag" content="private tutors Singapore" />
+                <meta property="article:tag" content="home tutors Singapore" />
+                <meta property="article:tag" content="private tuition Singapore" />
+                
+                {/* Twitter Card */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${post.title} | Home Tuition Singapore`} />
+                <meta name="twitter:description" content={enhancedDescription} />
+                <meta name="twitter:image" content={imageUrl} />
+
+                {/* Structured Data for BlogPosting */}
+                <script type="application/ld+json">{`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "BlogPosting",
+                        "headline": "${post.title}",
+                        "image": "${imageUrl}",
+                        "datePublished": "${post.date.toISOString()}",
+                        "dateModified": "${post.date.toISOString()}",
+                        "author": {
+                            "@type": "Organization",
+                            "name": "${post.author}"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "The Learning Zone - Singapore Home Tuition",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://the-learning-zone.vercel.app/TLZ.jpeg"
+                            }
+                        },
+                        "description": "${enhancedDescription}",
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": "${fullUrl}"
+                        },
+                        "keywords": "${post.keywords}"
+                    }
+                `}</script>
+            </Helmet>
+            
             {/* Back Button */}
             <button className="back-button" onClick={handleBackClick}>
                 ← Back to Blog
@@ -341,12 +425,14 @@ function BlogPost() {
                 </div>
             </div>
             
-            <div className="blog-post-container">
-                <h1 className="blog-post-title">{post.title}</h1>
-                <div className="blog-post-meta">
-                    <span className="blog-post-date">Published on {formatDate(post.date)}</span>
-                    <span className="blog-post-author">by {post.author}</span>
-                </div>
+            <article className="blog-post-container">
+                <header>
+                    <h1 className="blog-post-title">{post.title}</h1>
+                    <div className="blog-post-meta">
+                        <span className="blog-post-date">Published on {formatDate(post.date)}</span>
+                        <span className="blog-post-author">by {post.author}</span>
+                    </div>
+                </header>
                 
                 {post.image && (
                     <div className="blog-post-feature-image">
@@ -357,8 +443,8 @@ function BlogPost() {
                 <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.content }}></div>
                 
                 <div className="blog-post-cta">
-                    <h3>Need help with your child's education?</h3>
-                    <p>Our experienced tutors are ready to provide personalized support.</p>
+                    <h3>Looking for 1-1 Private Home Tuition in Singapore?</h3>
+                    <p>Our experienced private tutors are ready to provide personalized support for your child's academic journey.</p>
                     <button 
                         className="contact-button"
                         onClick={() => window.open("https://wa.me/6591684367", "_blank")}
@@ -370,7 +456,7 @@ function BlogPost() {
                 <div className="blog-navigation">
                     <Link to="/blog" className="back-to-blog-button">← Back to All Articles</Link>
                 </div>
-            </div>
+            </article>
         </div>
     );
 }

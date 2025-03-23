@@ -1,3 +1,6 @@
+# Allow all web crawlers
 User-agent: *
 Allow: /
+
+# Sitemap
 Sitemap: https://the-learning-zone.vercel.app/sitemap.xml
