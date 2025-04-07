@@ -145,6 +145,9 @@ function HomePage() {
         <button className="tutor-button find-tutor" onClick={openWhatsAppChat}>
           Find A Tutor
         </button>
+        <button className="tutor-button testimonials" onClick={() => navigate("/testimonials-and-qualifications")}>
+          Testimonials & Qualifications
+        </button>
         <button className="tutor-button resources" onClick={() => navigate("/resources")}>
           Resources
         </button>
