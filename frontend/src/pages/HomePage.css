@@ -194,6 +194,16 @@
   line-height: 1.2;
   padding: 10px 15px;
 }
+.testimonials { 
+  background-color: #ff4d4d; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80px;
+  line-height: 1.2;
+  padding: 10px 15px;
+}
 .resources { background-color: #b0b0b0; }
 .who-are-we { background-color: #ffb74d; }
 .terms-button { background-color: #333; }
