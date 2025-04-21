@@ -15,6 +15,7 @@ import TermsAndConditionsPage from '../pages/TermsAndConditionsPage';
 import TestimonialsAndQualificationsPage from "../pages/TestimonialsAndQualificationsPage";
 import BlogPage from "../pages/BlogPage";
 import BlogPost from "../pages/BlogPost";
+import AIChatPage from "../pages/AIChatPage";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
             {/* Blog Routes */}
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+
+            {/* AI Chat Route */}
+            <Route path="/ai-chat" element={<AIChatPage />} />
 
             {/* Other Routes */}
             <Route path="/tutor-home" element={<TutorHome />} />

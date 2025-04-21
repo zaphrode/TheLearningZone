@@ -360,3 +360,10 @@
 .blog-button:hover {
   background-color: #7b1fa2; /* Darker purple on hover */
 }
+
+.ai-chat-button {
+  background-color: #00bcd4; /* Cyan color for the AI Chat button */
+}
+.ai-chat-button:hover {
+  background-color: #008fa1; /* Darker cyan on hover */
+}

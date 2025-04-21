@@ -157,6 +157,9 @@ function HomePage() {
         <button className="tutor-button blog-button" onClick={() => navigate("/blog")}>
           Our Blogs
         </button>
+        <button className="tutor-button ai-chat-button" onClick={() => navigate("/ai-chat")}>
+          AI Tutor Chat
+        </button>
         <button className="tutor-button terms-button" onClick={() => navigate("/terms-and-conditions")}>
           Terms & Conditions
         </button>
