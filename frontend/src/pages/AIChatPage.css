@@ -41,7 +41,7 @@
 .chat-container {
     width: 100%;
     max-width: 850px;
-    height: 85vh;
+    height: 90vh;
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -51,19 +51,19 @@
 }
 
 .chat-header {
-    padding: 15px 20px;
+    padding: 8px 15px;
     background: linear-gradient(135deg, #4fbcff 0%, #2d93d5 100%);
     color: white;
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-start;
+    gap: 15px;
 }
 
 .chat-header .logo {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -77,10 +77,12 @@
 
 .chat-header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    text-align: left;
 }
 
 .chat-messages {
@@ -91,7 +93,7 @@
     flex-direction: column;
     gap: 16px;
     background-color: #f8faff;
-    max-height: calc(85vh - 100px); /* Adjusted for larger container */
+    max-height: none;
 }
 
 /* Enhance the scrollbar for better usability */
@@ -114,7 +116,7 @@
 }
 
 .message {
-    max-width: 80%;
+    max-width: 85%;
     padding: 14px 18px;
     border-radius: 18px;
     line-height: 1.5;
@@ -186,7 +188,7 @@
 
 .chat-input-form {
     display: flex;
-    padding: 18px 20px;
+    padding: 12px 20px;
     background-color: white;
     border-top: 1px solid #eee;
 }
@@ -239,13 +241,13 @@
 }
 
 .chat-disclaimer {
-    padding: 12px 20px;
+    padding: 8px 20px;
     background-color: white;
     border-top: 1px solid #eee;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #777;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 /* Improved formatting for assistant messages */
