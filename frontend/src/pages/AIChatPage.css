@@ -41,7 +41,7 @@
 .chat-container {
     width: 100%;
     max-width: 850px;
-    height: 80vh;
+    height: 85vh;
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -51,7 +51,7 @@
 }
 
 .chat-header {
-    padding: 25px 20px;
+    padding: 15px 20px;
     background: linear-gradient(135deg, #4fbcff 0%, #2d93d5 100%);
     color: white;
     text-align: center;
@@ -77,7 +77,7 @@
 
 .chat-header h1 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -85,12 +85,32 @@
 
 .chat-messages {
     flex: 1;
-    padding: 25px;
+    padding: 20px 25px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
     background-color: #f8faff;
+    max-height: calc(85vh - 100px); /* Adjusted for larger container */
+}
+
+/* Enhance the scrollbar for better usability */
+.chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #c1dcf0;
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #a8cadf;
 }
 
 .message {
