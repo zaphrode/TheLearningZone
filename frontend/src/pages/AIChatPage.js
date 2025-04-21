@@ -9,6 +9,46 @@ const openai = new OpenAI({
     dangerouslyAllowBrowser: true // Required for frontend usage (remove in production)
 });
 
+// Function to format assistant messages with proper spacing and styling
+const formatAssistantMessage = (content) => {
+    if (!content) return '';
+    
+    // Process the content for better formatting
+    let formattedContent = content
+        // Replace double line breaks with a special marker for paragraphs
+        .replace(/\n\n+/g, '||||PARAGRAPH||||')
+        // Handle single line breaks within paragraphs (not followed by a list item)
+        .replace(/\n(?!\d+\.|\*|•)/g, '<br />')
+        // Format numbered lists (ensure there's proper spacing)
+        .replace(/(\d+\.)\s+([^\n]+)/g, '<span class="list-item">$1 $2</span>')
+        // Format bullet points
+        .replace(/•\s+([^\n]+)/g, '<span class="list-item bullet">• $1</span>')
+        .replace(/\*\s+([^\n]+)/g, '<span class="list-item bullet">• $1</span>')
+        // Format definitions or terms (but not if already wrapped in a tag)
+        .replace(/([^:<>]+):\s+([^\n<]+)(?![^<]*>)/g, '<span class="definition"><strong>$1:</strong> $2</span>')
+        // Bold text between asterisks
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^*\s][^*]*[^*\s])\*/g, '<em>$1</em>')
+        // Handle special formatting for examples, notes, etc.
+        .replace(/(Example:)([^\n]+)/g, '<span class="example"><strong>$1</strong>$2</span>')
+        .replace(/(Note:)([^\n]+)/g, '<span class="note"><strong>$1</strong>$2</span>')
+        // Split back into paragraphs
+        .split('||||PARAGRAPH||||');
+    
+    // Return the formatted content with proper paragraph spacing
+    return (
+        <div className="formatted-content">
+            {formattedContent.map((paragraph, i) => (
+                <div 
+                    key={i} 
+                    className={paragraph.includes('list-item') ? 'paragraph list-paragraph' : 'paragraph'}
+                    dangerouslySetInnerHTML={{ __html: paragraph }}
+                />
+            ))}
+        </div>
+    );
+};
+
 function AIChatPage() {
     const navigate = useNavigate();
     const [userInput, setUserInput] = useState('');
@@ -199,7 +239,10 @@ function AIChatPage() {
                             className={`message ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
                         >
                             <div className="message-content">
-                                {message.content}
+                                {message.role === 'assistant' 
+                                    ? formatAssistantMessage(message.content)
+                                    : message.content
+                                }
                             </div>
                         </div>
                     ))}

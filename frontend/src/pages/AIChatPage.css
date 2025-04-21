@@ -214,4 +214,70 @@
         padding: 5px 10px;
         font-size: 0.9rem;
     }
+}
+
+/* Improved formatting for assistant messages */
+.formatted-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formatted-content .paragraph {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.formatted-content .list-item {
+  display: block;
+  margin: 5px 0;
+  padding-left: 8px;
+}
+
+.formatted-content .bullet {
+  position: relative;
+}
+
+.formatted-content .definition {
+  display: block;
+  margin: 5px 0;
+}
+
+.formatted-content .example {
+  display: block;
+  margin: 8px 0;
+  padding: 5px 10px;
+  border-left: 3px solid #3498db;
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.formatted-content .note {
+  display: block;
+  margin: 8px 0;
+  padding: 5px 10px;
+  border-left: 3px solid #f39c12;
+  background-color: rgba(243, 156, 18, 0.05);
+}
+
+.formatted-content .list-paragraph {
+  margin-bottom: 10px;
+}
+
+.formatted-content strong {
+  font-weight: 600;
+}
+
+.formatted-content em {
+  font-style: italic;
+}
+
+/* Enhance contrast for better readability */
+.assistant-message .message-content {
+  color: #2c3e50;
+  font-size: 15px;
+}
+
+/* Ensure proper spacing between elements */
+.message-content p {
+  margin-bottom: 12px;
 } 
