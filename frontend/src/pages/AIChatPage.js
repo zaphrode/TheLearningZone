@@ -112,8 +112,25 @@ function AIChatPage() {
             let assistantResponse = '';
             
             try {
+                // Check for output_text directly on the response object
+                if (response.output_text && typeof response.output_text === 'string') {
+                    assistantResponse = response.output_text;
+                }
+                // Check for output array in the o4-mini response format
+                else if (response.output && Array.isArray(response.output)) {
+                    // Extract text from output array
+                    assistantResponse = response.output
+                        .filter(item => item.type === 'output_text')
+                        .map(item => item.text)
+                        .join('\n');
+                    
+                    // If we couldn't extract the text from the array format, try other methods
+                    if (!assistantResponse && response.output.length > 0 && response.output[0].text) {
+                        assistantResponse = response.output[0].text;
+                    }
+                }
                 // For newer SDK format
-                if (response.content && Array.isArray(response.content)) {
+                else if (response.content && Array.isArray(response.content)) {
                     assistantResponse = response.content
                         .filter(item => item.type === 'text')
                         .map(item => item.text)
