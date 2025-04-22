@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import OpenAI from 'openai';
 import './AIChatPage.css';
@@ -56,6 +56,9 @@ function AIChatPage() {
         { role: 'assistant', content: 'Hello! I\'m your AI tutor assistant. Ask me anything about your studies or homework questions.' }
     ]);
     const [isLoading, setIsLoading] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [imagePreviewUrl, setImagePreviewUrl] = useState('');
+    const fileInputRef = useRef(null);
 
     const handleBackClick = () => {
         navigate('/home');
@@ -64,17 +67,58 @@ function AIChatPage() {
     const handleInputChange = (e) => {
         setUserInput(e.target.value);
     };
+    
+    const handleImageSelect = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            setSelectedImage(file);
+            
+            // Create preview URL
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagePreviewUrl(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    
+    const handleImageUploadClick = () => {
+        fileInputRef.current.click();
+    };
+    
+    const handleRemoveImage = () => {
+        setSelectedImage(null);
+        setImagePreviewUrl('');
+        fileInputRef.current.value = '';
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!userInput.trim()) return;
+        if (!userInput.trim() && !selectedImage) return;
 
+        // Create content for user message
+        let messageContent = userInput;
+        let contentArray = [{ type: 'text', text: userInput }];
+        
+        // Add image preview if an image is selected
+        if (selectedImage) {
+            contentArray.push({ type: 'image', url: imagePreviewUrl });
+        }
+        
         // Add user message to chat
-        const userMessage = { role: 'user', content: userInput };
+        const userMessage = { 
+            role: 'user', 
+            content: messageContent,
+            contentArray
+        };
+        
         setChatMessages(prevMessages => [...prevMessages, userMessage]);
         
-        // Clear input field
+        // Clear input field and selected image
         setUserInput('');
+        setSelectedImage(null);
+        setImagePreviewUrl('');
+        if (fileInputRef.current) fileInputRef.current.value = '';
         
         // Set loading state
         setIsLoading(true);
@@ -96,14 +140,27 @@ function AIChatPage() {
             // Add conversation history
             for (const msg of chatMessages) {
                 if (msg.role === 'user') {
+                    let content = [
+                        {
+                            "type": "input_text",
+                            "text": msg.content
+                        }
+                    ];
+                    
+                    // Add image if present in the message
+                    if (msg.contentArray && msg.contentArray.some(item => item.type === 'image')) {
+                        const imageItem = msg.contentArray.find(item => item.type === 'image');
+                        if (imageItem && imageItem.url) {
+                            content.push({
+                                "type": "input_image",
+                                "image_url": imageItem.url
+                            });
+                        }
+                    }
+                    
                     inputMessages.push({
                         "role": "user",
-                        "content": [
-                            {
-                                "type": "input_text",
-                                "text": msg.content
-                            }
-                        ]
+                        "content": content
                     });
                 } else if (msg.role === 'assistant') {
                     inputMessages.push({
@@ -119,20 +176,33 @@ function AIChatPage() {
             }
             
             // Add current user message
+            let currentUserContent = [
+                {
+                    "type": "input_text",
+                    "text": userInput || "What's in this image?"
+                }
+            ];
+            
+            // Add image if selected
+            if (selectedImage) {
+                currentUserContent.push({
+                    "type": "input_image",
+                    "image_url": imagePreviewUrl
+                });
+            }
+            
             inputMessages.push({
                 "role": "user",
-                "content": [
-                    {
-                        "type": "input_text",
-                        "text": userInput
-                    }
-                ]
+                "content": currentUserContent
             });
             
-            // Call OpenAI API with the o4-mini model
+            // Choose appropriate model based on whether image is included
+            const modelToUse = selectedImage ? "gpt-4.1" : "o4-mini";
+            
+            // Call OpenAI API
             console.log('Sending request to OpenAI with messages:', inputMessages);
             const response = await openai.responses.create({
-                model: "o4-mini",
+                model: modelToUse,
                 input: inputMessages,
                 text: {
                     "format": {
@@ -176,12 +246,21 @@ function AIChatPage() {
                         .map(item => item.text)
                         .join('\n');
                 }
+                // For response.output.message structure
+                else if (response.output && response.output.message && response.output.message.content) {
+                    assistantResponse = response.output.message.content;
+                }
                 // For format shown in example
                 else if (response.output && response.output.choices && response.output.choices[0].message) {
-                    assistantResponse = response.output.choices[0].message.content
-                        .filter(item => item.type === 'output_text')
-                        .map(item => item.text)
-                        .join('\n');
+                    const messageContent = response.output.choices[0].message.content;
+                    if (Array.isArray(messageContent)) {
+                        assistantResponse = messageContent
+                            .filter(item => item.type === 'output_text')
+                            .map(item => item.text)
+                            .join('\n');
+                    } else {
+                        assistantResponse = messageContent;
+                    }
                 }
                 // Fallback format
                 else if (typeof response.text === 'string') {
@@ -243,6 +322,13 @@ function AIChatPage() {
                             className={`message ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
                         >
                             <div className="message-content">
+                                {message.contentArray && message.contentArray.map((content, i) => (
+                                    content.type === 'image' ? (
+                                        <div key={i} className="image-container">
+                                            <img src={content.url} alt="User uploaded" className="message-image" />
+                                        </div>
+                                    ) : null
+                                ))}
                                 {message.role === 'assistant' 
                                     ? formatAssistantMessage(message.content)
                                     : message.content
@@ -262,21 +348,59 @@ function AIChatPage() {
                 </div>
                 
                 <form className="chat-input-form" onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        value={userInput}
-                        onChange={handleInputChange}
-                        placeholder="Ask your question here..."
-                        className="chat-input"
-                        disabled={isLoading}
-                    />
-                    <button 
-                        type="submit" 
-                        className="send-button"
-                        disabled={isLoading || !userInput.trim()}
-                    >
-                        Send
-                    </button>
+                    {imagePreviewUrl && (
+                        <div className="image-preview">
+                            <img src={imagePreviewUrl} alt="Preview" />
+                            <button 
+                                type="button" 
+                                className="remove-image-btn"
+                                onClick={handleRemoveImage}
+                            >
+                                ×
+                            </button>
+                        </div>
+                    )}
+                    
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            value={userInput}
+                            onChange={handleInputChange}
+                            placeholder={selectedImage ? "Ask about this image..." : "Ask your question here..."}
+                            className="chat-input"
+                            disabled={isLoading}
+                        />
+                        
+                        <button 
+                            type="button" 
+                            className="upload-button"
+                            onClick={handleImageUploadClick}
+                            disabled={isLoading}
+                        >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 16l4-4 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M17 8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M8 8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </button>
+                        
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            onChange={handleImageSelect}
+                            style={{ display: 'none' }}
+                            accept="image/*"
+                        />
+                        
+                        <button 
+                            type="submit" 
+                            className="send-button"
+                            disabled={isLoading || (!userInput.trim() && !selectedImage)}
+                        >
+                            Send
+                        </button>
+                    </div>
                 </form>
                 
                 <div className="chat-disclaimer">
