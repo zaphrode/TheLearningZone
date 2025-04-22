@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import OpenAI from 'openai';
 import './AIChatPage.css';
@@ -10,43 +10,43 @@ const openai = new OpenAI({
 });
 
 // Function to format assistant messages with proper spacing and styling
-const formatAssistantMessage = (content) => {
-    if (!content) return '';
+const formatAssistantMessage = (text) => {
+    if (!text) return '';
     
-    // Process the content for better formatting
-    let formattedContent = content
-        // Replace double line breaks with a special marker for paragraphs
-        .replace(/\n\n+/g, '||||PARAGRAPH||||')
-        // Handle single line breaks within paragraphs (not followed by a list item)
-        .replace(/\n(?!\d+\.|\*|•)/g, '<br />')
-        // Format numbered lists (ensure there's proper spacing)
-        .replace(/(\d+\.)\s+([^\n]+)/g, '<span class="list-item">$1 $2</span>')
-        // Format bullet points
-        .replace(/•\s+([^\n]+)/g, '<span class="list-item bullet">• $1</span>')
-        .replace(/\*\s+([^\n]+)/g, '<span class="list-item bullet">• $1</span>')
-        // Format definitions or terms (but not if already wrapped in a tag)
-        .replace(/([^:<>]+):\s+([^\n<]+)(?![^<]*>)/g, '<span class="definition"><strong>$1:</strong> $2</span>')
-        // Bold text between asterisks
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*([^*\s][^*]*[^*\s])\*/g, '<em>$1</em>')
-        // Handle special formatting for examples, notes, etc.
-        .replace(/(Example:)([^\n]+)/g, '<span class="example"><strong>$1</strong>$2</span>')
-        .replace(/(Note:)([^\n]+)/g, '<span class="note"><strong>$1</strong>$2</span>')
-        // Split back into paragraphs
-        .split('||||PARAGRAPH||||');
+    // Create a regex pattern that matches LaTeX delimiters
+    const latexPatterns = [
+        /\\\([\s\S]*?\\\)/g,  // Inline math: \( ... \)
+        /\\\[[\s\S]*?\\\]/g   // Display math: \[ ... \]
+    ];
     
-    // Return the formatted content with proper paragraph spacing
-    return (
-        <div className="formatted-content">
-            {formattedContent.map((paragraph, i) => (
-                <div 
-                    key={i} 
-                    className={paragraph.includes('list-item') ? 'paragraph list-paragraph' : 'paragraph'}
-                    dangerouslySetInnerHTML={{ __html: paragraph }}
-                />
-            ))}
-        </div>
-    );
+    // Replace LaTeX expressions with placeholders
+    let placeholders = [];
+    let processedText = text;
+    
+    latexPatterns.forEach(pattern => {
+        processedText = processedText.replace(pattern, (match) => {
+            placeholders.push(match);
+            return `##LATEX${placeholders.length - 1}##`;
+        });
+    });
+    
+    // Apply other formatting
+    processedText = processedText
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/^- (.*?)$/gm, '<li>$1</li>')
+        .replace(/<li>.*?<\/li>(\n|$)+/g, (match) => `<ul>${match}</ul>`)
+        .replace(/^\d+\. (.*?)$/gm, '<li>$1</li>')
+        .replace(/<li>.*?<\/li>(\n|$)+/g, (match) => `<ol>${match}</ol>`);
+        
+    // Replace placeholders with original LaTeX expressions
+    placeholders.forEach((latex, index) => {
+        processedText = processedText.replace(`##LATEX${index}##`, latex);
+    });
+        
+    return processedText;
 };
 
 function AIChatPage() {
@@ -59,6 +59,44 @@ function AIChatPage() {
     const [selectedImage, setSelectedImage] = useState(null);
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
     const fileInputRef = useRef(null);
+    const messagesEndRef = useRef(null);
+    
+    // Add MathJax configuration and loading
+    useEffect(() => {
+        // Add MathJax script to the document
+        const script = document.createElement('script');
+        script.id = 'MathJax-script';
+        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+        script.async = true;
+        
+        // Configure MathJax
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            },
+            startup: {
+                typeset: true
+            }
+        };
+        
+        document.head.appendChild(script);
+        
+        return () => {
+            // Clean up script when component unmounts
+            const mathJaxScript = document.getElementById('MathJax-script');
+            if (mathJaxScript) {
+                document.head.removeChild(mathJaxScript);
+            }
+        };
+    }, []);
+    
+    // Process MathJax typesetting when new messages are added
+    useEffect(() => {
+        if (window.MathJax && window.MathJax.typesetPromise) {
+            window.MathJax.typesetPromise();
+        }
+    }, [chatMessages]);
 
     const handleBackClick = () => {
         navigate('/home');
@@ -231,7 +269,7 @@ function AIChatPage() {
                 messages: [
                     {
                         role: "system",
-                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models."
+                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models. IMPORTANT: When writing mathematical expressions, always use proper LaTeX notation. For inline math, use \\( and \\) delimiters. For displayed equations, use \\[ and \\] delimiters. For example, write fractions as \\(\\frac{1}{3}\\) and variables with proper formatting like \\(x\\)."
                     }
                 ],
                 max_tokens: 1000
