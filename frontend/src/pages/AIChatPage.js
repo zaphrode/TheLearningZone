@@ -394,7 +394,7 @@ function AIChatPage() {
                                     ) : null
                                 ))}
                                 {message.role === 'assistant' 
-                                    ? formatAssistantMessage(message.content)
+                                    ? <div dangerouslySetInnerHTML={{ __html: formatAssistantMessage(message.content) }} />
                                     : message.content
                                 }
                             </div>

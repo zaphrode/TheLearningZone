@@ -138,14 +138,11 @@
 }
 
 .logo {
-  width: 100px;
-  margin: 0 auto 10px;
-  display: block;
-  /* Ensure no shadow, border, or background */
-  box-shadow: none !important;
-  border: none;
-  background-color: transparent;
-  outline: none;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* This makes the logo circular */
+  object-fit: cover; /* This ensures the image maintains its proportions */
+  margin-bottom: 15px;
 }
 
 .title {
