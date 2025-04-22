@@ -30,16 +30,70 @@ const formatAssistantMessage = (text) => {
         });
     });
     
+    // Split text into lines for better list processing
+    const lines = processedText.split('\n');
+    let inOrderedList = false;
+    let inUnorderedList = false;
+    let formattedLines = [];
+    
+    // Process each line
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+        
+        // Check for ordered list item (1. 2. 3. etc)
+        const orderedListMatch = line.match(/^(\d+)\.\s+(.*?)$/);
+        if (orderedListMatch) {
+            if (!inOrderedList) {
+                // Start a new ordered list
+                inOrderedList = true;
+                formattedLines.push('<ol>');
+            }
+            // Add list item with original content
+            formattedLines.push(`<li>${orderedListMatch[2]}</li>`);
+        } 
+        // Check for unordered list item (- or *)
+        else if (line.match(/^[-*]\s+(.*?)$/)) {
+            const content = line.replace(/^[-*]\s+/, '');
+            if (!inUnorderedList) {
+                // Start a new unordered list
+                inUnorderedList = true;
+                formattedLines.push('<ul>');
+            }
+            // Add list item
+            formattedLines.push(`<li>${content}</li>`);
+        }
+        // Handle end of lists
+        else {
+            if (inOrderedList) {
+                inOrderedList = false;
+                formattedLines.push('</ol>');
+            }
+            if (inUnorderedList) {
+                inUnorderedList = false;
+                formattedLines.push('</ul>');
+            }
+            // Add the non-list line
+            formattedLines.push(line);
+        }
+    }
+    
+    // Close any open lists at the end
+    if (inOrderedList) {
+        formattedLines.push('</ol>');
+    }
+    if (inUnorderedList) {
+        formattedLines.push('</ul>');
+    }
+    
+    // Join lines back to text
+    processedText = formattedLines.join('\n');
+    
     // Apply other formatting
     processedText = processedText
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
-        .replace(/^- (.*?)$/gm, '<li>$1</li>')
-        .replace(/<li>.*?<\/li>(\n|$)+/g, (match) => `<ul>${match}</ul>`)
-        .replace(/^\d+\. (.*?)$/gm, '<li>$1</li>')
-        .replace(/<li>.*?<\/li>(\n|$)+/g, (match) => `<ol>${match}</ol>`);
+        .replace(/`([^`]+)`/g, '<code>$1</code>');
         
     // Replace placeholders with original LaTeX expressions
     placeholders.forEach((latex, index) => {
