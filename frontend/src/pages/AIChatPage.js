@@ -6,7 +6,7 @@ import './AIChatPage.css';
 // Initialize OpenAI with API key from environment variables
 const openai = new OpenAI({
     apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-    dangerouslyAllowBrowser: true // Required for frontend usage (remove in production)
+    dangerouslyAllowBrowser: true // Required for frontend usage (not recommended for production)
 });
 
 // Function to format assistant messages with proper spacing and styling
@@ -97,8 +97,13 @@ function AIChatPage() {
         if (!userInput.trim() && !selectedImage) return;
 
         // Create content for user message
-        let messageContent = userInput;
-        let contentArray = [{ type: 'text', text: userInput }];
+        let messageContent = userInput || (selectedImage ? "Image uploaded" : "");
+        let contentArray = [];
+        
+        // Add text content if present
+        if (userInput.trim()) {
+            contentArray.push({ type: 'text', text: userInput });
+        }
         
         // Add image preview if an image is selected
         if (selectedImage) {
@@ -124,7 +129,7 @@ function AIChatPage() {
         setIsLoading(true);
 
         try {
-            // Format message history for o4-mini model
+            // Format message history for API
             let inputMessages = [
                 {
                     "role": "developer",
@@ -140,12 +145,15 @@ function AIChatPage() {
             // Add conversation history
             for (const msg of chatMessages) {
                 if (msg.role === 'user') {
-                    let content = [
-                        {
+                    let content = [];
+                    
+                    // Add text content if available
+                    if (msg.content) {
+                        content.push({
                             "type": "input_text",
                             "text": msg.content
-                        }
-                    ];
+                        });
+                    }
                     
                     // Add image if present in the message
                     if (msg.contentArray && msg.contentArray.some(item => item.type === 'image')) {
@@ -158,10 +166,13 @@ function AIChatPage() {
                         }
                     }
                     
-                    inputMessages.push({
-                        "role": "user",
-                        "content": content
-                    });
+                    // Only add the message if we have content
+                    if (content.length > 0) {
+                        inputMessages.push({
+                            "role": "user",
+                            "content": content
+                        });
+                    }
                 } else if (msg.role === 'assistant') {
                     inputMessages.push({
                         "role": "assistant",
@@ -176,12 +187,21 @@ function AIChatPage() {
             }
             
             // Add current user message
-            let currentUserContent = [
-                {
+            let currentUserContent = [];
+            
+            // Add text content if available
+            if (userInput.trim()) {
+                currentUserContent.push({
                     "type": "input_text",
-                    "text": userInput || "What's in this image?"
-                }
-            ];
+                    "text": userInput
+                });
+            } else if (selectedImage) {
+                // Default text if only image is provided
+                currentUserContent.push({
+                    "type": "input_text",
+                    "text": "What's in this image?"
+                });
+            }
             
             // Add image if selected
             if (selectedImage) {
@@ -191,89 +211,95 @@ function AIChatPage() {
                 });
             }
             
-            inputMessages.push({
-                "role": "user",
-                "content": currentUserContent
-            });
+            // Only add user message if we have content
+            if (currentUserContent.length > 0) {
+                inputMessages.push({
+                    "role": "user",
+                    "content": currentUserContent
+                });
+            }
             
             // Choose appropriate model based on whether image is included
-            const modelToUse = selectedImage ? "gpt-4.1" : "o4-mini";
+            const modelToUse = selectedImage ? "gpt-4o" : "gpt-3.5-turbo";
             
             // Call OpenAI API
             console.log('Sending request to OpenAI with messages:', inputMessages);
-            const response = await openai.responses.create({
+            
+            // Create appropriate parameters based on the model
+            const apiParams = {
                 model: modelToUse,
-                input: inputMessages,
-                text: {
-                    "format": {
-                        "type": "text"
+                messages: [
+                    {
+                        role: "system",
+                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models."
                     }
-                },
-                reasoning: {
-                    "effort": "medium"
-                },
-                tools: [],
-                store: true
+                ],
+                max_tokens: 1000
+            };
+            
+            // Convert our custom format to the standard OpenAI chat format
+            inputMessages.forEach((msg, index) => {
+                // Skip the first message which is our developer content (system message)
+                if (index === 0) return;
+                
+                const role = msg.role === "developer" ? "system" : msg.role;
+                
+                // For text-only messages
+                if (msg.content.length === 1 && msg.content[0].type === "input_text") {
+                    apiParams.messages.push({
+                        role,
+                        content: msg.content[0].text
+                    });
+                }
+                // For text + image messages (vision model)
+                else if (msg.content.length > 1 && msg.content.some(item => item.type === "input_image")) {
+                    const textItem = msg.content.find(item => item.type === "input_text" || item.type === "output_text");
+                    const imageItem = msg.content.find(item => item.type === "input_image");
+                    
+                    if (textItem && imageItem) {
+                        const content = [
+                            { type: "text", text: textItem.text },
+                            { 
+                                type: "image_url", 
+                                image_url: { url: imageItem.image_url }
+                            }
+                        ];
+                        
+                        apiParams.messages.push({
+                            role,
+                            content
+                        });
+                    }
+                }
+                // For text-only assistant responses
+                else if (role === "assistant" && msg.content[0].type === "output_text") {
+                    apiParams.messages.push({
+                        role,
+                        content: msg.content[0].text
+                    });
+                }
             });
+            
+            // Make the API call
+            let response;
+            
+            if (selectedImage) {
+                // Vision model call
+                response = await openai.chat.completions.create(apiParams);
+            } else {
+                // Text-only model call
+                response = await openai.chat.completions.create(apiParams);
+            }
             
             console.log('Received response from OpenAI:', response);
             
-            // Extract assistant's response - handle different possible response formats
+            // Extract the response text from the chat completion
             let assistantResponse = '';
             
-            try {
-                // Check for output_text directly on the response object
-                if (response.output_text && typeof response.output_text === 'string') {
-                    assistantResponse = response.output_text;
-                }
-                // Check for output array in the o4-mini response format
-                else if (response.output && Array.isArray(response.output)) {
-                    // Extract text from output array
-                    assistantResponse = response.output
-                        .filter(item => item.type === 'output_text')
-                        .map(item => item.text)
-                        .join('\n');
-                    
-                    // If we couldn't extract the text from the array format, try other methods
-                    if (!assistantResponse && response.output.length > 0 && response.output[0].text) {
-                        assistantResponse = response.output[0].text;
-                    }
-                }
-                // For newer SDK format
-                else if (response.content && Array.isArray(response.content)) {
-                    assistantResponse = response.content
-                        .filter(item => item.type === 'text')
-                        .map(item => item.text)
-                        .join('\n');
-                }
-                // For response.output.message structure
-                else if (response.output && response.output.message && response.output.message.content) {
-                    assistantResponse = response.output.message.content;
-                }
-                // For format shown in example
-                else if (response.output && response.output.choices && response.output.choices[0].message) {
-                    const messageContent = response.output.choices[0].message.content;
-                    if (Array.isArray(messageContent)) {
-                        assistantResponse = messageContent
-                            .filter(item => item.type === 'output_text')
-                            .map(item => item.text)
-                            .join('\n');
-                    } else {
-                        assistantResponse = messageContent;
-                    }
-                }
-                // Fallback format
-                else if (typeof response.text === 'string') {
-                    assistantResponse = response.text;
-                }
-                // Default fallback if unexpected format
-                else {
-                    assistantResponse = 'I received your question, but the response format was unexpected. Please try again or ask another question.';
-                    console.log('Unexpected response format:', response);
-                }
-            } catch (parseError) {
-                console.error('Error parsing response:', parseError, response);
-                assistantResponse = 'I received your question, but had trouble processing my response. Please try again with a different question.';
+            if (response.choices && response.choices.length > 0) {
+                assistantResponse = response.choices[0].message.content;
+            } else {
+                assistantResponse = 'I received your question, but the response format was unexpected. Please try again.';
             }
             
             // Add assistant response to chat
@@ -290,7 +316,7 @@ function AIChatPage() {
                 ...prevMessages, 
                 { 
                     role: 'assistant', 
-                    content: 'Sorry, I encountered an error connecting to my knowledge base. This could be due to missing API configuration. Please check with the site administrator.' 
+                    content: 'Sorry, I encountered an error connecting to my knowledge base. This could be due to API configuration issues. Please check the console for details or try again later.' 
                 }
             ]);
         } finally {
