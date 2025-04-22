@@ -206,7 +206,7 @@
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    padding-right: 2px; /* Add a bit of padding to prevent overlap */
+    padding-right: 5px; /* More padding to prevent overlap */
 }
 
 .chat-input {
@@ -220,20 +220,20 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
     font-family: 'Poppins', sans-serif;
     min-width: 0; /* Allow input to shrink if needed */
-    max-width: calc(100% - 120px); /* Leave room for buttons */
+    max-width: calc(100% - 130px); /* Leave even more room for buttons */
 }
 
 .upload-button {
     background-color: transparent;
     color: #666;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 36px; /* Slightly smaller */
+    height: 36px; /* Slightly smaller */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-left: 8px;
+    margin-left: 5px; /* Reduced margin */
     border-radius: 50%;
     transition: all 0.2s ease;
     flex-shrink: 0; /* Prevent button from shrinking */
@@ -254,18 +254,20 @@
     color: white;
     border: none;
     border-radius: 25px;
-    padding: 0 14px;
-    margin-left: 8px;
-    font-size: 0.9rem;
+    padding: 0 10px; /* Reduced padding */
+    margin-left: 5px; /* Reduced margin */
+    font-size: 0.85rem; /* Smaller font */
     font-weight: 600;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(79, 188, 255, 0.3);
     font-family: 'Poppins', sans-serif;
-    min-width: 56px;
-    max-width: 70px;
-    height: 36px;
+    min-width: 50px; /* Smaller minimum width */
+    max-width: 60px; /* Smaller maximum width */
+    height: 34px; /* Slightly shorter height */
     flex-shrink: 0; /* Prevent button from shrinking */
     z-index: 11; /* Ensure it's above other elements */
+    position: relative; /* Add position relative */
+    right: 5px; /* Move it slightly to the left */
 }
 
 /* MOBILE DISCLAIMER */
