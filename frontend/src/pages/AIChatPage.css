@@ -390,7 +390,8 @@
     }
     
     .chat-container {
-        max-width: 850px;
+        max-width: 900px; /* Increased from 850px */
+        width: 95%; /* Ensure it takes up most of the available space */
         height: 90vh;
         border-radius: 16px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -445,26 +446,36 @@
     
     .chat-input-form {
         padding: 15px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .input-container {
+        padding-right: 0;
+        margin-right: 0;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .chat-input {
         padding: 14px 18px;
         font-size: 1rem;
-        max-width: none; /* Remove the mobile constraint */
+        max-width: calc(100% - 130px); /* Ensure there's enough room for the buttons */
     }
     
     .upload-button {
         width: 46px;
         height: 46px;
+        margin-left: 10px;
     }
     
     .send-button {
-        padding: 0 25px;
-        margin-left: 12px;
+        padding: 0 20px;
+        margin-left: 10px;
         font-size: 1rem;
         height: 46px;
-        min-width: 60px;
-        max-width: none; /* Remove the mobile constraint */
+        min-width: 70px;
+        max-width: none;
     }
     
     .chat-disclaimer {
@@ -497,10 +508,6 @@
 
     .chat-messages::-webkit-scrollbar-thumb:hover {
         background: #a8cadf;
-    }
-    
-    .input-container {
-        padding-right: 0; /* Remove the mobile padding */
     }
 }
 
