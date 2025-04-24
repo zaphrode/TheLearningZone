@@ -30,7 +30,7 @@ const formatAssistantMessage = (text) => {
         });
     });
     
-    // Split text into lines for better list processing
+    // Process for list formatting
     const lines = processedText.split('\n');
     let inOrderedList = false;
     let inUnorderedList = false;
@@ -39,6 +39,12 @@ const formatAssistantMessage = (text) => {
     // Process each line
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i];
+        
+        // Skip processing if line contains a LaTeX placeholder
+        if (line.includes('##LATEX')) {
+            formattedLines.push(line);
+            continue;
+        }
         
         // Check for ordered list item (1. 2. 3. etc)
         const orderedListMatch = line.match(/^(\d+)\.\s+(.*?)$/);
@@ -88,7 +94,7 @@ const formatAssistantMessage = (text) => {
     // Join lines back to text
     processedText = formattedLines.join('\n');
     
-    // Apply other formatting
+    // Apply other formatting - careful not to break LaTeX content
     processedText = processedText
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
@@ -99,8 +105,9 @@ const formatAssistantMessage = (text) => {
     placeholders.forEach((latex, index) => {
         processedText = processedText.replace(`##LATEX${index}##`, latex);
     });
-        
-    return processedText;
+    
+    // Add a wrapper div with special class for MathJax to process
+    return `<div class="tex2jax_process">${processedText}</div>`;
 };
 
 function AIChatPage() {
@@ -123,11 +130,17 @@ function AIChatPage() {
         script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
         script.async = true;
         
-        // Configure MathJax
+        // Configure MathJax with extended capabilities
         window.MathJax = {
             tex: {
                 inlineMath: [['\\(', '\\)']],
-                displayMath: [['\\[', '\\]']]
+                displayMath: [['\\[', '\\]']],
+                processEscapes: true,       // Process \$ to get $
+                processEnvironments: true   // Process \begin{xxx}...\end{xxx}
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                processHtmlClass: 'tex2jax_process'
             },
             startup: {
                 typeset: true
@@ -148,7 +161,11 @@ function AIChatPage() {
     // Process MathJax typesetting when new messages are added
     useEffect(() => {
         if (window.MathJax && window.MathJax.typesetPromise) {
-            window.MathJax.typesetPromise();
+            // Allow a small delay for the DOM to update before typesetting
+            setTimeout(() => {
+                window.MathJax.typesetPromise()
+                    .catch(err => console.error('MathJax typesetting failed:', err));
+            }, 100);
         }
     }, [chatMessages]);
 
@@ -286,12 +303,22 @@ function AIChatPage() {
                 // Special handling for mathematical expressions
                 const formattedUserInput = userInput.trim();
                 
-                // For math expressions, preserve the input exactly as typed
-                // Wrap in backticks to ensure it's treated as code/verbatim text
-                currentUserContent.push({
-                    "type": "input_text",
-                    "text": "```\n" + formattedUserInput + "\n```\n\nPlease solve this math problem exactly as written, carefully preserving all brackets and order of operations."
-                });
+                // Detect if this is likely a math problem
+                const containsMath = /[\+\-\*\/\(\)\[\]\{\}\^\=]/.test(formattedUserInput);
+                
+                if (containsMath) {
+                    // For math expressions, provide clear instructions on handling powers
+                    currentUserContent.push({
+                        "type": "input_text",
+                        "text": "```\n" + formattedUserInput + "\n```\n\nPlease solve this math problem exactly as written, carefully preserving all brackets and order of operations. If you see any exponents (like x^2), interpret them correctly as powers."
+                    });
+                } else {
+                    // For regular questions
+                    currentUserContent.push({
+                        "type": "input_text",
+                        "text": formattedUserInput
+                    });
+                }
             } else if (selectedImage) {
                 // Default text if only image is provided
                 currentUserContent.push({
@@ -317,7 +344,7 @@ function AIChatPage() {
             }
             
             // Choose appropriate model based on whether image is included
-            const modelToUse = selectedImage ? "gpt-4o" : "gpt-3.5-turbo";
+            const modelToUse = "o4-mini"; // Always use o4-mini regardless of image
             
             // Call OpenAI API
             console.log('Sending request to OpenAI with messages:', inputMessages);
@@ -328,7 +355,7 @@ function AIChatPage() {
                 messages: [
                     {
                         role: "system",
-                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models. IMPORTANT: When writing mathematical expressions, always use proper LaTeX notation. For inline math, use \\( and \\) delimiters. For displayed equations, use \\[ and \\] delimiters. For example, write fractions as \\(\\frac{1}{3}\\) and variables with proper formatting like \\(x\\). When interpreting mathematical expressions from the user, pay careful attention to brackets/parentheses, and preserve the order of operations using BODMAS rule."
+                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models. IMPORTANT: When writing mathematical expressions, always use proper LaTeX notation. For inline math, use \\( and \\) delimiters. For displayed equations, use \\[ and \\] delimiters. For example, write fractions as \\(\\frac{1}{3}\\), exponents/powers as \\(x^2\\) for x squared, and variables with proper formatting like \\(x\\). Never use plain text carets (^) for exponents - always use proper LaTeX notation inside the appropriate delimiters. When interpreting mathematical expressions from the user, treat ^ as exponentiation and preserve all operations exactly as written."
                     }
                 ],
                 max_tokens: 1000
