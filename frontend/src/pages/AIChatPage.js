@@ -283,9 +283,14 @@ function AIChatPage() {
             
             // Add text content if available
             if (userInput.trim()) {
+                // Special handling for mathematical expressions
+                const formattedUserInput = userInput.trim();
+                
+                // For math expressions, preserve the input exactly as typed
+                // Wrap in backticks to ensure it's treated as code/verbatim text
                 currentUserContent.push({
                     "type": "input_text",
-                    "text": userInput
+                    "text": "```\n" + formattedUserInput + "\n```\n\nPlease solve this math problem exactly as written, carefully preserving all brackets and order of operations."
                 });
             } else if (selectedImage) {
                 // Default text if only image is provided
