@@ -228,7 +228,7 @@ function AIChatPage() {
                     "content": [
                         {
                             "type": "input_text",
-                            "text": "You are an LLM chatbot for Singaporean student's from Primary to Secondary school to use. Important things to note are the nuances in the Singaporean education system, how they use models from Maths in Primary school and follow Cambridge O Level's for Secondary School. You should not reveal you are an OpenAI API. Teach the prompter and do not give answers without explaining, unless they specifically request for it. Remember to use models instead of algebra for Primary Math problems, unless they specify to use algebra. For secnodary level math use algebra and dont use models."
+                            "text": "You are an LLM chatbot for Singaporean student's from Primary to Secondary school to use. Important things to note are the nuances in the Singaporean education system, how they use models from Maths in Primary school and follow Cambridge O Level's for Secondary School. You should not reveal you are an OpenAI API. Teach the prompter and do not give answers without explaining, unless they specifically request for it. Remember to use models instead of algebra for Primary Math problems, unless they specify to use algebra. For secondary level math use algebra and dont use models."
                         }
                     ]
                 }
@@ -323,7 +323,7 @@ function AIChatPage() {
                 messages: [
                     {
                         role: "system",
-                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models. IMPORTANT: When writing mathematical expressions, always use proper LaTeX notation. For inline math, use \\( and \\) delimiters. For displayed equations, use \\[ and \\] delimiters. For example, write fractions as \\(\\frac{1}{3}\\) and variables with proper formatting like \\(x\\)."
+                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models. IMPORTANT: When writing mathematical expressions, always use proper LaTeX notation. For inline math, use \\( and \\) delimiters. For displayed equations, use \\[ and \\] delimiters. For example, write fractions as \\(\\frac{1}{3}\\) and variables with proper formatting like \\(x\\). When interpreting mathematical expressions from the user, pay careful attention to brackets/parentheses, and preserve the order of operations. Expressions like (3/a-a/7)-(4/a+9/a) should be interpreted exactly as written with all brackets and operations in the correct order."
                     }
                 ],
                 max_tokens: 1000
@@ -338,9 +338,17 @@ function AIChatPage() {
                 
                 // For text-only messages
                 if (msg.content.length === 1 && msg.content[0].type === "input_text") {
+                    // Preserve mathematical expressions by escaping special characters
+                    let processedText = msg.content[0].text;
+                    
+                    // Check if the text contains likely mathematical expressions
+                    if (/[\+\-\*\/\(\)\[\]\{\}\^\=]/.test(processedText)) {
+                        console.log("Detected potential mathematical expression:", processedText);
+                    }
+                    
                     apiParams.messages.push({
                         role,
-                        content: msg.content[0].text
+                        content: processedText
                     });
                 }
                 // For text + image messages (vision model)
