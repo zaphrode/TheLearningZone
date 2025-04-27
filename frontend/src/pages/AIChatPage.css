@@ -526,31 +526,44 @@
     max-width: 100%;
 }
 
-/* Improved standalone bullet point styling */
-.standalone-bullet {
-  display: block !important;
-  margin: 10px 0 !important;
-  padding-left: 6px !important;
-  position: relative !important;
-  line-height: 1.5 !important;
-  clear: both !important;
-}
-
-.bullet-marker, 
+/* Styling for inline bullet points */
 .inline-bullet {
-  color: #0086cc !important;
-  font-weight: bold !important;
-  margin-right: 6px !important;
-  display: inline-block !important;
+  color: #0086cc;
+  font-weight: bold;
+  margin-right: 6px;
+  display: inline-block;
 }
 
 .bullet-content {
-  display: inline !important;
+  display: inline;
 }
 
-/* Add better spacing between consecutive bullet points */
+/* Styling for dashes used as separators */
+.inline-dash {
+  color: #0086cc;
+  font-weight: bold;
+  margin: 0 4px;
+}
+
+/* Add these styles for standalone bullet points */
+.standalone-bullet {
+  display: block;
+  margin: 8px 0;
+  padding-left: 4px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.bullet-marker {
+  color: #0086cc;
+  font-weight: bold;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+/* Improve spacing between bullet point groups */
 .standalone-bullet + .standalone-bullet {
-  margin-top: 6px !important;
+  margin-top: 4px;
 }
 
 /* Improve the ordered and unordered lists */
@@ -569,11 +582,4 @@
 /* Add spacing between paragraphs for better readability */
 .assistant-message p {
   margin-bottom: 12px;
-}
-
-/* Styling for dashes used as separators */
-.inline-dash {
-  color: #0086cc !important;
-  font-weight: bold !important;
-  margin: 0 4px !important;
 } 

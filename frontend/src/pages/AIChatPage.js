@@ -101,16 +101,14 @@ const formatAssistantMessage = (text) => {
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
         .replace(/`([^`]+)`/g, '<code>$1</code>')
-        // Convert lines that start with dash or en-dash to proper standalone bullet points
-        .replace(/^[–\-]\s+(.*?)$/gm, '<div class="standalone-bullet"><span class="bullet-marker">-</span> $1</div>')
-        // Handle bulleted lists that appear in the middle of a paragraph (inline dash followed by text)
-        .replace(/([^<>])\s+[–\-]\s+([^\n<])/g, '$1</p><div class="standalone-bullet"><span class="bullet-marker">-</span> $2')
-        // Also explicitly handle en-dash (–) bulleted lists that might be in the middle of text
-        .replace(/(>|\S)\s+–\s+/g, '$1</p><div class="standalone-bullet"><span class="bullet-marker">-</span> ')
+        // Convert standalone dash bullet points to proper list items
+        .replace(/^-\s+(.*?)$/gm, '<div class="standalone-bullet"><span class="bullet-marker">-</span> $1</div>')
+        // Convert inline dash bullet points to proper list items
+        .replace(/(\S)\s+-\s+([^\n<])/g, '$1</p><div class="standalone-bullet"><span class="bullet-marker">-</span> $2')
         // Format inline bullet points (• symbol) to use proper styling
         .replace(/•\s+(.*?)(?=•|$)/g, '<div class="standalone-bullet"><span class="inline-bullet">•</span> <span class="bullet-content">$1</span></div>')
-        // Also handle en-dash as a separator (not a bullet point) by checking context
-        .replace(/([a-zA-Z0-9])\s+–\s+([a-zA-Z0-9])/g, '$1 <span class="inline-dash">–</span> $2');
+        // Also format dashes within text that look like bullet points
+        .replace(/([^\-])\s+–\s+([^<])/g, '$1 <span class="inline-dash">–</span> $2');
         
     // Replace placeholders with original LaTeX expressions
     placeholders.forEach((latex, index) => {
