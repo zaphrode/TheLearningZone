@@ -528,46 +528,42 @@
 
 /* Improved standalone bullet point styling */
 .standalone-bullet {
-  display: flex !important;
-  margin: 5px 0 !important;
+  display: block !important;
+  margin: 10px 0 !important;
+  padding-left: 6px !important;
   position: relative !important;
   line-height: 1.5 !important;
   clear: both !important;
-  width: 100% !important;
-  padding-left: 0 !important; /* Remove padding that causes progressive indentation */
 }
 
 .bullet-marker, 
 .inline-bullet {
   color: #0086cc !important;
   font-weight: bold !important;
-  margin-right: 8px !important;
-  flex-shrink: 0 !important;
-  width: 12px !important; /* Fixed width for consistent alignment */
-  text-align: center !important;
+  margin-right: 6px !important;
+  display: inline-block !important;
 }
 
 .bullet-content {
-  display: inline-block !important;
-  flex: 1 !important;
+  display: inline !important;
 }
 
 /* Add better spacing between consecutive bullet points */
 .standalone-bullet + .standalone-bullet {
-  margin-top: 3px !important;
+  margin-top: 6px !important;
 }
 
 /* Improve the ordered and unordered lists */
 .assistant-message ol, 
 .assistant-message ul {
-  padding-left: 20px;
+  padding-left: 28px;
   margin: 10px 0;
 }
 
 .assistant-message li {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.5;
-  padding-left: 0; /* Remove padding that might cause progressive indentation */
+  padding-left: 4px;
 }
 
 /* Add spacing between paragraphs for better readability */

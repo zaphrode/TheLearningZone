@@ -10,83 +10,115 @@ const openai = new OpenAI({
 });
 
 // Function to format assistant messages with proper spacing and styling
-const formatAssistantMessage = (message) => {
-    if (!message) return '';
+const formatAssistantMessage = (text) => {
+    if (!text) return '';
     
-    let lines = message.split('\n');
+    // Create a regex pattern that matches LaTeX delimiters
+    const latexPatterns = [
+        /\\\([\s\S]*?\\\)/g,  // Inline math: \( ... \)
+        /\\\[[\s\S]*?\\\]/g   // Display math: \[ ... \]
+    ];
     
-    // Skip empty lines at the beginning
-    while (lines.length > 0 && lines[0].trim() === '') {
-        lines.shift();
-    }
+    // Replace LaTeX expressions with placeholders
+    let placeholders = [];
+    let processedText = text;
     
-    let inCodeBlock = false;
+    latexPatterns.forEach(pattern => {
+        processedText = processedText.replace(pattern, (match) => {
+            placeholders.push(match);
+            return `##LATEX${placeholders.length - 1}##`;
+        });
+    });
+    
+    // Process for list formatting
+    const lines = processedText.split('\n');
+    let inOrderedList = false;
+    let inUnorderedList = false;
     let formattedLines = [];
-    let bulletState = false; // Track if we're in a sequence of bullets
     
+    // Process each line
     for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
+        let line = lines[i];
         
-        // Check if line starts or ends a code block
-        if (line.trim().startsWith('```')) {
-            inCodeBlock = !inCodeBlock;
-            formattedLines.push(`<pre><code>${inCodeBlock ? '' : '</code></pre>'}`);
-            continue;
-        }
-        
-        // If we're in a code block, don't format the line
-        if (inCodeBlock) {
+        // Skip processing if line contains a LaTeX placeholder
+        if (line.includes('##LATEX')) {
             formattedLines.push(line);
             continue;
         }
         
-        // Skip lines with LaTeX placeholders to prevent interference
-        if (line.includes('$$') || line.includes('\\(') || line.includes('\\)') || 
-            line.includes('\\[') || line.includes('\\]')) {
+        // Check for ordered list item (1. 2. 3. etc)
+        const orderedListMatch = line.match(/^(\d+)\.\s+(.*?)$/);
+        if (orderedListMatch) {
+            const number = orderedListMatch[1]; // Get the actual number
+            if (!inOrderedList) {
+                // Start a new ordered list
+                inOrderedList = true;
+                formattedLines.push('<ol>');
+            }
+            // Add list item with original number via value attribute
+            formattedLines.push(`<li value="${number}">${orderedListMatch[2]}</li>`);
+        } 
+        // Check for unordered list item (- or *)
+        else if (line.match(/^[-*]\s+(.*?)$/)) {
+            const content = line.replace(/^[-*]\s+/, '');
+            if (!inUnorderedList) {
+                // Start a new unordered list
+                inUnorderedList = true;
+                formattedLines.push('<ul>');
+            }
+            // Add list item
+            formattedLines.push(`<li>${content}</li>`);
+        }
+        // Handle end of lists
+        else {
+            if (inOrderedList) {
+                inOrderedList = false;
+                formattedLines.push('</ol>');
+            }
+            if (inUnorderedList) {
+                inUnorderedList = false;
+                formattedLines.push('</ul>');
+            }
+            // Add the non-list line
             formattedLines.push(line);
-            continue;
         }
-        
-        // Format standalone bullet points with proper indentation
-        const bulletMatch = line.match(/^(\s*)([-*])\s+(.+)$/);
-        if (bulletMatch) {
-            bulletState = true; // We're now in a bullet sequence
-            
-            // Format the content within the bullet
-            const bulletContent = bulletMatch[3]
-                .replace(/`([^`]+)`/g, '<code>$1</code>')
-                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*([^*]+)\*/g, '<em>$1</em>');
-            
-            formattedLines.push(
-                `<div class="standalone-bullet">
-                    <span class="bullet-marker">${bulletMatch[2]}</span>
-                    <span class="bullet-content">${bulletContent}</span>
-                </div>`
-            );
-            continue;
-        } else if (bulletState && line.trim() === '') {
-            // Empty line after bullets - end of bullet sequence
-            bulletState = false;
-        }
-        
-        // Format the rest of the text
-        let formattedLine = line
-            .replace(/`([^`]+)`/g, '<code>$1</code>')
-            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-            // Handle inline bullet points with a span
-            .replace(/\s+([-*])\s+/g, ' <span class="inline-bullet">$1</span> ');
-        
-        // If this is a paragraph after bullets, add proper spacing
-        if (!bulletState && formattedLine.trim()) {
-            formattedLine = `<p>${formattedLine}</p>`;
-        }
-        
-        formattedLines.push(formattedLine);
     }
     
-    return `<div class="message-container tex2jax_process">${formattedLines.join('\n')}</div>`;
+    // Close any open lists at the end
+    if (inOrderedList) {
+        formattedLines.push('</ol>');
+    }
+    if (inUnorderedList) {
+        formattedLines.push('</ul>');
+    }
+    
+    // Join lines back to text
+    processedText = formattedLines.join('\n');
+    
+    // Apply other formatting - careful not to break LaTeX content
+    processedText = processedText
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        // Convert lines that start with dash or en-dash to proper standalone bullet points
+        .replace(/^[–\-]\s+(.*?)$/gm, '<div class="standalone-bullet"><span class="bullet-marker">-</span> $1</div>')
+        // Handle bulleted lists that appear in the middle of a paragraph (inline dash followed by text)
+        .replace(/([^<>])\s+[–\-]\s+([^\n<])/g, '$1</p><div class="standalone-bullet"><span class="bullet-marker">-</span> $2')
+        // Also explicitly handle en-dash (–) bulleted lists that might be in the middle of text
+        .replace(/(>|\S)\s+–\s+/g, '$1</p><div class="standalone-bullet"><span class="bullet-marker">-</span> ')
+        // Format inline bullet points (• symbol) to use proper styling
+        .replace(/•\s+(.*?)(?=•|$)/g, '<div class="standalone-bullet"><span class="inline-bullet">•</span> <span class="bullet-content">$1</span></div>')
+        // Also handle en-dash as a separator (not a bullet point) by checking context
+        .replace(/([a-zA-Z0-9])\s+–\s+([a-zA-Z0-9])/g, '$1 <span class="inline-dash">–</span> $2');
+        
+    // Replace placeholders with original LaTeX expressions
+    placeholders.forEach((latex, index) => {
+        processedText = processedText.replace(`##LATEX${index}##`, latex);
+    });
+    
+    // Add a wrapper div with special class for MathJax to process
+    return `<div class="tex2jax_process">${processedText}</div>`;
 };
 
 function AIChatPage() {
