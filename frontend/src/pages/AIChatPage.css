@@ -526,19 +526,16 @@
     max-width: 100%;
 }
 
-/* Add these styles at the end of the file */
-
 /* Styling for inline bullet points */
 .inline-bullet {
   color: #0086cc;
   font-weight: bold;
-  margin-right: 4px;
+  margin-right: 6px;
   display: inline-block;
 }
 
 .bullet-content {
-  display: inline-block;
-  margin-bottom: 6px;
+  display: inline;
 }
 
 /* Styling for dashes used as separators */
@@ -546,6 +543,27 @@
   color: #0086cc;
   font-weight: bold;
   margin: 0 4px;
+}
+
+/* Add these styles for standalone bullet points */
+.standalone-bullet {
+  display: block;
+  margin: 8px 0;
+  padding-left: 4px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.bullet-marker {
+  color: #0086cc;
+  font-weight: bold;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+/* Improve spacing between bullet point groups */
+.standalone-bullet + .standalone-bullet {
+  margin-top: 4px;
 }
 
 /* Improve the ordered and unordered lists */

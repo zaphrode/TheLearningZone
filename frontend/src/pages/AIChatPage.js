@@ -101,8 +101,12 @@ const formatAssistantMessage = (text) => {
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
         .replace(/`([^`]+)`/g, '<code>$1</code>')
+        // Convert standalone dash bullet points to proper list items
+        .replace(/^-\s+(.*?)$/gm, '<div class="standalone-bullet"><span class="bullet-marker">-</span> $1</div>')
+        // Convert inline dash bullet points to proper list items
+        .replace(/(\S)\s+-\s+([^\n<])/g, '$1</p><div class="standalone-bullet"><span class="bullet-marker">-</span> $2')
         // Format inline bullet points (• symbol) to use proper styling
-        .replace(/•\s+(.*?)(?=•|$)/g, '<span class="inline-bullet">•</span> <span class="bullet-content">$1</span>')
+        .replace(/•\s+(.*?)(?=•|$)/g, '<div class="standalone-bullet"><span class="inline-bullet">•</span> <span class="bullet-content">$1</span></div>')
         // Also format dashes within text that look like bullet points
         .replace(/([^\-])\s+–\s+([^<])/g, '$1 <span class="inline-dash">–</span> $2');
         
