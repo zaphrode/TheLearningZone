@@ -49,13 +49,14 @@ const formatAssistantMessage = (text) => {
         // Check for ordered list item (1. 2. 3. etc)
         const orderedListMatch = line.match(/^(\d+)\.\s+(.*?)$/);
         if (orderedListMatch) {
+            const number = orderedListMatch[1]; // Get the actual number
             if (!inOrderedList) {
                 // Start a new ordered list
                 inOrderedList = true;
                 formattedLines.push('<ol>');
             }
-            // Add list item with original content
-            formattedLines.push(`<li>${orderedListMatch[2]}</li>`);
+            // Add list item with original number via value attribute
+            formattedLines.push(`<li value="${number}">${orderedListMatch[2]}</li>`);
         } 
         // Check for unordered list item (- or *)
         else if (line.match(/^[-*]\s+(.*?)$/)) {
