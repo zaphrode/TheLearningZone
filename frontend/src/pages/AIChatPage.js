@@ -312,14 +312,15 @@ function AIChatPage() {
                 // Special handling for mathematical expressions
                 const formattedUserInput = userInput.trim();
                 
-                // Detect if this is likely a math problem
-                const containsMath = /[\+\-\*\/\(\)\[\]\{\}\^\=]/.test(formattedUserInput);
+                // Detect if this is likely a math problem - look for patterns that suggest an equation or calculation
+                const mathPattern = /^[\d\s\+\-\*\/\(\)\[\]\{\}\^\=]+$|^(solve|calculate|evaluate|find|compute|what is)\s+[\d\s\+\-\*\/\(\)\[\]\{\}\^\=xyzabc]+$/i;
+                const containsMath = mathPattern.test(formattedUserInput);
                 
                 if (containsMath) {
-                    // For math expressions, provide clear instructions on handling powers
+                    // For math expressions, provide clear instructions but don't mention brackets in a way visible to the user
                     currentUserContent.push({
                         "type": "input_text",
-                        "text": "```\n" + formattedUserInput + "\n```\n\nPlease solve this math problem exactly as written, carefully preserving all brackets and order of operations. If you see any exponents (like x^2), interpret them correctly as powers."
+                        "text": formattedUserInput
                     });
                 } else {
                     // For regular questions
@@ -364,7 +365,7 @@ function AIChatPage() {
                 messages: [
                     {
                         role: "system",
-                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models. IMPORTANT: When writing mathematical expressions, always use proper LaTeX notation. For inline math, use \\( and \\) delimiters. For displayed equations, use \\[ and \\] delimiters. For example, write fractions as \\(\\frac{1}{3}\\), exponents/powers as \\(x^2\\) for x squared, and variables with proper formatting like \\(x\\). Never use plain text carets (^) for exponents - always use proper LaTeX notation inside the appropriate delimiters. When interpreting mathematical expressions from the user, treat ^ as exponentiation and preserve all operations exactly as written."
+                        content: "You are an AI tutor assistant for Singaporean students from Primary to Secondary school. You understand the nuances in the Singaporean education system, including the use of models in Primary school Math and Cambridge O Level's for Secondary School. Teach the student and explain concepts thoroughly. For Primary Math problems, use models unless algebra is specifically requested. For secondary level math, use algebra instead of models. IMPORTANT: When writing mathematical expressions, always use proper LaTeX notation. For inline math, use \\( and \\) delimiters. For displayed equations, use \\[ and \\] delimiters. For example, write fractions as \\(\\frac{1}{3}\\), exponents/powers as \\(x^2\\) for x squared, and variables with proper formatting like \\(x\\). Never use plain text carets (^) for exponents - always use proper LaTeX notation inside the appropriate delimiters. When interpreting mathematical expressions from the user, treat ^ as exponentiation and preserve all operations exactly as written. IMPORTANT: Never mention anything about 'preserving brackets' or 'algebra' in your responses unless it's directly relevant to the question being asked. Don't reference how the system detects math problems."
                     }
                 ],
                 max_completion_tokens: 1000
