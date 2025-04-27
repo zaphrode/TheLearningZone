@@ -114,7 +114,7 @@ function AIChatPage() {
     const navigate = useNavigate();
     const [userInput, setUserInput] = useState('');
     const [chatMessages, setChatMessages] = useState([
-        { role: 'assistant', content: 'Hello! I\'m your AI tutor assistant. Ask me anything about your studies or homework questions.' }
+        { role: 'assistant', content: 'Hello! I\'m your AI tutor assistant. Ask me anything about your studies or homework questions. Let me know your level as well, so I can curate my response better.' }
     ]);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
