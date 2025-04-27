@@ -524,4 +524,44 @@
 .message-content .MathJax_Display {
     overflow-x: auto;
     max-width: 100%;
+}
+
+/* Add these styles at the end of the file */
+
+/* Styling for inline bullet points */
+.inline-bullet {
+  color: #0086cc;
+  font-weight: bold;
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.bullet-content {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+/* Styling for dashes used as separators */
+.inline-dash {
+  color: #0086cc;
+  font-weight: bold;
+  margin: 0 4px;
+}
+
+/* Improve the ordered and unordered lists */
+.assistant-message ol, 
+.assistant-message ul {
+  padding-left: 28px;
+  margin: 10px 0;
+}
+
+.assistant-message li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  padding-left: 4px;
+}
+
+/* Add spacing between paragraphs for better readability */
+.assistant-message p {
+  margin-bottom: 12px;
 } 

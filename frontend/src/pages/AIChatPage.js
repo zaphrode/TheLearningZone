@@ -100,7 +100,11 @@ const formatAssistantMessage = (text) => {
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-        .replace(/`([^`]+)`/g, '<code>$1</code>');
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        // Format inline bullet points (• symbol) to use proper styling
+        .replace(/•\s+(.*?)(?=•|$)/g, '<span class="inline-bullet">•</span> <span class="bullet-content">$1</span>')
+        // Also format dashes within text that look like bullet points
+        .replace(/([^\-])\s+–\s+([^<])/g, '$1 <span class="inline-dash">–</span> $2');
         
     // Replace placeholders with original LaTeX expressions
     placeholders.forEach((latex, index) => {
