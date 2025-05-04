@@ -103,12 +103,19 @@ const formatAssistantMessage = (text) => {
         .replace(/`([^`]+)`/g, '<code>$1</code>')
         // Convert standalone dash bullet points to proper list items
         .replace(/^-\s+(.*?)$/gm, '<div class="standalone-bullet"><span class="bullet-marker">-</span> $1</div>')
-        // Convert inline dash bullet points to proper list items
-        .replace(/(\S)\s+-\s+([^\n<])/g, '$1</p><div class="standalone-bullet"><span class="bullet-marker">-</span> $2')
-        // Format inline bullet points (• symbol) to use proper styling
-        .replace(/•\s+(.*?)(?=•|$)/g, '<div class="standalone-bullet"><span class="inline-bullet">•</span> <span class="bullet-content">$1</span></div>')
-        // Also format dashes within text that look like bullet points
-        .replace(/([^\-])\s+–\s+([^<])/g, '$1 <span class="inline-dash">–</span> $2');
+        // Convert inline dash bullet points to proper list items - ensure new line before bullet
+        .replace(/(\S)\s+-\s+([^\n<])/g, '$1</p><p><div class="standalone-bullet"><span class="bullet-marker">-</span> $2')
+        // Format bullet points (• symbol) to always start on a new line
+        .replace(/•\s+(.*?)(?=•|$)/g, '</p><div class="standalone-bullet"><span class="inline-bullet">•</span> <span class="bullet-content">$1</span></div><p>')
+        // Format multiple bullet points in sequence
+        .replace(/<\/div><p><\/p><div class/g, '</div><div class')
+        // Also format dashes within text that look like bullet points - ensure new line before dash
+        .replace(/([^\-])\s+–\s+([^<])/g, '$1</p><p><span class="inline-dash">–</span> $2');
+        
+    // Clean up any empty paragraphs created during formatting
+    processedText = processedText
+        .replace(/<p><\/p>/g, '')
+        .replace(/<p>\s*<\/p>/g, '');
         
     // Replace placeholders with original LaTeX expressions
     placeholders.forEach((latex, index) => {

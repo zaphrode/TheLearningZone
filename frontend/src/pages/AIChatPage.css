@@ -535,7 +535,8 @@
 }
 
 .bullet-content {
-  display: inline;
+  display: block;
+  width: 100%;
 }
 
 /* Styling for dashes used as separators */
@@ -548,10 +549,12 @@
 /* Add these styles for standalone bullet points */
 .standalone-bullet {
   display: block;
-  margin: 8px 0;
+  margin: 10px 0;
   padding-left: 4px;
   position: relative;
   line-height: 1.5;
+  width: 100%;
+  clear: both;
 }
 
 .bullet-marker {
@@ -563,7 +566,7 @@
 
 /* Improve spacing between bullet point groups */
 .standalone-bullet + .standalone-bullet {
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 /* Improve the ordered and unordered lists */
@@ -577,9 +580,11 @@
   margin-bottom: 8px;
   line-height: 1.5;
   padding-left: 4px;
+  display: list-item;
 }
 
 /* Add spacing between paragraphs for better readability */
 .assistant-message p {
   margin-bottom: 12px;
+  width: 100%;
 } 
