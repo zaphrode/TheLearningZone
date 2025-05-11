@@ -11,8 +11,8 @@
   cursor: pointer;
   margin-top: 0;
   padding-top: env(safe-area-inset-top, 20px);
-  min-height: calc(100vh + 1500px);
-  margin-bottom: 1000px;
+  min-height: calc(100vh + 200px);
+  margin-bottom: 100px;
 }
 
 /* Center automatic concentric rings container absolutely */
@@ -283,8 +283,8 @@
 /* Mobile-specific improvements */
 @media (max-width: 768px) {
   .home-page {
-    min-height: calc(100vh + 2000px);
-    margin-bottom: 1000px;
+    min-height: calc(100vh + 200px);
+    margin-bottom: 100px;
     padding-top: env(safe-area-inset-top, 60px);
     justify-content: flex-start;
   }
