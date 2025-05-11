@@ -1,6 +1,6 @@
 // frontend/src/pages/WhoAreWePage.js
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import "./WhoAreWePage.css";
 
 // Function to open WhatsApp chat
@@ -39,7 +39,9 @@ const openWhatsAppChat = () => {
       </div>
 
       <div className="logo-header">
-        <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
+        <Link to="/home" style={{ textDecoration: 'none' }}>
+          <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
+        </Link>
       </div>
 
       <div className="content-overlay">

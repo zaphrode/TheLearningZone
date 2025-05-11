@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import OpenAI from 'openai';
 import './AIChatPage.css';
 
@@ -494,7 +494,9 @@ function AIChatPage() {
             
             <div className="chat-container">
                 <header className="chat-header">
-                    <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
+                    <Link to="/home" style={{ textDecoration: 'none' }}>
+                        <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
+                    </Link>
                     <h1>AI Tutor Assistant</h1>
                 </header>
                 

@@ -1,6 +1,6 @@
 // frontend/src/pages/SignupPage.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './SignupPage.css';
 
 export default function SignupPage() {
@@ -25,7 +25,9 @@ export default function SignupPage() {
             <div className="signup-container">
                 {/* Header */}
                 <header className="signup-header">
-                    <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
+                    <Link to="/home" style={{ textDecoration: 'none' }}>
+                        <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
+                    </Link>
                     <h1 className="header-title">Hi Future Tutor!</h1>
                     <p className="header-subtitle">Welcome to The Learning Zone! 🎓</p>
                 </header>

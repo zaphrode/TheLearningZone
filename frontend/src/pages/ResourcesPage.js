@@ -1,6 +1,6 @@
 // frontend/src/pages/ResourcesPage.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './ResourcesPage.css';
 
 // Function to open WhatsApp chat
@@ -25,7 +25,9 @@ function ResourcesPage() {
       </button>
 
       <header className="resources-header">
-        <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="resources-logo" />
+        <Link to="/home" style={{ textDecoration: 'none' }}>
+          <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="resources-logo" />
+        </Link>
         <h1>Resources</h1>
       </header>
 

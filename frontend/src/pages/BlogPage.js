@@ -116,7 +116,9 @@ function BlogPage() {
             </div>
             
             <div className="blog-header">
-                <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
+                <Link to="/home" style={{ textDecoration: 'none' }}>
+                    <img src={`${process.env.PUBLIC_URL}/TLZ.jpeg`} alt="The Learning Zone Logo" className="logo" />
+                </Link>
                 <h1 className="blog-title">The Learning Zone: Singapore's Home Tuition Blog</h1>
                 <p className="blog-subtitle">Expert insights, study tips, and guidance from Singapore's leading private tutors</p>
             </div>
