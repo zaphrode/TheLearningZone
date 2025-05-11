@@ -1,5 +1,5 @@
 // frontend/src/pages/HomePage.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import './HomePage.css';
@@ -7,6 +7,30 @@ import './HomePage.css';
 function HomePage() {
   const navigate = useNavigate();
   const [rings, setRings] = useState([]);
+
+  // Effect to show ShareThis buttons on this page and hide on unmount
+  useEffect(() => {
+    const shareThisButtons = document.querySelector('.sharethis-sticky-share-buttons');
+    let originalDisplay = 'none'; // Default to none as per index.html
+
+    if (shareThisButtons) {
+        // It's often better to remove the style attribute or set to an empty string 
+        // to let ShareThis control its own display (e.g., 'block', 'flex', etc.)
+        // However, explicitly setting to 'block' is a common override.
+        // We'll try removing the style first to see if ShareThis handles it.
+        if (shareThisButtons.style.display === 'none') {
+            shareThisButtons.style.removeProperty('display');
+        }
+        // If removing doesn't work or ShareThis needs an explicit display, use:
+        // shareThisButtons.style.display = 'block'; 
+    }
+
+    return () => {
+        if (shareThisButtons) {
+            shareThisButtons.style.display = 'none'; // Hide when leaving HomePage
+        }
+    };
+  }, []);
 
   // Navigation functions for each button
   const handleApplyClick = () => navigate('/signup');
