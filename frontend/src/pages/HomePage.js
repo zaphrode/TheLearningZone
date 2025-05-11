@@ -43,7 +43,7 @@ function HomePage() {
   return (
     <div className="home-page" onClick={handleAddRing}>
       <Helmet>
-        <title>1-1 Home Tuition Singapore | Private Tutors | The Learning Zone</title>
+        <title>The Learning Zone | 1-1 Home Tuition Singapore | Private Tutors</title>
         <meta name="description" content="The Learning Zone provides qualified private tutors and 1-1 home tuition in Singapore. Professional home tutors for all levels and subjects to improve grades." />
         <meta name="keywords" content="1-1 home tuition Singapore, private tuition Singapore, private tutors Singapore, home tutors Singapore, tuition agency, tuition teacher, math tutor, English tutor, science tutor" />
         <link rel="canonical" href="https://the-learning-zone.vercel.app" />
