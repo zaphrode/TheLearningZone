@@ -43,7 +43,10 @@ function ResourcesPage() {
           Access a variety of free resources to support your learning journey. Click below to explore!
         </p>
         <a href="https://drive.google.com/drive/folders/1gC6GQLgcuoHzwDXtEGzTwvzCz0YsYuwg" target="_blank" rel="noopener noreferrer" className="resource-link">
-          Free Resources
+          Free Resources (Google Drive)
+        </a>
+        <a href="https://grail.moe/library" target="_blank" rel="noopener noreferrer" className="resource-link">
+          Free Resources (MOE Library Grail)
         </a>
       </div>
 
