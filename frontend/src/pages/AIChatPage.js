@@ -446,10 +446,18 @@ function AIChatPage() {
             let assistantResponse = '';
             
             if (response.choices && response.choices.length > 0) {
+                console.log('OpenAI response choice:', response.choices[0]);
                 assistantResponse = response.choices[0].message.content;
+                if (assistantResponse === null || assistantResponse === undefined) {
+                    console.warn('Assistant response content is null or undefined. Finish reason:', response.choices[0].finish_reason);
+                    assistantResponse = 'I received a response, but it was empty. Please try rephrasing your question or try again later.';
+                }
             } else {
+                console.warn('No choices found in OpenAI response or choices array is empty.');
                 assistantResponse = 'I received your question, but the response format was unexpected. Please try again.';
             }
+            
+            console.log('Formatted assistant response to be displayed:', assistantResponse);
             
             // Add assistant response to chat
             setChatMessages(prevMessages => [
