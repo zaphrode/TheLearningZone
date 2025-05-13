@@ -48,6 +48,9 @@ function ResourcesPage() {
         <a href="https://grail.moe/library" target="_blank" rel="noopener noreferrer" className="resource-link">
           MOE Library Grail
         </a>
+        <a href="https://sgtestpaper.com/" target="_blank" rel="noopener noreferrer" className="resource-link">
+          Test Papers (Primary, Secondary, JC)
+        </a>
       </div>
 
       <div className="resource-card discounted">
