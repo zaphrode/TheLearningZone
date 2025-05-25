@@ -84,28 +84,49 @@
 /* WhatsApp button styling - Kept prominent */
 .whatsapp-container {
     position: fixed;
-    top: env(safe-area-inset-top, 20px);
-    right: 20px;
+    top: env(safe-area-inset-top, 10px);
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     z-index: 100;
 }
 
 .whatsapp-button {
-    background: #25D366;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-    transition: all 0.3s ease;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    transition: none;
     cursor: pointer;
-}
-
-.whatsapp-button:hover {
-    transform: scale(1.15);
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
 }
 
 .whatsapp-logo {
     width: 40px;
     height: 40px;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    border-radius: 50%;
+}
+
+.whatsapp-logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45);
+}
+
+/* Add contact agent text styling */
+.contact-agent {
+    font-size: 0.9rem;
+    color: #2f2f2f;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 100px;
+    word-wrap: break-word;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 .logo-header {
@@ -214,9 +235,11 @@
     }
     
     .whatsapp-logo {
-        width: 35px;
-        height: 35px;
-        padding: 8px;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 5px;
+        padding: 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .logo-header {
@@ -247,6 +270,27 @@
     
     .price-section p {
         font-size: 1rem;
+    }
+
+    .whatsapp-container {
+        top: env(safe-area-inset-top, 10px) !important;
+        right: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        z-index: 999 !important;
+        width: auto !important;
+    }
+    
+    .contact-agent {
+        position: static !important;
+        margin-top: 5px !important;
+        font-size: 0.8rem !important;
+        max-width: 80px !important;
+        padding: 4px !important;
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
+        cursor: pointer !important;
     }
 }
   
