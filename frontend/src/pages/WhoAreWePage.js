@@ -45,13 +45,13 @@ const openWhatsAppChat = () => {
       </div>
 
       <div className="content-overlay">
-        <div className="banner-section">
+        <div className="info-card banner-section">
           <p>
             We noticed a lack of vetting and quality control in the market. Hence, we decided to take it upon ourselves to provide quality tuition to your doorstep. Contact us now to find a reliable private home tutor !
           </p>
         </div>
 
-        <div className="price-section">
+        <div className="info-card price-section">
           <h2>Prices</h2>
           <p><strong>Primary:</strong> $35/h-$40/h</p>
           <p><strong>Low. Secondary:</strong> $40/h-$45/h</p>
