@@ -13,7 +13,7 @@
   text-align: center; /* Center align text inside the button */
   cursor: pointer; /* Pointer cursor on hover */
   z-index: 10; /* Ensure it stays on top */
-  display: inline-block; /* Ensure it doesn’t behave like a block element */
+  display: inline-block; /* Ensure it doesn't behave like a block element */
   width: auto; /* Prevent it from stretching */
   max-width: fit-content; /* Ensure button width fits content */
   white-space: nowrap; /* Prevent text wrapping */
@@ -43,23 +43,41 @@
     margin-bottom: 20px;
   }
  /* Position the WhatsApp button in the top right */
-.whatsapp-button {
+.whatsapp-container { /* Updated from whatsapp-button */
     position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 10;
+    top: env(safe-area-inset-top, 10px); /* Consistent with HomePage */
+    right: 10px; /* Consistent with HomePage */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10; /* Consistent with HomePage (desktop) */
+    cursor: pointer; /* Add cursor pointer to container */
   }
   
-  .whatsapp-logo {
-    width: 128px; /* Adjust size as needed */
-    height: 128px;
+.whatsapp-logo {
+    width: 40px; /* Consistent with HomePage (desktop) */
+    height: 40px; /* Consistent with HomePage (desktop) */
     transition: transform 0.2s ease;
   }
   
   .whatsapp-logo:hover {
     transform: scale(1.1);
   }
+
+/* Add contact agent text styling */
+.contact-agent {
+  font-size: 0.9rem;
+  color: #2f2f2f;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100px;
+  word-wrap: break-word;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
  
   .collapsible-section {
     margin-bottom: 15px;
@@ -93,4 +111,42 @@
     color: #333;
     line-height: 1.6;
   }
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .terms-and-conditions-page {
+    /* Ensure padding adjustments are present if needed */
+    padding-top: env(safe-area-inset-top, 40px); /* Example: Adjust if your Terms page has different top padding */
+  }
+
+  /* Ensure consistent positioning and display for mobile */
+  .whatsapp-container {
+    top: env(safe-area-inset-top, 10px) !important; /* Consistent with HomePage */
+    right: 10px !important; /* Consistent with HomePage */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    z-index: 999 !important; /* Consistent with HomePage (mobile) */
+    width: auto !important;
+  }
+
+  .whatsapp-logo {
+    width: 60px !important; /* Consistent with HomePage (mobile) */
+    height: 60px !important;
+    margin-bottom: 5px !important;
+    padding: 0 !important;
+    /* No box-shadow on mobile as per HomePage */
+  }
+
+  .contact-agent {
+    position: static !important;
+    margin-top: 5px !important;
+    font-size: 0.8rem !important;
+    max-width: 80px !important;
+    padding: 4px !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
+    cursor: pointer !important;
+  }
+}
   

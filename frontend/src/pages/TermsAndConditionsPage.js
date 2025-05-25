@@ -29,8 +29,11 @@ const TermsAndConditionsPage = () => {
       <h1>Terms and Conditions</h1>
 
         {/* WhatsApp Button */}
-        <div className="whatsapp-button" onClick={openWhatsAppChat}>
+        <div className="whatsapp-container" onClick={openWhatsAppChat}>
             <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
+            <div className="contact-agent">
+              Click here to contact an agent!
+            </div>
         </div>
   
       {/* Clients Section */}
@@ -57,7 +60,7 @@ const TermsAndConditionsPage = () => {
             </p>
             <p><strong>Payment</strong></p>
             <p>
-              Lesson fees with any of The Learning Zone tutors are to be paid via Bank Transfer, PayNow, or PayLah to The Learning Zone directly and not to the tutors. Any additional tuition services such as an additional subject or teaching of the student’s siblings must be disclosed to The Learning Zone.
+              Lesson fees with any of The Learning Zone tutors are to be paid via Bank Transfer, PayNow, or PayLah to The Learning Zone directly and not to the tutors. Any additional tuition services such as an additional subject or teaching of the student's siblings must be disclosed to The Learning Zone.
             </p>
             <p><strong>Late Payment</strong></p>
             <p>
@@ -82,7 +85,7 @@ const TermsAndConditionsPage = () => {
             </p>
             <ul>
               <li>your tutor profile will be provided to our clients via messaging platforms (not limited to WhatsApp, Telegram) when you have indicated your interest in the assignment.</li>
-              <li>your mobile number/contact details will be provided to the respective client upon the clients’ interest.</li>
+              <li>your mobile number/contact details will be provided to the respective client upon the clients' interest.</li>
               <li>your personal information will be utilised by The Learning Zone to receive tutor-related marketing messages via messaging platforms (not limited to WhatsApp, Telegram).</li>
             </ul>
             <p>
