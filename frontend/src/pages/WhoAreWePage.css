@@ -106,7 +106,6 @@
     height: 40px;
     transition: transform 0.2s ease;
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-    border-radius: 50%;
 }
 
 .whatsapp-logo:hover {
