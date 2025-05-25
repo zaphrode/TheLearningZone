@@ -34,8 +34,11 @@ const openWhatsAppChat = () => {
       <div className="automatic-rings">{renderAutomaticRings()}</div>
 
       {/* WhatsApp Button */}
-      <div className="whatsapp-button" onClick={openWhatsAppChat}>
+      <div className="whatsapp-container" onClick={openWhatsAppChat}>
         <img src="/whatsapp-logo2.png" alt="WhatsApp" className="whatsapp-logo" />
+        <div className="contact-agent">
+          Click here to contact an agent!
+        </div>
       </div>
 
       <div className="logo-header">
