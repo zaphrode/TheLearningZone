@@ -55,8 +55,8 @@
   }
   
 .whatsapp-logo {
-    width: 40px; /* Consistent with HomePage (desktop) */
-    height: 40px; /* Consistent with HomePage (desktop) */
+    width: 128px; /* Reverted to original size */
+    height: 128px; /* Reverted to original size */
     transition: transform 0.2s ease;
   }
   
@@ -131,7 +131,7 @@
   }
 
   .whatsapp-logo {
-    width: 60px !important; /* Consistent with HomePage (mobile) */
+    width: 60px !important; /* Keep consistent mobile size */
     height: 60px !important;
     margin-bottom: 5px !important;
     padding: 0 !important;
