@@ -102,6 +102,8 @@ const TermsAndConditionsPage = () => {
               <li>Tutors are strictly expected to conduct lessons in their own capacity, and not send any form of representative or substitute personnel on behalf of him/her.</li>
               <li>Tutors are expected to conduct themselves in a professional and ethical manner throughout the tenure of the tuition assignment.</li>
               <li>Tutors are expected to practice punctuality and not to short-change any timing in tuition lessons.</li>
+              <li>Tutors are strictly prohibited from receiving direct payments from clients or entering into any private agreements without the prior knowledge and consent of The Learning Zone.</li>
+              <li>Any breach of these terms may result in a penalty of up to one full month’s tuition fees.</li>
             </ul>
             {/* More tutor terms content here */}
           </div>
