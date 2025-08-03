@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import './HomePage.css';
 
 function HomePage() {
@@ -154,75 +156,93 @@ function HomePage() {
         ></div>
       ))}
 
-      {/* Header and buttons */}
-      <header className="header">
-        <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
-        <h1 className="title">The Learning Zone</h1>
-        <p className="subtitle"><em>Singapore's premium home tutors</em></p>
-      </header>
+      {/* Main Content Container */}
+      <div className="main-content">
+        {/* Header Section */}
+        <header className="header">
+          <img src="/TLZ.jpeg" alt="The Learning Zone Logo" className="logo" />
+          <h1 className="title">The Learning Zone</h1>
+          <p className="subtitle"><em>Singapore's premium home tutors</em></p>
+        </header>
 
-      {/* Navigation buttons - Now before SEO content */}
-      <div className="button-container">
-        <button className="tutor-button apply-tutor" onClick={() => navigate("/signup")}>
-          Apply As Tutor
-        </button>
-        <button className="tutor-button find-tutor" onClick={openWhatsAppChat}>
-          Find A Tutor
-        </button>
-        <button className="tutor-button testimonials" onClick={() => navigate("/testimonials-and-qualifications")}>
-          Testimonials & Qualifications
-        </button>
-        <button className="tutor-button resources" onClick={() => navigate("/resources")}>
-          Resources
-        </button>
-        <button className="tutor-button who-are-we" onClick={() => navigate("/who-are-we")}>
-          Who Are We?
-        </button>
-        <button className="tutor-button blog-button" onClick={() => navigate("/blog")}>
-          Our Blogs
-        </button>
-        <button className="tutor-button ai-chat-button" onClick={() => navigate("/ai-chat")}>
-          AI Tutor Chat
-        </button>
-        <button className="tutor-button terms-button" onClick={() => navigate("/terms-and-conditions")}>
-          Terms & Conditions
-        </button>
-      </div>
+        {/* Navigation Section */}
+        <nav className="navigation-section">
+          <div className="button-container">
+            <button className="tutor-button apply-tutor" onClick={() => navigate("/signup")}>
+              Apply As Tutor
+            </button>
+            <button className="tutor-button find-tutor" onClick={openWhatsAppChat}>
+              Find A Tutor
+            </button>
+            <button className="tutor-button testimonials" onClick={() => navigate("/testimonials-and-qualifications")}>
+              Testimonials & Qualifications
+            </button>
+            <button className="tutor-button resources" onClick={() => navigate("/resources")}>
+              Resources
+            </button>
+            <button className="tutor-button who-are-we" onClick={() => navigate("/who-are-we")}>
+              Who Are We?
+            </button>
+            <button className="tutor-button blog-button" onClick={() => navigate("/blog")}>
+              Our Blogs
+            </button>
+            <button className="tutor-button ai-chat-button" onClick={() => navigate("/ai-chat")}>
+              AI Tutor Chat
+            </button>
+            <button className="tutor-button terms-button" onClick={() => navigate("/terms-and-conditions")}>
+              Terms & Conditions
+            </button>
+          </div>
+        </nav>
 
-      {/* SEO-friendly content sections - Now after the buttons */}
-      <div className="seo-content">
-        <section className="intro-section">
-          <h2>Welcome to The Learning Zone – Singapore's Leading 1-1 Home Tuition Agency</h2>
-          <p>
-            Finding the right private tutor for your child is crucial for academic success. <strong>The Learning Zone </strong> 
-            connects <strong>experienced home tutors in Singapore</strong> with parents looking for <strong>personalised 1-1 private tuition</strong>.
-            Whether your child needs help with <strong>PSLE, O-Level, A-Level, IB, or international curriculums</strong>,
-            we provide the <strong>best private tutors in Singapore</strong>. To ensure quality, we vet all our tutors on their experience and qualifications.
-          </p>
-        </section>
+        {/* Content Sections */}
+        <div className="content-sections">
+          {/* Introduction Section */}
+          <section className="intro-section">
+            <div className="section-container">
+              <h2>Welcome to The Learning Zone – Singapore's Leading 1-1 Home Tuition Agency</h2>
+              <p>
+                Finding the right private tutor for your child is crucial for academic success. <strong>The Learning Zone </strong> 
+                connects <strong>experienced home tutors in Singapore</strong> with parents looking for <strong>personalised 1-1 private tuition</strong>.
+                Whether your child needs help with <strong>PSLE, O-Level, A-Level, IB, or international curriculums</strong>,
+                we provide the <strong>best private tutors in Singapore</strong>. To ensure quality, we vet all our tutors on their experience and qualifications.
+              </p>
+            </div>
+          </section>
 
-        <section className="why-choose-us">
-          <h2>Why Choose The Learning Zone for Private Home Tuition in Singapore?</h2>
-          <ul>
-            <li>✅ <strong>Expert Home Tutors:</strong> Only the most qualified and experienced private tutors are matched to your child.</li>
-            <li>✅ <strong>Personalised 1-1 Learning:</strong> Lessons are tailored to each student's strengths and weaknesses.</li>
-            <li>✅ <strong>All Subjects & Levels:</strong> We offer private tuition for <strong>Math, Science, English, Chinese, and more</strong>.</li>
-            <li>✅ <strong>Flexible Scheduling:</strong> Home tutors available for <strong>weekday and weekend</strong> lessons at your convenience.</li>
-            <li>✅ <strong>Trusted by Parents:</strong> Hundreds of successful matches made across Singapore.</li>
-          </ul>
-        </section>
+          {/* Why Choose Us Section */}
+          <section className="why-choose-us">
+            <div className="section-container">
+              <h2>Why Choose The Learning Zone for Private Home Tuition in Singapore?</h2>
+              <div className="benefits-list">
+                <ul>
+                  <li><FontAwesomeIcon icon={faCheck} className="check-icon" /> <strong>Expert Home Tutors:</strong> Only the most qualified and experienced private tutors are matched to your child.</li>
+                  <li><FontAwesomeIcon icon={faCheck} className="check-icon" /> <strong>Personalised 1-1 Learning:</strong> Lessons are tailored to each student's strengths and weaknesses.</li>
+                  <li><FontAwesomeIcon icon={faCheck} className="check-icon" /> <strong>All Subjects & Levels:</strong> We offer private tuition for <strong>Maths, Science, English, Mother Tongue, Humanitiesand more</strong>.</li>
+                  <li><FontAwesomeIcon icon={faCheck} className="check-icon" /> <strong>Flexible Scheduling:</strong> Home tutors available for <strong>weekday and weekend</strong> lessons at your convenience.</li>
+                  <li><FontAwesomeIcon icon={faCheck} className="check-icon" /> <strong>Trusted by Parents:</strong> Hundreds of successful matches made across Singapore.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
-        <section className="get-started">
-          <h2>Find Your Perfect Private Tutor in Singapore Today!</h2>
-          <p>
-            Need a home tutor? Let us help! If you're looking for <strong>1-1 private home tuition in Singapore</strong>, 
-            The Learning Zone ensures your child gets the <strong>best guidance</strong> for academic excellence.  
-            Click below to connect with a private tutor now!
-          </p>
-          <button className="contact-button" onClick={openWhatsAppChat}>
-            Contact Us on WhatsApp 📲
-          </button>
-        </section>
+          {/* Call to Action Section */}
+          <section className="get-started">
+            <div className="section-container">
+              <h2>Find Your Perfect Private Tutor in Singapore Today!</h2>
+              <p>
+                Need a home tutor? Let us help! If you're looking for <strong>1-1 private home tuition in Singapore</strong>, 
+                The Learning Zone ensures your child gets the <strong>best guidance</strong> for academic excellence.  
+                Click below to connect with a private tutor now!
+              </p>
+              <div className="cta-button-container">
+                <button className="contact-button" onClick={openWhatsAppChat}>
+                  Contact Us on WhatsApp 📲
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );
